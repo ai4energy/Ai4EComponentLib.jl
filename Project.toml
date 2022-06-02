@@ -1,0 +1,4 @@
+name = "EnergyMTKLibrary"
+uuid = "961109d2-c9c9-4a1b-84db-50a742a50fc4"
+authors = ["Mingtao Li <mingtao@xjtu.edu.cn>"]
+version = "0.1.0"
