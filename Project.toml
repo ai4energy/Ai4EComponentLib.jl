@@ -1,4 +1,18 @@
-name = "EnergyMTKLibrary"
-uuid = "961109d2-c9c9-4a1b-84db-50a742a50fc4"
-authors = ["Mingtao Li <mingtao@xjtu.edu.cn>"]
+name = "Ai4EComponentLib"
+uuid = "9901752a-13b3-47c7-8fb4-ce17182539d9"
+authors = ["jake484 <522432938@qq.com> and contributors"]
 version = "0.1.0"
+
+[deps]
+DocStringExtensions = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
+ModelingToolkit = "961ee093-0014-501f-94e3-6117800e7a78"
+Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
+
+[compat]
+julia = "1.6"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]

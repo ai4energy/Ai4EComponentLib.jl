@@ -1,0 +1,5 @@
+[deps]
+Ai4EComponentLib = "9901752a-13b3-47c7-8fb4-ce17182539d9"
+DocStringExtensions = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+ModelingToolkit = "961ee093-0014-501f-94e3-6117800e7a78"
