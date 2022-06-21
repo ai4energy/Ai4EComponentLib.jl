@@ -4,6 +4,10 @@
 
 To use `PhotovoltaicCell()`, we design a resistor called `vari_Resistor` whose resistance value changes with time. Then we can see the I-U curve of `PhotovoltaicCell` with different loads.
 
+Equivalent circuit diagram of `PhotovoltaicCell()`:
+
+![图 1](../assets/Electrochemistry-18-10-20.png)  
+
 ```@example 1
 using ModelingToolkit, DifferentialEquations
 using Ai4EComponentLib.Electrochemistry
@@ -45,6 +49,11 @@ savefig("example_1.svg"); nothing # hide
 
 Using above PhotovoltaicCell to drive Electrolyzer, then we build a *PVEL system*. In default paraments, we can know how the system works.
 
+
+Equivalent circuit diagram of `PEMElectrolyzer()`:
+
+![图 2](../assets/Electrochemistry-18-11-06.png)  
+
 ```@example 2
 using ModelingToolkit, DifferentialEquations
 using Ai4EComponentLib.Electrochemistry
@@ -73,7 +82,7 @@ Get states of system by `states()`
 states(sys)
 ```
 
-Check voltage, current and mass yield of electrolyzer.
+Check voltage, current and mass yield of electrolyzer. The working point `(El.v,El.i)` can be found in I-U curve above.
 
 ```@example 2
 sol[El.v]

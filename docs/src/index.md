@@ -12,6 +12,10 @@ import Pkg; Pkg.add("Ai4EComponentLib")
 
 ## Tutorials
 
+* [Electrochemistry System](https://ai4energy.github.io/Ai4EComponentLib.jl/dev/tutorials/Electrochemistry/)
+
 ## Libraries
 
-The following are the constituant libraries of the ModelingToolkit Standard Library.
+The following are the ModelingToolkit libraries from Ai4Energy.
+
+* [Electrochemistry System API](https://ai4energy.github.io/Ai4EComponentLib.jl/dev/API/ElectrochemistryAPI/)

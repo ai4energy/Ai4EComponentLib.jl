@@ -20,6 +20,6 @@ Pages = ["ElectrochemistryAPI.md"]
 Pin
 OnePort
 Ground
-Electrolyzer
+PEMElectrolyzer
 PhotovoltaicCell
 ```
