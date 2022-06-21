@@ -2,7 +2,7 @@
 """
 $(TYPEDSIGNATURES)
 
-# Component: Electrolyzer
+# Component: PEMElectrolyzer(Proton Exchange Membranes Electrolyzer)
 
 I-U in Electrolyzer:
 ```math
@@ -28,7 +28,7 @@ Mass yield of hydrogen[1]:
 * `i(t)`: [`A`] Current through the Electrolyzer
 * `n_H_2(t)`: [`mol/s`] Molar Yield of Hydrogen
 * `η_f(t)`: Faraday efficiency, here \$η_f = 1\$
-* `m_H_2(t)`: ['g/s'] Mass yield of hydrogen
+* `m_H_2(t)`: [`g/s`] Mass yield of hydrogen
 * `∂_m_H_2`: Derivative of hydrogen mass yield
 
 # Parameters:
@@ -51,7 +51,7 @@ Mass yield of hydrogen[1]:
 * [1]Espinosa-López M, Darras C, Poggi P, et al. Modelling and experimental validation of a 46 kw pem high pressure water electrolyzer[J]. Renewable energy, 2018, 119:160-173.
 
 """
-function Electrolyzer(; name, τ=0.02, I_0=0.01, n=1, u_0=1.47, R_sol=0.22)
+function PEMElectrolyzer(; name, τ=0.02, I_0=0.01, n=1, u_0=1.47, R_sol=0.22)
     @named oneport = OnePort()
     @unpack v, i = oneport
     sts = @variables n_H_2(t) η_f(t) m_H_2(t) ∂_m_H_2(t)

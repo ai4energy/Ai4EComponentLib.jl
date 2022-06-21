@@ -14,4 +14,4 @@ Import Ai4EComponentLib.jl in the standard way:
 import Pkg; Pkg.add("Ai4EComponentLib")
 ```
 
-See more information in [documents]((https://ai4energy.github.io/Ai4EComponentLib.jl/dev/)).
+See more information in [documents](https://ai4energy.github.io/Ai4EComponentLib.jl/dev/).
