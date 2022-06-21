@@ -2,8 +2,6 @@
 @parameters t
 ∂ = Differential(t)
 
-
-
 """
 $(TYPEDSIGNATURES)
 
