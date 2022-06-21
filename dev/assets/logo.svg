@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- 由 Microsoft Visio, SVG Export 生成 componets.svg 页-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="6.85499in" height="6.41962in"
+		viewBox="0 0 493.559 462.213" xml:space="preserve" color-interpolation-filters="sRGB" class="st8">
+	<v:documentProperties v:langID="2052" v:metric="true" v:viewMarkup="false"/>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#cc0000;stroke:#c7c8c8;stroke-width:3}
+		.st2 {fill:#c78eff;stroke:#c7c8c8;stroke-width:3}
+		.st3 {fill:#7e00fd;stroke:#c7c8c8;stroke-width:3}
+		.st4 {fill:#9933ff;stroke:#c7c8c8;stroke-width:3}
+		.st5 {fill:#538135}
+		.st6 {stroke:#3c63ac;stroke-width:3}
+		.st7 {fill:url(#grad0-23);stroke:#3c63ac;stroke-width:0.75}
+		.st8 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Patterns_And_Gradients">
+		<linearGradient id="grad0-23" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate(60 0.5 0.5)">
+			<stop offset="0" stop-color="#cdd6cb" stop-opacity="1"/>
+			<stop offset="0.24" stop-color="#d8ded8" stop-opacity="1"/>
+			<stop offset="0.54" stop-color="#406228" stop-opacity="1"/>
+		</linearGradient>
+	</defs>
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<title>页-1</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<g id="group43-1" transform="translate(3,-3)" v:mID="43" v:groupContext="group">
+			<title>工作表.43</title>
+			<g id="group38-2" transform="translate(462.213,269.457) rotate(90)" v:mID="38" v:groupContext="group">
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+					<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				</v:userDefs>
+				<title>圆柱形.38</title>
+				<g id="shape39-3" v:mID="39" v:groupContext="shape">
+					<title>工作表.39</title>
+					<v:userDefs>
+						<v:ud v:nameU="ControlHalfHeight" v:prompt="" v:val="VT0(0.11811023622047):24"/>
+						<v:ud v:nameU="FillForegnd" v:prompt="" v:val="VT5(1)"/>
+						<v:ud v:nameU="ControlHalfHeight" v:prompt="" v:val="VT0(0.2677165383625):1"/>
+						<v:ud v:nameU="FillForegnd" v:prompt="" v:val="VT5(#cc0000)"/>
+					</v:userDefs>
+					<path d="M0 442.94 A96.378 19.2756 -180 1 0 192.76 442.94 L192.76 288.73 L0 288.73 L0 442.94 Z" class="st1"/>
+				</g>
+				<g id="shape38-5" v:mID="38" v:groupContext="groupContent">
+					<ellipse cx="96.378" cy="288.732" rx="96.378" ry="19.2756" class="st1"/>
+				</g>
+			</g>
+			<g id="group34-7" transform="translate(294.803,-7.38964E-13)" v:mID="34" v:groupContext="group">
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+					<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				</v:userDefs>
+				<title>立方体.34</title>
+				<g id="shape35-8" v:mID="35" v:groupContext="shape">
+					<title>工作表.35</title>
+					<v:userDefs>
+						<v:ud v:nameU="ControlHeight" v:prompt="" v:val="VT0(0.94488188976378):24"/>
+						<v:ud v:nameU="FillForegnd" v:prompt="" v:val="VT5(1)"/>
+						<v:ud v:nameU="ControlHeight" v:prompt="" v:val="VT0(2.1417323069):1"/>
+						<v:ud v:nameU="FillForegnd" v:prompt="" v:val="VT5(#9933ff)"/>
+					</v:userDefs>
+					<path d="M0 308.01 L154.2 308.01 L192.76 269.46 L38.55 269.46 L0 308.01 Z" class="st2"/>
+				</g>
+				<g id="shape36-10" v:mID="36" v:groupContext="shape">
+					<title>工作表.36</title>
+					<v:userDefs>
+						<v:ud v:nameU="ControlHeight" v:prompt="" v:val="VT0(0.94488188976378):24"/>
+						<v:ud v:nameU="FillForegnd" v:prompt="" v:val="VT5(1)"/>
+						<v:ud v:nameU="ControlHeight" v:prompt="" v:val="VT0(2.1417323069):1"/>
+						<v:ud v:nameU="FillForegnd" v:prompt="" v:val="VT5(#9933ff)"/>
+					</v:userDefs>
+					<path d="M154.2 462.21 L192.76 423.66 L192.76 269.46 L154.2 308.01 L154.2 462.21 Z" class="st3"/>
+				</g>
+				<g id="shape34-12" v:mID="34" v:groupContext="groupContent">
+					<rect x="0" y="308.008" width="154.205" height="154.205" class="st4"/>
+				</g>
+			</g>
+			<g id="group73-14" transform="translate(82.2047,-249.449)" v:mID="73" v:groupContext="group">
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<title>前凸带形.73</title>
+				<g id="shape73-15" v:mID="73" v:groupContext="groupContent">
+					<path d="M66.9 328.42 L0 328.42 L41.81 395.31 L0 462.21 L98.24 462.21 A11.7295 7.81966 -180 0 0 108.71 453.85
+								 L108.71 428.76 L225.78 428.76 L225.78 453.85 A11.7295 7.81966 -180 0 0 236.25 462.21 L334.49 462.21
+								 L292.68 395.31 L334.49 328.42 L267.59 328.42 L267.59 303.33 A11.7295 7.81966 -180 0 0 257.12 294.97
+								 L77.37 294.97 A11.7295 7.81966 -180 0 0 66.9 303.33 L66.9 328.42 Z" class="st5"/>
+					<path d="M66.9 328.42 L0 328.42 L41.81 395.31 L0 462.21 L98.24 462.21 A11.7295 7.81966 -180 0 0 108.71 453.85
+								 L108.71 428.76 L225.78 428.76 L225.78 453.85 A11.7295 7.81966 -180 0 0 236.25 462.21 L334.49 462.21
+								 L292.68 395.31 L334.49 328.42 L267.59 328.42 L267.59 303.33 A11.7295 7.81966 -180 0 0 257.12 294.97
+								 L77.37 294.97 A11.7295 7.81966 -180 0 0 66.9 303.33 L66.9 328.42" class="st6"/>
+					<path d="M66.9 328.42 L66.9 437.13" class="st6"/>
+					<path d="M267.59 328.42 L267.59 437.13" class="st6"/>
+				</g>
+				<g id="shape74-20" v:mID="74" v:groupContext="shape">
+					<title>工作表.74</title>
+					<v:userDefs>
+						<v:ud v:nameU="FillForegnd" v:prompt="" v:val="VT5(1)"/>
+						<v:ud v:nameU="Controls1X" v:prompt="" v:val="VT0(0.59055118110236):24"/>
+						<v:ud v:nameU="FillForegnd" v:prompt="" v:val="VT5(#538135)"/>
+						<v:ud v:nameU="Controls1X" v:prompt="" v:val="VT0(0.92913387635465):1"/>
+					</v:userDefs>
+					<path d="M108.71 453.85 L108.71 428.76 L77.37 428.76 A12.7487 8.49913 -180 0 0 77.37 445.49 L98.24 445.49 A11.7295
+								 7.81966 0 0 1 108.71 453.85 ZM225.78 453.85 L225.78 428.76 L257.12 428.76 A12.7487 8.49913 0 0 1
+								 257.12 445.49 L236.25 445.49 A11.7295 7.81966 -180 0 0 225.78 453.85 Z" class="st7"/>
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>

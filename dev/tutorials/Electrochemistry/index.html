@@ -1,2 +1,195 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Electrochemistry System · Ai4EComponentLib.jl</title><script data-outdated-warner src="../../assets/warner.js"></script><link rel="canonical" href="https://ai4energy.github.io/Ai4EComponentLib.jl/tutorials/Electrochemistry/"/><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.044/juliamono.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../">Ai4EComponentLib.jl</a></span></div><form class="docs-search" action="../../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><span class="tocitem">Tutorials</span><ul><li class="is-active"><a class="tocitem" href>Electrochemistry System</a></li></ul></li><li><span class="tocitem">API</span><ul><li><a class="tocitem" href="../../API/ElectrochemistryAPI/">ElectrochemistryAPI</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Tutorials</a></li><li class="is-active"><a href>Electrochemistry System</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Electrochemistry System</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/ai4energy/Ai4EComponentLib.jl/blob/main/docs/src/tutorials/Electrochemistry.md#" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Electrochemistry-System"><a class="docs-heading-anchor" href="#Electrochemistry-System">Electrochemistry System</a><a id="Electrochemistry-System-1"></a><a class="docs-heading-anchor-permalink" href="#Electrochemistry-System" title="Permalink"></a></h1></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../">« Home</a><a class="docs-footer-nextpage" href="../../API/ElectrochemistryAPI/">ElectrochemistryAPI »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.19 on <span class="colophon-date" title="Tuesday 21 June 2022 02:32">Tuesday 21 June 2022</span>. Using Julia version 1.7.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Electrochemistry System · Ai4EComponentLib.jl</title><script data-outdated-warner src="../../assets/warner.js"></script><link rel="canonical" href="https://ai4energy.github.io/Ai4EComponentLib.jl/tutorials/Electrochemistry/"/><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.044/juliamono.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../../"><img src="../../assets/logo.svg" alt="Ai4EComponentLib.jl logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href="../../">Ai4EComponentLib.jl</a></span></div><form class="docs-search" action="../../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><span class="tocitem">Tutorials</span><ul><li class="is-active"><a class="tocitem" href>Electrochemistry System</a><ul class="internal"><li><a class="tocitem" href="#PhotovoltaicCell"><span>PhotovoltaicCell</span></a></li><li><a class="tocitem" href="#PEMElectrolyzer"><span>PEMElectrolyzer</span></a></li></ul></li></ul></li><li><span class="tocitem">API</span><ul><li><a class="tocitem" href="../../API/ElectrochemistryAPI/">ElectrochemistryAPI</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Tutorials</a></li><li class="is-active"><a href>Electrochemistry System</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Electrochemistry System</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/ai4energy/Ai4EComponentLib.jl/blob/main/docs/src/tutorials/Electrochemistry.md#" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Electrochemistry-System"><a class="docs-heading-anchor" href="#Electrochemistry-System">Electrochemistry System</a><a id="Electrochemistry-System-1"></a><a class="docs-heading-anchor-permalink" href="#Electrochemistry-System" title="Permalink"></a></h1><h2 id="PhotovoltaicCell"><a class="docs-heading-anchor" href="#PhotovoltaicCell">PhotovoltaicCell</a><a id="PhotovoltaicCell-1"></a><a class="docs-heading-anchor-permalink" href="#PhotovoltaicCell" title="Permalink"></a></h2><p>To use <code>PhotovoltaicCell()</code>, we design a resistor called <code>vari_Resistor</code> whose resistance value changes with time. Then we can see the I-U curve of <code>PhotovoltaicCell</code> with different loads.</p><pre><code class="language-julia hljs">using ModelingToolkit, DifferentialEquations
+using Ai4EComponentLib.Electrochemistry
+using Plots
+
+function vari_Resistor(; name)
+    @named oneport = OnePort()
+    @unpack v, i = oneport
+    eqs = [
+        v ~ i * t
+    ]
+    extend(ODESystem(eqs, t, [], []; name=name), oneport)
+end
+
+@named Pv = PhotovoltaicCell()
+@named R = vari_Resistor()
+@named ground = Ground()
+
+eqs = [
+    connect(Pv.p, R.p)
+    connect(Pv.n, R.n, ground.g)
+]
+
+@named OdeFun = ODESystem(eqs, t)
+@named model = compose(OdeFun, [Pv, R, ground])
+sys = structural_simplify(model)
+prob = ODEProblem(sys, [], (0.0, 300.0))
+sol = solve(prob)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">retcode: Success
+Interpolation: specialized 3rd order &quot;free&quot; stiffness-aware interpolation
+t: 55-element Vector{Float64}:
+   0.0
+   1.0e-6
+   1.1e-5
+   0.00011099999999999999
+   0.0011109999999999998
+   0.011110999999999996
+   0.11111099999999996
+   1.1111109999999995
+   6.79035935117457
+   8.978148213920168
+   ⋮
+ 159.10880840336685
+ 173.4801253245643
+ 189.1756997486783
+ 206.31752801865935
+ 225.03881424518733
+ 245.48515123044803
+ 267.81547719830417
+ 292.2035686705326
+ 300.0
+u: 55-element Vector{Vector{Float64}}:
+ [6.070161231912765]
+ [6.070161218944301]
+ [6.070161086382273]
+ [6.070159760762311]
+ [6.070146504594543]
+ [6.070013946101201]
+ [6.068688679524139]
+ [6.055467772362445]
+ [5.981307175281362]
+ [5.921765490958639]
+ ⋮
+ [0.4349347898787152]
+ [0.3991446222812544]
+ [0.3662305704476482]
+ [0.3359725683697224]
+ [0.30816564410432495]
+ [0.2826189866654537]
+ [0.25915547745658996]
+ [0.23761065441016743]
+ [0.2314575832133179]</code></pre><pre><code class="language-julia hljs">plot(sol[R.p.v], sol[R.p.i], color = &quot;red&quot;)</code></pre><p><img src="../example_1.svg" alt="图一"/></p><h2 id="PEMElectrolyzer"><a class="docs-heading-anchor" href="#PEMElectrolyzer">PEMElectrolyzer</a><a id="PEMElectrolyzer-1"></a><a class="docs-heading-anchor-permalink" href="#PEMElectrolyzer" title="Permalink"></a></h2><p>Using above PhotovoltaicCell to drive Electrolyzer, then we build a <em>PVEL system</em>. In default paraments, we can know how the system works.</p><pre><code class="language-julia hljs">using ModelingToolkit, DifferentialEquations
+using Ai4EComponentLib.Electrochemistry
+
+@named Pv = PhotovoltaicCell()
+@named El = PEMElectrolyzer()
+@named ground = Ground()
+eqs = [
+    connect(Pv.p, El.p)
+    connect(Pv.n, El.n, ground.g)
+]
+@named OdeFun = ODESystem(eqs, t)
+@named model = compose(OdeFun, [Pv, El, ground])
+sys = structural_simplify(model)
+u0 = [
+    El.m_H_2 =&gt; 0.0
+    El.∂_m_H_2 =&gt; 0.0
+]
+prob = ODEProblem(sys, u0, (0.0, 30.0))
+sol = solve(prob)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">retcode: Success
+Interpolation: specialized 3rd order &quot;free&quot; stiffness-aware interpolation
+t: 29-element Vector{Float64}:
+  0.0
+  1.0e-6
+  1.1e-5
+  0.00011099999999999999
+  0.0011109999999999998
+  0.008439887065773926
+  0.020796255796253802
+  0.03442494139216535
+  0.052116653461119405
+  0.07210657583204284
+  ⋮
+  0.6700908105173512
+  0.7799452514963259
+  1.1065977951333883
+  1.433250338770451
+  2.0130301426881534
+  3.83094485507726
+  9.416466362176456
+ 28.63960936303355
+ 30.0
+u: 29-element Vector{Vector{Float64}}:
+ [0.0, 0.0, 6.063727595681822]
+ [1.8307680149829602e-14, 3.661521505842432e-8, 6.063727595681835]
+ [2.215053561356834e-12, 4.0271943799070087e-7, 6.063727595681835]
+ [2.2537214333319225e-10, 4.058970969463909e-6, 6.063727595681835]
+ [2.239920344148744e-8, 4.014448437387311e-5, 6.063727595681835]
+ [1.2189296098963561e-6, 0.00027901338737525, 6.063727595681835]
+ [6.69070409685778e-6, 0.0005882354978314793, 6.063727595681835]
+ [1.6362842524229996e-5, 0.0008126644963035811, 6.063727595681835]
+ [3.224746590988234e-5, 0.0009592361733792534, 6.063727595681835]
+ [5.185457979379007e-5, 0.0009818115051539894, 6.063727595681835]
+ ⋮
+ [0.00012667436955623627, 9.372195131969263e-7, 6.063727595681835]
+ [0.00012671057762334218, -3.961253864583832e-8, 6.063727595681835]
+ [0.00012669665417256172, 3.353379177334356e-8, 6.063727595681835]
+ [0.00012669753307424983, 1.060292541914433e-9, 6.063727595681835]
+ [0.00012669772793681163, -2.6321612955817163e-10, 6.063727595681835]
+ [0.0001266977465289514, 6.3591890732822245e-12, 6.063727595681835]
+ [0.00012669775281945505, 8.101659530524139e-12, 6.063727595681835]
+ [0.00012669775355874052, 3.3013910387812284e-13, 6.063727595681835]
+ [0.00012669775357165324, 6.770560764356629e-14, 6.063727595681835]</code></pre><p>Get states of system by <code>states()</code></p><pre><code class="language-julia hljs">states(sys)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">3-element Vector{SymbolicUtils.Term{Real, Base.ImmutableDict{DataType, Any}}}:
+ El₊m_H_2(t)
+ El₊∂_m_H_2(t)
+ El₊i(t)</code></pre><p>Check voltage, current and mass yield of electrolyzer.</p><pre><code class="language-julia hljs">sol[El.v]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">29-element Vector{Float64}:
+ 2.946032926494929
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ ⋮
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316</code></pre><pre><code class="language-julia hljs">sol[El.i]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">29-element Vector{Float64}:
+ 6.063727595681822
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ ⋮
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835</code></pre><pre><code class="language-julia hljs">sol[El.m_H_2]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">29-element Vector{Float64}:
+ 0.0
+ 1.8307680149829602e-14
+ 2.215053561356834e-12
+ 2.2537214333319225e-10
+ 2.239920344148744e-8
+ 1.2189296098963561e-6
+ 6.69070409685778e-6
+ 1.6362842524229996e-5
+ 3.224746590988234e-5
+ 5.185457979379007e-5
+ ⋮
+ 0.00012667436955623627
+ 0.00012671057762334218
+ 0.00012669665417256172
+ 0.00012669753307424983
+ 0.00012669772793681163
+ 0.0001266977465289514
+ 0.00012669775281945505
+ 0.00012669775355874052
+ 0.00012669775357165324</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../">« Home</a><a class="docs-footer-nextpage" href="../../API/ElectrochemistryAPI/">ElectrochemistryAPI »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.19 on <span class="colophon-date" title="Tuesday 21 June 2022 02:54">Tuesday 21 June 2022</span>. Using Julia version 1.7.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
