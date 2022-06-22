@@ -49,10 +49,10 @@ savefig("example_1.svg"); nothing # hide
 
 Using above PhotovoltaicCell to drive Electrolyzer, then we build a *PVEL system*. In default paraments, we can know how the system works.
 
+
 Equivalent circuit diagram of `PEMElectrolyzer()`:
 
 ![图 2](../assets/Electrochemistry-18-11-06.png)  
-
 
 ```@example 2
 using ModelingToolkit, DifferentialEquations
