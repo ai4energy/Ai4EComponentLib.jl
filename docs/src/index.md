@@ -13,9 +13,11 @@ import Pkg; Pkg.add("Ai4EComponentLib")
 ## Tutorials
 
 * [Electrochemistry System](https://ai4energy.github.io/Ai4EComponentLib.jl/dev/tutorials/Electrochemistry/)
+* [IncompressiblePipe System](https://ai4energy.github.io/Ai4EComponentLib.jl/dev/tutorials/IncompressiblePipe/)
 
 ## Libraries
 
-The following are the ModelingToolkit libraries from Ai4Energy.
+The following are the components libraries from Ai4Energy.
 
 * [Electrochemistry System API](https://ai4energy.github.io/Ai4EComponentLib.jl/dev/API/ElectrochemistryAPI/)
+* [IncompressiblePipe System API](https://ai4energy.github.io/Ai4EComponentLib.jl/dev/API/IncompressiblePipeAPI/)
