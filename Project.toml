@@ -10,7 +10,7 @@ SafeTestsets = "1bc83da4-3b8d-516f-aca4-4fe02f6d838f"
 Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 
 [compat]
-DocStringExtensions = "0.8.6"
+DocStringExtensions = "0.8.6,0.9"
 ModelingToolkit = "8.14.0"
 Unitful = "1.11.0"
 SafeTestsets = "0.0.1"
