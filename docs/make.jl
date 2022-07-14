@@ -1,6 +1,4 @@
 using Ai4EComponentLib
-using Ai4EComponentLib.Electrochemistry
-using Ai4EComponentLib.IncompressiblePipe
 using Documenter
 
 DocMeta.setdocmeta!(Ai4EComponentLib, :DocTestSetup, :(using Ai4EComponentLib); recursive=true)
