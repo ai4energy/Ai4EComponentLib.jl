@@ -199,6 +199,8 @@ res
 
 ## Example 4
 
+In this example, value of inlet flow is a negative number which means the flow direction and arrow are in opposite direction.
+
 ![图 4](../assets/model-15_04_53.png)
 
 ```@example 4
@@ -347,11 +349,11 @@ eqs = [
   connect(Pipe11.out, Pipe19.in, Pipe16.in)
   connect(Pipe16.out, Pipe17.in, Pipe20.in)
   connect(Pipe17.out, Pipe18.in, Pipe21.in)
-  connect(Pipe18.out, Pipe15.out, Pipe22.in)  # 13点
-  connect(Pipe19.out, Pipe20.out, Pipe23.in)  # 14
-  connect(Pipe21.out, Pipe22.out, Pipe24.in)  # 15点
-  connect(Pipe23.out, Pipe24.out, Pipe25.in)  # 16点
-  connect(B.port, Pipe25.out) # F点
+  connect(Pipe18.out, Pipe15.out, Pipe22.in)  
+  connect(Pipe19.out, Pipe20.out, Pipe23.in)  
+  connect(Pipe21.out, Pipe22.out, Pipe24.in)  
+  connect(Pipe23.out, Pipe24.out, Pipe25.in)  
+  connect(B.port, Pipe25.out)
 ]
 
 
