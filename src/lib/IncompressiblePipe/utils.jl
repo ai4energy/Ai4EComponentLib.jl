@@ -1,5 +1,5 @@
 
-@parameters t
+@variables t
 ∂ = Differential(t)
 const gn = Unitful.gn.val
 
