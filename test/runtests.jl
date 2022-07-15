@@ -1,6 +1,6 @@
 using Ai4EComponentLib
-using Test
+using SafeTestsets
 
-@testset "Ai4EComponentLib.jl" begin
-    # Write your tests here.
-end
+# @safetestset "IncompressiblePipe System" begin include("incompressiblepipe.jl") end
+
+
