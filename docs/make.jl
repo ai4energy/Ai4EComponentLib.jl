@@ -24,8 +24,8 @@ makedocs(;
             "tutorials/IncompressiblePipe.md"
         ],
         "API" => [
-            "API/IncompressiblePipeAPI.md"
             "API/ElectrochemistryAPI.md"
+            "API/IncompressiblePipeAPI.md"
         ]
     ],
 )
