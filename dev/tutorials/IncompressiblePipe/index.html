@@ -170,7 +170,7 @@ res</code></pre><pre class="documenter-example-output"><code class="nohighlight 
   &quot;pipe9 inlet flow:&quot;  =&gt; 0.00336816
   &quot;pipe4 inlet flow:&quot;  =&gt; 0.00433814
   &quot;pipe6 inlet flow:&quot;  =&gt; 0.00956644
-  &quot;pipe10 inlet flow:&quot; =&gt; 0.0074009</code></pre><h2 id="Example-4"><a class="docs-heading-anchor" href="#Example-4">Example 4</a><a id="Example-4-1"></a><a class="docs-heading-anchor-permalink" href="#Example-4" title="Permalink"></a></h2><p><img src="../../assets/model-15_04_53.png" alt="图 4"/></p><pre><code class="language-julia hljs">using Ai4EComponentLib.IncompressiblePipe
+  &quot;pipe10 inlet flow:&quot; =&gt; 0.0074009</code></pre><h2 id="Example-4"><a class="docs-heading-anchor" href="#Example-4">Example 4</a><a id="Example-4-1"></a><a class="docs-heading-anchor-permalink" href="#Example-4" title="Permalink"></a></h2><p>In this example, value of inlet flow is a negative number which means the flow direction and arrow are in opposite direction.</p><p><img src="../../assets/model-15_04_53.png" alt="图 4"/></p><pre><code class="language-julia hljs">using Ai4EComponentLib.IncompressiblePipe
 using DifferentialEquations, ModelingToolkit, Test
 
 system = []
@@ -318,11 +318,11 @@ eqs = [
   connect(Pipe11.out, Pipe19.in, Pipe16.in)
   connect(Pipe16.out, Pipe17.in, Pipe20.in)
   connect(Pipe17.out, Pipe18.in, Pipe21.in)
-  connect(Pipe18.out, Pipe15.out, Pipe22.in)  # 13点
-  connect(Pipe19.out, Pipe20.out, Pipe23.in)  # 14
-  connect(Pipe21.out, Pipe22.out, Pipe24.in)  # 15点
-  connect(Pipe23.out, Pipe24.out, Pipe25.in)  # 16点
-  connect(B.port, Pipe25.out) # F点
+  connect(Pipe18.out, Pipe15.out, Pipe22.in)
+  connect(Pipe19.out, Pipe20.out, Pipe23.in)
+  connect(Pipe21.out, Pipe22.out, Pipe24.in)
+  connect(Pipe23.out, Pipe24.out, Pipe25.in)
+  connect(B.port, Pipe25.out)
 ]
 
 
@@ -355,4 +355,4 @@ res</code></pre><pre class="documenter-example-output"><code class="nohighlight 
   &quot;Pipe5 inlet flow:&quot;  =&gt; 0.0058628
   &quot;Pipe7 inlet flow:&quot;  =&gt; 0.00127082
   &quot;Pipe21 inlet flow:&quot; =&gt; 0.00324149
-  ⋮                    =&gt; ⋮</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../Electrochemistry/">« Electrochemistry System</a><a class="docs-footer-nextpage" href="../../API/IncompressiblePipeAPI/">IncompressiblePipeAPI »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.19 on <span class="colophon-date" title="Thursday 14 July 2022 03:25">Thursday 14 July 2022</span>. Using Julia version 1.7.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+  ⋮                    =&gt; ⋮</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../Electrochemistry/">« Electrochemistry System</a><a class="docs-footer-nextpage" href="../../API/IncompressiblePipeAPI/">IncompressiblePipeAPI »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.19 on <span class="colophon-date" title="Friday 15 July 2022 00:48">Friday 15 July 2022</span>. Using Julia version 1.7.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
