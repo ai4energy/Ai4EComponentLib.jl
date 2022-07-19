@@ -22,10 +22,12 @@ makedocs(;
         "Tutorials" => [
             "tutorials/Electrochemistry.md"
             "tutorials/IncompressiblePipe.md"
+            "tutorials/ThermodynamicCycle.md"
         ],
         "API" => [
             "API/ElectrochemistryAPI.md"
             "API/IncompressiblePipeAPI.md"
+            "API/ThermodynamicCycleAPI.md"
         ]
     ],
 )
