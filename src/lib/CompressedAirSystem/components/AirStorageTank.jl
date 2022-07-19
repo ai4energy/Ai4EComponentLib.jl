@@ -13,7 +13,7 @@ $(TYPEDSIGNATURES)
 Function of this component:
 
 ```math
-\\frac{\\mathrm{d}p}{\mathrm{d}t}=\\frac{R_gT}{V}\\left (q_{m,in}+q_{m,in}\\right)
+\\frac{\\mathrm{d}p}{\\mathrm{d}t}=\\frac{R_gT}{V}\\left (q_{m,in}+q_{m,in}\\right)
 ```
 
 # Parameters:
