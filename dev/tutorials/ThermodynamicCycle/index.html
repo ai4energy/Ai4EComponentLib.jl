@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>ThermodynamicCycle System · Ai4EComponentLib.jl</title><script data-outdated-warner src="../../assets/warner.js"></script><link rel="canonical" href="https://ai4energy.github.io/Ai4EComponentLib.jl/tutorials/ThermodynamicCycle/"/><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.044/juliamono.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../../"><img src="../../assets/logo.svg" alt="Ai4EComponentLib.jl logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href="../../">Ai4EComponentLib.jl</a></span></div><form class="docs-search" action="../../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><span class="tocitem">Tutorials</span><ul><li><a class="tocitem" href="../Electrochemistry/">Electrochemistry System</a></li><li><a class="tocitem" href="../IncompressiblePipe/">IncompressiblePipe System</a></li><li class="is-active"><a class="tocitem" href>ThermodynamicCycle System</a><ul class="internal"><li><a class="tocitem" href="#Example-1:-Rankine-Cycle"><span>Example 1: Rankine Cycle</span></a></li><li><a class="tocitem" href="#Example-2:-States-change-over-time"><span>Example 2: States change over time</span></a></li><li><a class="tocitem" href="#Example-3:-Reheat-Rankine-cycle"><span>Example 3: Reheat Rankine cycle</span></a></li><li><a class="tocitem" href="#Example-4:-A-Rankine-cycle-System"><span>Example 4: A Rankine cycle System</span></a></li><li><a class="tocitem" href="#Example-5:-Brayton-cycle-in-Gas-Turbine"><span>Example 5: Brayton cycle in Gas Turbine</span></a></li><li><a class="tocitem" href="#Example-6:-ArbitraryProcess-Example"><span>Example 6: ArbitraryProcess Example</span></a></li></ul></li></ul></li><li><span class="tocitem">API</span><ul><li><a class="tocitem" href="../../API/ElectrochemistryAPI/">ElectrochemistryAPI</a></li><li><a class="tocitem" href="../../API/IncompressiblePipeAPI/">IncompressiblePipeAPI</a></li><li><a class="tocitem" href="../../API/ThermodynamicCycleAPI/">ThermodynamicCycleAPI</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Tutorials</a></li><li class="is-active"><a href>ThermodynamicCycle System</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>ThermodynamicCycle System</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/ai4energy/Ai4EComponentLib.jl/blob/main/docs/src/tutorials/ThermodynamicCycle.md#" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="ThermodynamicCycle-System"><a class="docs-heading-anchor" href="#ThermodynamicCycle-System">ThermodynamicCycle System</a><a id="ThermodynamicCycle-System-1"></a><a class="docs-heading-anchor-permalink" href="#ThermodynamicCycle-System" title="Permalink"></a></h1><p>This page shows 5 examples of <code>ThermodynamicCycle System</code>.</p><p>3 steps to use ThermodynamicCycle System:</p><ol><li>Define components</li><li>Connect components</li><li>Solve</li></ol><h2 id="Example-1:-Rankine-Cycle"><a class="docs-heading-anchor" href="#Example-1:-Rankine-Cycle">Example 1: Rankine Cycle</a><a id="Example-1:-Rankine-Cycle-1"></a><a class="docs-heading-anchor-permalink" href="#Example-1:-Rankine-Cycle" title="Permalink"></a></h2><p>In this example, we define a variable <code>x(t)</code>. It has nothing to do with the cycle. Actually, the meaning of this variable just allows the problem can be modeled by MTK and can be solved by DE. Becasue the cycle is kind of a sequential calculation, and it does not need to be <strong>solved</strong>. So add a <code>x(t)</code> to make it a differential equation problem.</p><p><img src="../../assets/ThermodynamicCycle-13-56-35.png" alt="图 2"/>  </p><p>Parameter of Rankine Cycle:</p><ul><li>Pump supply pressure : 3.0 MPa</li><li>Temperature of Boiler outlet: 450 ℃</li><li>Cooling pressure in condenser: 4 kPa</li><li>State of Water at pump inlet: Saturated water</li></ul><div class="admonition is-success"><header class="admonition-header">Tip</header><div class="admonition-body"><p>If States are Saturated(<code>&quot;Q_0&quot; or &quot;Q_1&quot;</code>), then <code>ThermalStates</code> has no need to be defined.</p></div></div><pre><code class="language-julia hljs">using Ai4EComponentLib.ThermodynamicCycle
+using DifferentialEquations, ModelingToolkit
+using CoolProp
+
+@variables x(t)
+
+@named pump = IsentropicProcess(inter_state=&quot;P&quot;)
+@named pump_P = ThermalStates(state=&quot;P&quot;, value=3.0E6)
+
+@named boiler = IsobaricProcess(inter_state=&quot;T&quot;)
+@named boiler_T = ThermalStates(state=&quot;T&quot;, value=450.0 + 273.15)
+
+@named turbine = IsentropicProcess(inter_state=&quot;P&quot;)
+@named turbine_P = ThermalStates(state=&quot;P&quot;, value=4.0E3)
+
+@named condenser = IsothermalProcess(inter_state=&quot;Q_0&quot;)
+
+eqs = [
+  connect(pump.out, boiler.in, pump_P.node)
+  connect(boiler.out, turbine.in, boiler_T.node)
+  connect(turbine.out, condenser.in, turbine_P.node)
+  connect(condenser.out, pump.in)
+  ∂(x) ~ 0
+]
+
+@named model = ODESystem(eqs, t, systems=[pump, boiler, turbine, condenser, pump_P, boiler_T, turbine_P])
+
+sys = structural_simplify(model)
+
+prob = ODEProblem(sys, [0], (0, 0))
+sol = solve(prob)
+
+q1 = sol[boiler.Δh][1]
+w = -sol[turbine.Δh][1] - sol[pump.Δh][1]
+η = w / q1</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">0.37492352067536755</code></pre><p>And we can get the T-S diagram(tephigram) of the Rankine Cylce.</p><pre><code class="language-julia hljs">plot_sys = [pump, boiler, turbine, condenser];
+propx = :s
+propy = :T
+ss = [sol[getproperty(i.out, propx)][1] for i in plot_sys]
+tt = [sol[getproperty(i.out, propy)][1] for i in plot_sys]
+using Plots
+res = collect(range(ss[1], ss[2], 100))
+plot(res, CoolProp.PropsSI.(&quot;T&quot;, &quot;P&quot;, 17.0E6, &quot;S&quot;, res, &quot;Water&quot;), label=&quot;Boiler&quot;, xlim=(0, 10000),ylabel=&quot;T&quot;,xlabel=&quot;S&quot;)
+plot!(collect(range(ss[2], ss[3], 100)), collect(range(tt[2], tt[3], 100)), label=&quot;Turbine&quot;)
+res = collect(range(ss[3], ss[4], 100))
+plot!(res, CoolProp.PropsSI.(&quot;T&quot;, &quot;P&quot;, 5.0E3, &quot;S&quot;, res, &quot;Water&quot;), label=&quot;Condenser&quot;)
+plot!(collect(range(ss[4], ss[1], 100)), collect(range(tt[4], tt[1], 100)), label=&quot;Pump&quot;)</code></pre><p>The energy consumed by the pump is almost invisible from the diagram. Therefore, the work of the pump is often ignored when calculating the efficiency.</p><p><img src="../../assets/ThermodynamicCycle-11-16-42.png" alt="fig"/></p><h2 id="Example-2:-States-change-over-time"><a class="docs-heading-anchor" href="#Example-2:-States-change-over-time">Example 2: States change over time</a><a id="Example-2:-States-change-over-time-1"></a><a class="docs-heading-anchor-permalink" href="#Example-2:-States-change-over-time" title="Permalink"></a></h2><p>If we make one of detemined state(some of states are also supported. Just design as you want) change over time, the problem then becomes a true differential equation problem and we don&#39;t need <code>x(t)</code> any more.</p><p>The meaning of this example is that calculate rankine cycle&#39;s thermal efficiency when the pressure in the boiler are [10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,20.0]MPa</p><p>Parameter of Rankine Cycle:</p><ul><li>Pump supply pressure : [10.0,...,20.0] MPa</li><li>Temperature of Boiler outlet: 550 ℃</li><li>Cooling pressure in condenser: 5 kPa</li><li>State of Water at pump inlet: Saturated water</li></ul><pre><code class="language-julia hljs">using Ai4EComponentLib.ThermodynamicCycle
+using DifferentialEquations, ModelingToolkit
+using CoolProp
+
+@named pump = IsentropicProcess(inter_state=&quot;P&quot;)
+@named pump_P = DThermalStates(state=&quot;P&quot;, value=1.0E6, u0=10.0E6)
+
+@named boiler = IsobaricProcess(inter_state=&quot;T&quot;)
+@named boiler_T = ThermalStates(state=&quot;T&quot;, value=550.0 + 273.15)
+
+@named turbine = IsentropicProcess(inter_state=&quot;P&quot;)
+@named turbine_P = ThermalStates(state=&quot;P&quot;, value=5.0E3)
+
+@named condenser = IsothermalProcess(inter_state=&quot;Q_0&quot;)
+
+eqs = [
+  connect(pump.out, boiler.in, pump_P.node)
+  connect(boiler.out, turbine.in, boiler_T.node)
+  connect(turbine.out, condenser.in, turbine_P.node)
+  connect(condenser.out, pump.in)
+]
+
+
+@named model = ODESystem(eqs, t, systems=[pump, boiler, turbine, condenser, pump_P, boiler_T, turbine_P])
+
+sys = structural_simplify(model)
+
+prob = ODEProblem(sys, [], (0, 10), saveat=1)
+sol = solve(prob)
+
+q1 = sol[boiler.Δh]
+w = -sol[turbine.Δh] - sol[pump.Δh]
+η = w ./ q1</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">11-element Vector{Float64}:
+ 0.42682827210793306
+ 0.42981470836174285
+ 0.4324620028967034
+ 0.4348235420117641
+ 0.4369407479753992
+ 0.43884639503079975
+ 0.4405668517459072
+ 0.44212364156207024
+ 0.4435345561091668
+ 0.44481446681672876
+ 0.44597592795424745</code></pre><h2 id="Example-3:-Reheat-Rankine-cycle"><a class="docs-heading-anchor" href="#Example-3:-Reheat-Rankine-cycle">Example 3: Reheat Rankine cycle</a><a id="Example-3:-Reheat-Rankine-cycle-1"></a><a class="docs-heading-anchor-permalink" href="#Example-3:-Reheat-Rankine-cycle" title="Permalink"></a></h2><p>To be more efficient, consider reheat Rankine Cycle.</p><p>Parameter of Reheat Rankine Cycle:</p><ul><li>Pump supply pressure : [18.0,...,10.0] MPa</li><li>Temperature of Boiler outlet: 550 ℃</li><li>Outlet pressure of turbine first stage: 3.0 MPa</li><li>Temperature of ReBoiler outlet: 450 ℃</li><li>Cooling pressure in condenser: 4 kPa</li><li>State of Water at pump inlet: Saturated water</li></ul><p><img src="../../assets/ThermodynamicCycle-13-56-56.png" alt="图 3"/>  </p><pre><code class="language-julia hljs">using Ai4EComponentLib.ThermodynamicCycle
+using DifferentialEquations, ModelingToolkit
+using CoolProp
+
+@named pump = IsentropicProcess(inter_state=&quot;P&quot;)
+@named pump_P = DThermalStates(state=&quot;P&quot;, value=-1.0E5, u0=18.0E6)
+
+@named boiler = IsobaricProcess(inter_state=&quot;T&quot;)
+@named boiler_T = ThermalStates(state=&quot;T&quot;, value=550+ 273.15)
+
+@named turbine = IsentropicProcess(inter_state=&quot;P&quot;)
+@named turbine_P = ThermalStates(state=&quot;P&quot;, value=3.0e6)
+
+@named reboiler = IsobaricProcess(inter_state=&quot;T&quot;)
+@named reboiler_T = ThermalStates(state=&quot;T&quot;, value=450 + 273.15)
+
+@named returbine = IsentropicProcess(inter_state=&quot;P&quot;)
+@named returbine_P = ThermalStates(state=&quot;P&quot;, value=4.0e3)
+
+@named condenser = IsothermalProcess(inter_state=&quot;Q_0&quot;)
+
+eqs = [
+  connect(pump.out, boiler.in, pump_P.node)
+  connect(boiler.out, turbine.in, boiler_T.node)
+  connect(turbine.out, reboiler.in, turbine_P.node)
+  connect(reboiler.out, returbine.in, reboiler_T.node)
+  connect(returbine.out, condenser.in, returbine_P.node)
+  connect(condenser.out, pump.in)
+]
+
+@named model = ODESystem(eqs, t, systems=[pump, boiler, turbine,
+  condenser, pump_P, boiler_T, turbine_P, reboiler,
+  reboiler_T, returbine, returbine_P])
+
+sys = structural_simplify(model)
+
+prob = ODEProblem(sys, [], (0, 10), saveat=1)
+sol = solve(prob)
+
+q1 = sol[boiler.Δh] .+ sol[reboiler.Δh]
+w = -sol[turbine.Δh] - sol[returbine.Δh] - sol[pump.Δh]
+η = w ./ q1</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">11-element Vector{Float64}:
+ 0.45644849499827017
+ 0.4563346695893757
+ 0.45621920144325706
+ 0.45610206971052353
+ 0.4559832531419678
+ 0.4558627300785587
+ 0.45574047844005877
+ 0.45561647571571
+ 0.45549069895203953
+ 0.45536312474175633
+ 0.4552337292118001</code></pre><p>And T-S diagram.</p><pre><code class="language-julia hljs">plot_sys = [pump, boiler, turbine, reboiler, returbine, condenser];
+propx = :s
+propy = :T
+
+ss = [sol[getproperty(i.out, propx)][1] for i in plot_sys]
+tt = [sol[getproperty(i.out, propy)][1] for i in plot_sys]
+
+using Plots
+res = collect(range(ss[1], ss[2], 100))
+plot(res, CoolProp.PropsSI.(&quot;T&quot;, &quot;P&quot;, 6.69E6, &quot;S&quot;, res, &quot;Water&quot;), label=&quot;Boiler&quot;, xlim=(0, 10000), ylabel=&quot;T&quot;, xlabel=&quot;S&quot;)
+plot!(collect(range(ss[2], ss[3], 100)), collect(range(tt[2], tt[3], 100)), label=&quot;Turbine&quot;)
+res = collect(range(ss[3], ss[4], 100))
+plot!(res, CoolProp.PropsSI.(&quot;T&quot;, &quot;P&quot;, 0.782e6, &quot;S&quot;, res, &quot;Water&quot;), label=&quot;reBoiler&quot;)
+plot!(collect(range(ss[4], ss[5], 100)), collect(range(tt[4], tt[5], 100)), label=&quot;reTurbine&quot;)
+plot!(collect(range(ss[5], ss[6], 100)), collect(range(tt[5], tt[6], 100)), label=&quot;Condenser&quot;)
+plot!(collect(range(ss[6], ss[1], 100)), collect(range(tt[6], tt[1], 100)), label=&quot;Pump&quot;)
+</code></pre><p><img src="../../assets/ThermodynamicCycle-14-50-46.png" alt="图 7"/>  </p><h2 id="Example-4:-A-Rankine-cycle-System"><a class="docs-heading-anchor" href="#Example-4:-A-Rankine-cycle-System">Example 4: A Rankine cycle System</a><a id="Example-4:-A-Rankine-cycle-System-1"></a><a class="docs-heading-anchor-permalink" href="#Example-4:-A-Rankine-cycle-System" title="Permalink"></a></h2><p>Combined with Example1 and Example3. Suppose Boiler1 and Boiler2 have the same steam output. What is the efficiency?</p><p><img src="../../assets/ThermodynamicCycle-13-57-53.png" alt="图 4"/></p><p>In fact, it can be regarded as the average of two separate Rankine cycle and reheat Rankine cycle.</p><pre><code class="language-julia hljs">(0.45644849499826373 + 0.37492352067537854)/2</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">0.41568600783682114</code></pre><h2 id="Example-5:-Brayton-cycle-in-Gas-Turbine"><a class="docs-heading-anchor" href="#Example-5:-Brayton-cycle-in-Gas-Turbine">Example 5: Brayton cycle in Gas Turbine</a><a id="Example-5:-Brayton-cycle-in-Gas-Turbine-1"></a><a class="docs-heading-anchor-permalink" href="#Example-5:-Brayton-cycle-in-Gas-Turbine" title="Permalink"></a></h2><p>The method of modeling is the same.</p><p><img src="../../assets/ThermodynamicCycle-14-44-10.png" alt="图 5"/>  </p><p>Parameter of Brayton cycle:</p><ul><li>Pressure at compressor outlet: 1.212 MPa</li><li>Temperature at compressor inlet: 310 K</li><li>Temperature at combustion chamber outlet: 1573 K</li><li>Pressure at gas turbine outlet: 101 kPa</li></ul><pre><code class="language-julia hljs">using Ai4EComponentLib.ThermodynamicCycle
+using DifferentialEquations, ModelingToolkit
+using CoolProp
+
+@variables x(t)
+
+system = []
+@named compressor = IsentropicProcess(inter_state=&quot;P&quot;, fluid=&quot;Air&quot;)
+@named compressor_P = ThermalStates(state=&quot;P&quot;, value=0.101e6 * 12)
+push!(system, compressor, compressor_P)
+
+@named combustion_chamber = IsobaricProcess(inter_state=&quot;T&quot;, fluid=&quot;Air&quot;)
+@named combustion_chamber_T = ThermalStates(state=&quot;T&quot;, value=1573)
+push!(system, combustion_chamber, combustion_chamber_T)
+
+@named gas_turbine = IsentropicProcess(inter_state=&quot;P&quot;, fluid=&quot;Air&quot;)
+@named gas_turbine_P = ThermalStates(state=&quot;P&quot;, value=0.101e6)
+push!(system, gas_turbine, gas_turbine_P)
+
+@named cooling = IsobaricProcess(inter_state=&quot;T&quot;, fluid=&quot;Air&quot;)
+@named cooling_T = ThermalStates(state=&quot;T&quot;, value=310)
+# @named cooling_P = ThermalStates(state=&quot;P&quot;, value=0.101e6)
+push!(system, cooling, cooling_T)
+
+eqs = [
+  connect(compressor.out, combustion_chamber.in, compressor_P.node)
+  connect(combustion_chamber.out, gas_turbine.in, combustion_chamber_T.node)
+  connect(gas_turbine.out, cooling.in, gas_turbine_P.node)
+  connect(cooling.out, compressor.in, cooling_T.node)
+  ∂(x) ~ 0
+]
+
+@named model = ODESystem(eqs, t, systems=system)
+
+sys = structural_simplify(model)
+
+prob = ODEProblem(sys, [0], (0, 0))
+sol = solve(prob)
+
+q1 = sol[combustion_chamber.Δh][1]
+w = -sol[gas_turbine.Δh][1] - sol[compressor.Δh][1]
+η = w / q1</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">0.47803579197874646</code></pre><p>Brayton cycle T-S diagram:</p><pre><code class="language-julia hljs">plot_sys = [compressor, combustion_chamber, gas_turbine, cooling];
+propx = :s
+propy = :T
+
+ss = [sol[getproperty(i.out, propx)][1] for i in plot_sys]
+tt = [sol[getproperty(i.out, propy)][1] for i in plot_sys]
+xs = Float64[]
+ys = Float64[]
+using Plots
+
+res = collect(range(ss[1], ss[2], 100))
+plot(res, CoolProp.PropsSI.(&quot;T&quot;, &quot;P&quot;, 0.101e6 * 12, &quot;S&quot;, res, &quot;Air&quot;), label=&quot;combustion_chamber&quot;, xlim=(3500, 6000),ylabel=&quot;T&quot;,xlabel=&quot;S&quot;)
+plot!(collect(range(ss[2], ss[3], 100)), collect(range(tt[2], tt[3], 100)), label=&quot;gas_turbine&quot;)
+res = collect(range(ss[3], ss[4], 100))
+plot!(res, CoolProp.PropsSI.(&quot;T&quot;, &quot;P&quot;, 0.101e6, &quot;S&quot;, res, &quot;Air&quot;), label=&quot;cooling&quot;)
+plot!(collect(range(ss[4], ss[1], 100)), collect(range(tt[4], tt[1], 100)), label=&quot;compressor&quot;)
+</code></pre><p><img src="../../assets/ThermodynamicCycle-14-57-18.png" alt="图 8"/>  </p><h2 id="Example-6:-ArbitraryProcess-Example"><a class="docs-heading-anchor" href="#Example-6:-ArbitraryProcess-Example">Example 6: ArbitraryProcess Example</a><a id="Example-6:-ArbitraryProcess-Example-1"></a><a class="docs-heading-anchor-permalink" href="#Example-6:-ArbitraryProcess-Example" title="Permalink"></a></h2><p>With parameters in example 5, we treat process in gas turbine a <code>ArbitraryProcess</code>. And suppose all thermal energy is converted into kinetic energy by gas turbine without loss.</p><ul><li>Temperature at gas turbine outlet: 770 K</li><li>Pressure at gas turbine outlet: 101 kPa</li></ul><pre><code class="language-julia hljs">using Ai4EComponentLib.ThermodynamicCycle
+using DifferentialEquations, ModelingToolkit
+using CoolProp
+
+@variables x(t)
+
+system = []
+@named compressor = IsentropicProcess(inter_state=&quot;P&quot;, fluid=&quot;Air&quot;)
+@named compressor_P = ThermalStates(state=&quot;P&quot;, value=0.101e6 * 12)
+push!(system, compressor, compressor_P)
+
+@named combustion_chamber = IsobaricProcess(inter_state=&quot;T&quot;, fluid=&quot;Air&quot;)
+@named combustion_chamber_T = ThermalStates(state=&quot;T&quot;, value=1573)
+push!(system, combustion_chamber, combustion_chamber_T)
+
+@named gas_turbine = ArbitraryProcess(inter_state=&quot;P&quot;, fluid=&quot;Air&quot;)
+@named gas_turbine_P = ThermalStates(state=&quot;P&quot;, value=0.101e6)
+@named gas_turbine_T = ThermalStates(state=&quot;T&quot;, value=770)
+push!(system, gas_turbine, gas_turbine_P, gas_turbine_T)
+
+@named cooling = IsobaricProcess(inter_state=&quot;T&quot;, fluid=&quot;Air&quot;)
+@named cooling_T = ThermalStates(state=&quot;T&quot;, value=310)
+push!(system, cooling, cooling_T)
+
+eqs = [
+  connect(compressor.out, combustion_chamber.in, compressor_P.node)
+  connect(combustion_chamber.out, gas_turbine.in, combustion_chamber_T.node)
+  connect(gas_turbine.out, cooling.in, gas_turbine_P.node, gas_turbine_T.node)
+  connect(cooling.out, compressor.in, cooling_T.node)
+  ∂(x) ~ 0
+]
+
+@named model = ODESystem(eqs, t, systems=system)
+
+sys = structural_simplify(model)
+
+prob = ODEProblem(sys, [0], (0, 0))
+sol = solve(prob)
+
+q1 = sol[combustion_chamber.Δh][1]
+w = -sol[gas_turbine.Δh][1] - sol[compressor.Δh][1]
+η = w / q1</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">0.5621324116561403</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../IncompressiblePipe/">« IncompressiblePipe System</a><a class="docs-footer-nextpage" href="../../API/ElectrochemistryAPI/">ElectrochemistryAPI »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.19 on <span class="colophon-date" title="Tuesday 19 July 2022 07:33">Tuesday 19 July 2022</span>. Using Julia version 1.7.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
