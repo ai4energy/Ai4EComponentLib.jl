@@ -83,7 +83,7 @@ The energy consumed by the pump is almost invisible from the diagram. Therefore,
 
 ![fig](../assets/ThermodynamicCycle-11-16-42.png)
 
-## Example 2: States change over time 
+## Example 2: States change over time
 
 If we make one of detemined state(some of states are also supported. Just design as you want) change over time, the problem then becomes a true differential equation problem and we don't need `x(t)` any more.
 
