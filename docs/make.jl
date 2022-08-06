@@ -23,11 +23,13 @@ makedocs(;
             "tutorials/Electrochemistry.md"
             "tutorials/IncompressiblePipe.md"
             "tutorials/ThermodynamicCycle.md"
+            "tutorials/CompressedAirSystem.md"
         ],
         "API" => [
             "API/ElectrochemistryAPI.md"
             "API/IncompressiblePipeAPI.md"
             "API/ThermodynamicCycleAPI.md"
+            "API/CompressedAirSystemAPI.md"
         ]
     ],
 )
