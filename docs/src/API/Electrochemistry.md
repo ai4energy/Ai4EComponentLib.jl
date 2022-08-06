@@ -5,21 +5,18 @@ CurrentModule = Ai4EComponentLib.Electrochemistry
 ```
 
 ```@contents
-Pages = ["ElectrochemistryAPI.md"]
+Pages = ["Electrochemistry.md"]
 ```
 
 ## Index
 
 ```@index
-Pages = ["ElectrochemistryAPI.md"]
+Pages = ["Electrochemistry.md"]
 ```
 
 ## Electrochemistry Components
 
-```@docs
-Pin
-OnePort
-Ground
-PEMElectrolyzer
-PhotovoltaicCell
+```@autodocs
+Modules = [Electrochemistry]
 ```
+
