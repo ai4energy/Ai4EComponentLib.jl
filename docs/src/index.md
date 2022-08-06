@@ -12,15 +12,12 @@ import Pkg; Pkg.add("Ai4EComponentLib")
 
 ## Tutorials
 
-* [Electrochemistry System](https://ai4energy.github.io/Ai4EComponentLib.jl/dev/tutorials/Electrochemistry/)
-* [IncompressiblePipe System](https://ai4energy.github.io/Ai4EComponentLib.jl/dev/tutorials/IncompressiblePipe/)
-* [ThermodynamicCycle System](https://ai4energy.github.io/Ai4EComponentLib.jl/dev/tutorials/ThermodynamicCycle/)
+```@contents
+Pages = map(file -> joinpath("tutorials", file), readdir("tutorials"))
+```
 
 ## Libraries
 
-The following are the components libraries from Ai4Energy.
-
-* [Electrochemistry System API](https://ai4energy.github.io/Ai4EComponentLib.jl/dev/API/ElectrochemistryAPI/)
-* [IncompressiblePipe System API](https://ai4energy.github.io/Ai4EComponentLib.jl/dev/API/IncompressiblePipeAPI/)
-* [ThermodynamicCycle System API](https://ai4energy.github.io/Ai4EComponentLib.jl/dev/API/ThermodynamicCycleAPI/)
-
+```@contents
+Pages = map(file -> joinpath("API", file), readdir("API"))
+```

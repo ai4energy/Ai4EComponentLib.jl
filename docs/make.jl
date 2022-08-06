@@ -1,6 +1,15 @@
 using Ai4EComponentLib
 using Documenter
 
+# Automatically generate API files and 
+include("writeAPI.jl")
+tutorial_files = readdir(joinpath(@__DIR__, "src", "tutorials"))
+tutorials = map(file -> joinpath("tutorials", file), tutorial_files)
+API_files = joinpath.(@__DIR__, "src", "API", tutorial_files)
+map(x -> write(x, writeAPIcontents(splitpath(x)[end][1:end-3])), API_files)
+API = map(file -> joinpath("API", file), readdir(joinpath(@__DIR__, "src/API")))
+
+
 DocMeta.setdocmeta!(Ai4EComponentLib, :DocTestSetup, :(using Ai4EComponentLib); recursive=true)
 
 makedocs(;
@@ -15,26 +24,16 @@ makedocs(;
         prettyurls=get(ENV, "CI", "false") == "true",
         canonical="https://ai4energy.github.io/Ai4EComponentLib.jl",
         edit_link="main",
-        assets=String[],
+        assets=String[]
     ),
     pages=[
         "Home" => "index.md",
-        "Tutorials" => [
-            "tutorials/Electrochemistry.md"
-            "tutorials/IncompressiblePipe.md"
-            "tutorials/ThermodynamicCycle.md"
-            "tutorials/CompressedAirSystem.md"
-        ],
-        "API" => [
-            "API/ElectrochemistryAPI.md"
-            "API/IncompressiblePipeAPI.md"
-            "API/ThermodynamicCycleAPI.md"
-            "API/CompressedAirSystemAPI.md"
-        ]
-    ],
+        "Tutorials" => tutorials,
+        "API" => API
+    ]
 )
 
 deploydocs(;
     repo="github.com/ai4energy/Ai4EComponentLib.jl",
-    devbranch="main",
+    devbranch="main"
 )
