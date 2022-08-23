@@ -6,8 +6,8 @@ $(TYPEDSIGNATURES)
 Energy conservation equation in the form of Bernoulli Equation between two ports:
 
 ```math
-\\frac{p_{in}}{\\rho g} +\\frac{8q_{in}^{2}}{2\\pi^2D^4g} + z_{in}=
-\\frac{p_{out}}{\\rho g} +\\frac{8q_{out}^{2}}{2\\pi^2D^4g} + z_{out}+h_f+h_m
+\\frac{p_{in}}{\\rho g} +\\frac{8q_{in}^{2}}{\\pi^2D^4g} + z_{in}=
+\\frac{p_{out}}{\\rho g} +\\frac{8q_{out}^{2}}{\\pi^2D^4g} + z_{out}+h_f+h_m
 ```
 
 # Parameters:
@@ -46,8 +46,8 @@ $(TYPEDSIGNATURES)
 Energy conservation equation in the form of Bernoulli Equation between two ports:
 
 ```math
-\\frac{p_{in}}{\\rho g} +\\frac{8q_{in}^{2}}{2\\pi^2D^4g} + z_{in}=
-\\frac{p_{out}}{\\rho g} +\\frac{8q_{out}^{2}}{2\\pi^2D^4g} + z_{out}+h_f+h_m
+\\frac{p_{in}}{\\rho g} +\\frac{8q_{in}^{2}}{\\pi^2D^4g} + z_{in}=
+\\frac{p_{out}}{\\rho g} +\\frac{8q_{out}^{2}}{\\pi^2D^4g} + z_{out}+h_f+h_m
 ```
 
 # Parameters:
