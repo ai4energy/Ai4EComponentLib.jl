@@ -1,14 +1,13 @@
 using Ai4EComponentLib
 using Documenter
 
-# Automatically generate API files and 
+# Automatically generate API files and check the files
 include("writeAPI.jl")
 tutorial_files = readdir(joinpath(@__DIR__, "src", "tutorials"))
 tutorials = map(file -> joinpath("tutorials", file), tutorial_files)
 API_files = joinpath.(@__DIR__, "src", "API", tutorial_files)
 map(x -> write(x, writeAPIcontents(splitpath(x)[end][1:end-3])), API_files)
 API = map(file -> joinpath("API", file), readdir(joinpath(@__DIR__, "src/API")))
-
 
 DocMeta.setdocmeta!(Ai4EComponentLib, :DocTestSetup, :(using Ai4EComponentLib); recursive=true)
 

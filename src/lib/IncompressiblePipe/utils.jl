@@ -41,7 +41,7 @@ The governing equation of incompressible pipe network is Bernoulli Equation:
 In volume flow form:
 
 ```math
-\\frac{p}{\\rho g} +\\frac{8q^{2}}{2\\pi^2D^4g} + z=\\mathrm{constant}
+\\frac{p}{\\rho g} +\\frac{8q^{2}}{\\pi^2D^4g} + z=\\mathrm{constant}
 ```
 
 * `D`: [`m`] Diameter of pipe
@@ -62,7 +62,7 @@ To get the loss of resistance along the pipe(between two ports).
 In volume flow form:
 
 ```math
-h_f = f\\frac{L}{D} \\frac{8q^{2}}{2\\pi^2D^4g}
+h_f = f\\frac{L}{D} \\frac{8q^{2}}{\\pi^2D^4g}
 ```
 
 """
@@ -79,7 +79,7 @@ To get the local resistance loss the components.
 In volume flow form:
 
 ```math
-h_m = K \\frac{8q^{2}}{2\\pi^2D^4g}
+h_m = K \\frac{8q^{2}}{\\pi^2D^4g}
 ```
 
 """
