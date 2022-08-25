@@ -10,6 +10,20 @@ Import Ai4EComponentLib.jl in the standard way:
 import Pkg; Pkg.add("Ai4EComponentLib")
 ```
 
+## Citation
+
+If Ai4EComponentLib is useful, please cite the this [paper](https://arxiv.org/abs/2208.11352):
+
+```
+@article{yang2022ai4ecomponentlib,
+  title={Ai4EComponentLib.jl: A Component-base Model Library in Julia},
+  author={Yuebao Yang, Jingyi Yang, Mingtao Li},
+  journal={arXiv preprint arXiv:2208.11352},
+  year={2022},
+  primaryClass={cs.SE}
+}
+```
+
 ## Tutorials
 
 ```@contents
