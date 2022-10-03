@@ -46,7 +46,7 @@ function Lithium_ion_batteries(; name, R_0=0.01, R_s=0.01, R_f=0.008, R_sd=0.5, 
     eqs = [
         ∂(v_s) ~ (i_b - v_s / R_s) / C_s
         ∂(v_f) ~ (i_b - v_f / R_f) / C_f
-        ∂(v_soc) ~ (-i_b - v_soc / R_sd) / R_sd
+        ∂(v_soc) ~ (-i_b - v_soc / R_sd) / C_b
         v_b ~ v_oc - v_s - v_f - R_0 * i_b
         v_oc ~ SOC2OC[1] + SOC2OC[2]*v_soc + SOC2OC[3]*v_soc^2 + SOC2OC[4]*v_soc^3 + SOC2OC[5]*v_soc^4 + SOC2OC[6]*v_soc^5 + SOC2OC[7]*v_soc^6
         v ~ v_b
