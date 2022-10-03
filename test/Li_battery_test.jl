@@ -10,6 +10,7 @@ import Main.Ai4EComponentLib.Electrochemistry.Ground
 import Main.Ai4EComponentLib.Electrochemistry.OnePort
 import Main.Ai4EComponentLib.Electrochemistry.t
 import Main.Ai4EComponentLib.Electrochemistry.∂
+
 function vari_Resistor(; name,r=1000)
     @named oneport = OnePort()
     @unpack v, i = oneport
@@ -19,7 +20,7 @@ function vari_Resistor(; name,r=1000)
     extend(ODESystem(eqs, t, [], []; name=name), oneport)
 end
 
-@named batter = lithium_ion_batteries()
+@named batter = Lithium_ion_batteries()
 @named Pv = PhotovoltaicCell()
 @named R = vari_Resistor()
 @named ground = Ground()
