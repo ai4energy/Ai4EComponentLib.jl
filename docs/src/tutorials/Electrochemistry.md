@@ -95,3 +95,35 @@ sol[El.i]
 ```@example 2
 sol[El.m_H_2]
 ```
+
+## Lithium battery
+
+```@example 3
+using ModelingToolkit, DifferentialEquations
+using Ai4EComponentLib.Electrochemistry
+using Plots
+
+@named batter = Lithium_ion_batteries()
+@named Pv = PhotovoltaicCell()
+@named ground = Ground()
+
+eqs = [
+    connect(batter.p, Pv.p)
+    connect(batter.n, Pv.n, ground.g)
+]
+
+@named OdeFun = ODESystem(eqs, t)
+@named model = compose(OdeFun, [Pv, batter, ground])
+sys = structural_simplify(model)
+u0 = [
+    batter.v_f => 0.5
+    batter.v_s => 0.5
+    batter.v_soc => 0.5
+]
+prob = ODEProblem(sys, u0, (0.0, 30.0))
+sol = solve(prob)
+plot(sol.t, sol[batter.v_s], color = "red")
+savefig("example_2.svg")
+```
+
+![fig2](example_2.svg)
