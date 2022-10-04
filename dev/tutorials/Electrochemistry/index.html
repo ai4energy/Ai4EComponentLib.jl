@@ -192,7 +192,7 @@ u: 29-element Vector{Vector{Float64}}:
  0.0001266977465289514
  0.00012669775281945505
  0.00012669775355874052
- 0.00012669775357165324</code></pre><h2 id="Lithium-battery"><a class="docs-heading-anchor" href="#Lithium-battery">Lithium battery</a><a id="Lithium-battery-1"></a><a class="docs-heading-anchor-permalink" href="#Lithium-battery" title="Permalink"></a></h2><pre><code class="language-julia hljs">using ModelingToolkit, DifferentialEquations
+ 0.00012669775357165324</code></pre><h2 id="Lithium-battery"><a class="docs-heading-anchor" href="#Lithium-battery">Lithium battery</a><a id="Lithium-battery-1"></a><a class="docs-heading-anchor-permalink" href="#Lithium-battery" title="Permalink"></a></h2><p>Equivalent circuit diagram of <code>Lithium_ion_batteries()</code>:</p><p><img src="../../assets/ElectrochemistrySystem-3-1.png" alt="图 3"/>  </p><pre><code class="language-julia hljs">using ModelingToolkit, DifferentialEquations
 using Ai4EComponentLib.Electrochemistry
 using Plots
 
@@ -213,7 +213,48 @@ u0 = [
     batter.v_s =&gt; 0.5
     batter.v_soc =&gt; 0.5
 ]
-prob = ODEProblem(sys, u0, (0.0, 30.0))
-sol = solve(prob)
-plot(sol.t, sol[batter.v_s], color = &quot;red&quot;)
-savefig(&quot;example_2.svg&quot;)</code></pre><p><img src="../example_2.svg" alt="fig2"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../CompressedAirSystem/">« CompressenAirSystem</a><a class="docs-footer-nextpage" href="../IncompressiblePipe/">IncompressiblePipe System »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.19 on <span class="colophon-date" title="Monday 3 October 2022 09:38">Monday 3 October 2022</span>. Using Julia version 1.8.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+prob = ODEProblem(sys, u0, (0.0, 3600.0))
+sol = solve(prob)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">retcode: Success
+Interpolation: specialized 3rd order &quot;free&quot; stiffness-aware interpolation
+t: 38-element Vector{Float64}:
+    0.0
+    1.0e-6
+    1.1e-5
+    0.00011099999999999999
+    0.0011109999999999998
+    0.011110999999999996
+    0.11111099999999996
+    1.1111109999999995
+    6.661103598230574
+   16.089117735065464
+    ⋮
+ 1054.8710841350057
+ 1219.0064546510844
+ 1413.9927106697157
+ 1648.0490413000746
+ 1936.6018556043166
+ 2304.5980720683738
+ 2799.201445851113
+ 3519.032986542688
+ 3600.0
+u: 38-element Vector{Vector{Float64}}:
+ [0.5, 0.5, 0.5, 2.326135743882019]
+ [0.4999999977573967, 0.49999999142936485, 0.5000000000468989, 2.326135754710846]
+ [0.4999999753313647, 0.4999999057230212, 0.500000000515888, 2.326135862857764]
+ [0.49999975107109407, 0.4999990486603213, 0.5000000052057781, 2.32613694432615]
+ [0.4999975084733217, 0.49999047810697717, 0.5000000521046789, 2.3261477589314263]
+ [0.4999750829890147, 0.4999047799386145, 0.5000005210936259, 2.3262558971260554]
+ [0.49975087748029673, 0.4990485343372502, 0.500005210977118, 2.3273364936884673]
+ [0.49751374853205127, 0.4905592627674995, 0.5000521092147456, 2.3380643519960036]
+ [0.48525906174912187, 0.44578068010062466, 0.500312374461185, 2.395105818317083]
+ [0.46505513198217874, 0.3780735823522687, 0.5007544231370423, 2.4830311668416973]
+ ⋮
+ [-0.05238196682133424, -0.04850137157492701, 0.548972202989466, 3.43038279059355]
+ [-0.056350195189086, -0.0485013031249472, 0.5565059894099514, 3.435152475438179]
+ [-0.05866568420571939, -0.0485012345774487, 0.56542610151105, 3.438502558685337]
+ [-0.05985719591477994, -0.04850118381048178, 0.5760911041650334, 3.4410414534775464]
+ [-0.060383471154172565, -0.04850114067179932, 0.5891758131088486, 3.443360621202128]
+ [-0.060570298022577844, -0.048501094129443166, 0.6057618187992605, 3.4459860943407907]
+ [-0.06061833335555548, -0.048501033752525166, 0.627876816153329, 3.449435179463086]
+ [-0.06062565737405928, -0.048500949254736775, 0.6597025205879652, 3.454233611912289]
+ [-0.06062579971799458, -0.04850094035114006, 0.6632558164453894, 3.4547377033830378]</code></pre><pre><code class="language-julia hljs">plot(sol.t, sol[batter.v_soc], color = &quot;red&quot;)</code></pre><p><img src="../example_3_1.svg" alt="图3_1"/></p><pre><code class="language-julia hljs">plot(sol.t, sol[batter.v_s], color = &quot;red&quot;)</code></pre><p><img src="../example_3_2.svg" alt="图3_2"/></p><pre><code class="language-julia hljs">plot(sol.t, sol[batter.i_b], color = &quot;red&quot;)</code></pre><p><img src="../example_3_3.svg" alt="图3_3"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../CompressedAirSystem/">« CompressenAirSystem</a><a class="docs-footer-nextpage" href="../IncompressiblePipe/">IncompressiblePipe System »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.19 on <span class="colophon-date" title="Tuesday 4 October 2022 02:41">Tuesday 4 October 2022</span>. Using Julia version 1.8.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
