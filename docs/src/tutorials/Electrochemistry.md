@@ -98,6 +98,10 @@ sol[El.m_H_2]
 
 ## Lithium battery
 
+Equivalent circuit diagram of `Lithium_ion_batteries()`:
+
+![图 3](../assets/ElectrochemistrySystem-3-1.png)  
+
 ```@example 3
 using ModelingToolkit, DifferentialEquations
 using Ai4EComponentLib.Electrochemistry
@@ -120,10 +124,27 @@ u0 = [
     batter.v_s => 0.5
     batter.v_soc => 0.5
 ]
-prob = ODEProblem(sys, u0, (0.0, 30.0))
+prob = ODEProblem(sys, u0, (0.0, 3600.0))
 sol = solve(prob)
-plot(sol.t, sol[batter.v_s], color = "red")
-savefig("example_2.svg")
 ```
 
-![fig2](example_2.svg)
+```@example 3
+plot(sol.t, sol[batter.v_soc], color = "red")
+savefig("example_3_1.svg"); nothing # hide
+```
+
+![图3_1](example_3_1.svg)
+
+```@example 3
+plot(sol.t, sol[batter.v_s], color = "red")
+savefig("example_3_2.svg"); nothing # hide
+```
+
+![图3_2](example_3_2.svg)
+
+```@example 3
+plot(sol.t, sol[batter.i_b], color = "red")
+savefig("example_3_3.svg"); nothing # hide
+```
+
+![图3_3](example_3_3.svg)
