@@ -1,10 +1,5 @@
-# CompressenAirSystem
-
-## Example 1: A basic test for components
-
-```@example cas
 using Ai4EComponentLib.CompressedAirSystem
-using ModelingToolkit, DifferentialEquations
+using ModelingToolkit
 
 n0 = 4000
 h_polCoff = [-91.7802, 1058.2670, 3213.1520]
@@ -12,22 +7,23 @@ etaCoff = [-0.0181, 0.2880, -0.2557]
 surgeCoff = [-2.950e-7, 4.8009, -5.1678]
 chokeCoff = [1.1054e-6, 8.6274, 20.7626]
 
-f=0.05                  # Friction resistance coefficient
-n = 15                  # Number of nodes
-D = 0.4                 # Pipe diameter
-L = 20                  # length
-R = 3000                # Resistance coefficient
-T = 300                 # Temperature
-qm0 = 10 * ones(n)      # Initial mass flow rate
-p0 = 10e5 * ones(n)     # initial pressure
+f=0.05             #管道摩擦阻力系数
 
-n2 = 40                 # Number of nodes
-D2 = 0.4                # Pipe diameter
-L2 = 200                # length
-R2 = 3000               # Resistance coefficient
-T2 = 300                # Temperature
-qm02 = 10 * ones(n2)    # Initial mass flow rate
-p02 = range(10e5,8e5,length=n2)  #initial pressure
+n = 15              #节点数
+D = 0.4        #管道直径
+L = 20             #管道长度
+R = 3000            #管道阻力系数
+T = 300             #温度
+qm0 = 10 * ones(n)   #初质量流量
+p0 = 10e5 * ones(n)  #初始压力
+
+n2 = 40              #节点数
+D2 = 0.4        #管道直径
+L2 = 200             #管道长度
+R2 = 3000            #管道阻力系数
+T2 = 300             #温度
+qm02 = 10 * ones(n2)   #初质量流量
+p02 = range(10e5,8e5,length=n2)  #初始压力
 
 inletBoundary = Dict(
     "p" => 1.0e5,
@@ -229,15 +225,6 @@ addEq1 = [
 
 sys1 = structural_simplify(cp_model)
 
-prob1 = ODEProblem(sys1, [], (0, 3))
-sol1 = solve(prob1, Rodas4())
-sol1[airTank.p]
-```
-
-```@example cas
-using Plots
-plot(sol1.t, sol1[airTank.p])
-savefig("example_cas.svg"); nothing # hide
-```
-
-![图3_3](example_cas.svg)
+# prob1 = ODEProblem(sys1, [], (0, 3))
+# sol1 = solve(prob1, Rodas4())
+# sol1[airTank.p]

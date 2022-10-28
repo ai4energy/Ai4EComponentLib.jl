@@ -1,111 +1,138 @@
+"""
+$(TYPEDSIGNATURES)
+
+Fitting Formula for Friction Coefficient of Turbulent Pipe
+"""
+pipeFriction_turbulent(f, Re, ϵ, D) = f - 1 / (2 * log10(abs(ϵ / D / 3.7 + 2.51 / Re / sqrt(abs(f)))))^2
 
 """
 $(TYPEDSIGNATURES)
 
-# Component: a single pipe or a pipe network with only one inlet and one outlet in steady state.
-
-# Assumptions
-
-* The density or pressure of the air doesn't change too fast.
-* Temperature of the pipe (pipe network) doesn't change. Default to 300K.
-* Ideal gas law is avliable.
-
-Function of this component:
-
-```math
-p_{in}-p_{out}=Rq_m|q_m|
-```
-
-# Parameters:
-* `R`: [`kg^{-1}⋅m^{-1}`] Resistance coefficient of a pipe (or pipe network)
-* `T`: [`K`] Approximate temperature of the gas inside pipe.
-
-# Connectors:
-- `in`: Inlet of tank
-- `out`: Outlet of tank
-
+Flow rate in pipe
 """
-function SimplePipe(; name, R=100, T=300)
-    @named inlet = FlowPort(T=T)
-    @named outlet = FlowPort(T=T)
-    ps = @parameters begin
-        R = R
-    end
-    eqs = [
-        inlet.p - outlet.p ~ R * inlet.qm * abs(inlet.qm)
-        inlet.qm + outlet.qm ~ 0
-    ]
-    compose(ODESystem(eqs, t, [], ps; name=name), inlet, outlet)
-end
-
+pipeVelocity(Δp, ρ, L, D, f) = (Δp >= 0) ? (sqrt(abs(2 * Δp * D / L / f / ρ))) : (-sqrt(abs(-2 * Δp * D / L / f / ρ)))
 
 """
 $(TYPEDSIGNATURES)
 
-# Component: a single straight pipe in transition state.
+Reynolds number
+"""
+pipeRe(ρ, u, D, μ) = (u >= 0) ? (ρ * u * D / μ) : (-ρ * u * D / μ)
 
-# Assumptions
+@register pipeFriction_turbulent(f, Re, ϵ, D)
+@register pipeVelocity(Δp, ρ, L, D, f)
+@register pipeRe(ρ, u, D, μ)
 
-* Ignore the difference in parameters on the same cross section. The flow inside pipe can be treated an 1-D flow.
-* Temperature of the pipe (pipe network) doesn't change. Default to 300K.
-* Ideal gas law is avliable.
+"""
+$(TYPEDSIGNATURES)
 
-Function of this component:
-
-```math
-\\frac{\\partial p}{\\partial t}=-\\frac{R_{g} T}{A} \\frac{\\partial q_{m}}{\\partial x} \\\\
-\\frac{\\partial q_{m}}{\\partial t}=\\left(\\frac{R_{g} T}{A} \\frac{q_{m}^{2}}{p^{2}}-A\\right) \\frac{\\partial p}{\\partial x}-2 \\frac{R_{g} T}{A} \\frac{q_{m}}{p} \\frac{\\partial q_{m}}{\\partial x}-\\frac{f}{2 D} \\frac{R_{g} T}{A} \\frac{q_{m}\\left|q_{m}\\right|}{p}
-```
-
-# Parameters:
-# Parameters:
-* `R_g`: [`J⋅kg^{-1}⋅K^{-1}`] Ideal gas constant. For air is 287.11, which is unchangeable in this component.
-* `T`: [`K`] Temperature of the air.
-* `f`: Friction factor
-* `D`: [`m`] Diameter of the pipe
-* `L`: [`m`] Length of the pipe
-
-# Connectors:
-- `in`: Inlet of tank
-- `out`: Outlet of tank
+Straight round pipe and height difference is not considered.
+Friction coefficient is obtained from Modi diagram.
 
 # Arguments:
-* `λ1, λ2 and λ3`: Three coefficient for other use like parameter estimation. They have no influence on simulation, and they are default to 1.
-* `n`: The number of control volumes that the pipe be divided into equally.
-* `pins and pouts`: [`Pa`] The initial pressure at the inlet and outlet of pipe. Simulation will start from the steady state of pipe at the boundary pins and pouts.
+-  `D`: [`m`] Pipe diameter, defaults: 1.0
+-  `L`: [`m`] Pipe length, defaults: 1.0
+-  `ϵ`: [`m`] Absolute roughness of pipeline, defaults: 0.05
+
+# Connectors:
+- `inlet` inlet of components
+- `outlet` outlet of components
 
 """
-function TransitionPipe(; name,λ1=1.0,λ2=1.0,λ3=1.0, n=10, f=0.016, D=0.2, L=100, T=300, pins=0.56e6, pouts=0.56e6)
-    #化作体积流量与压力的方程,消去密度
+function StraightPipe(; name, D=1.0, L=1.0, ϵ=0.05e-3)
+    @named this_i1o1Component = SISOComponent()
+    @unpack Δp, qm, ρ_mean, qv_mean, μ_mean, inlet, outlet = this_i1o1Component
+    sts = @variables begin
+        Re(t) = 1.5e5
+        u(t) = 10
+        f(t) = 0.03
+        R(t) = 10
+    end
+    ps = @parameters D = D L = L ϵ = ϵ
+    eqs = [
+        Re ~ pipeRe(ρ_mean, u, D, μ_mean)
+        0 ~ pipeFriction_turbulent(f, Re, ϵ, D)
+        u ~ pipeVelocity(Δp, ρ_mean, L, D, f)
+        qv_mean ~ u * pi / 4 * D * D
+        R ~ abs(Δp) / qm / qm
+    ]
+    extend(ODESystem(eqs, t, sts, ps; name=name), this_i1o1Component)
+end
+
+"""
+$(TYPEDSIGNATURES)
+
+Simplified pipe model
+
+# Arguments:
+-  `R0`: [`kg/m^7`] Resistance coefficient of pipeline
+
+# Connectors:
+- `inlet` inlet of components
+- `outlet` outlet of components
+
+"""
+function SimplifiedPipe(; name, R0)
+    @named this_i1o1Component = SISOComponent()
+    @unpack Δp, qm, qv_mean, inlet, outlet = this_i1o1Component
+    sys = @variables R(t) = 3000
+    eqs = [
+        R ~ R0
+        qm ~ IfElse.ifelse(Δp >= 0, sqrt(Δp / R), -sqrt(-Δp / R))
+    ]
+    extend(ODESystem(eqs, t, sys, []; name=name), this_i1o1Component)
+end
+
+"""
+$(TYPEDSIGNATURES)
+
+Simplified pipe model
+
+# Arguments:
+-  `f`: [`kg/m⁷`] Resistance coefficient of pipeline
+-  `n`: Number of pipe discrete node
+-  `D`: [`m`] Pipe diameter, defaults: 1.0
+-  `L`: [`m`] Pipe length, defaults: 1.0
+-  `T`: [`K`] Ambient temperature, defaults: 300
+-  `p0`: [`Pa`] Initial pressure of each node
+-  `qm0`: [`kg/(m²⋅s)`] Initial specific momentum of each node
+
+# Connectors:
+- `inlet` inlet of components
+- `outlet` outlet of components
+
+"""
+function TransitionPipe(; name, n=10, f=0.011, D=1.0, L=1.0, T=300, p0=zeros(n), qm0=zeros(n))
+
     RT = 287.11 * T
     A0 = pi / 4 * D^2
     c10 = RT / A0
     c20 = c10 * f / 2 / D
-    dx=L/n
 
-    @named inlet = FlowPort(T=T)
-    @named outlet = FlowPort(T=T)
-
-    @variables qm[1:n](t) p[1:n+1](t)
-
-    qms = sqrt(abs(pins^2 - pouts^2) / (f * L * RT / D / A0 / A0))
-    initialValue = Dict(qm[i] => qms for i = 1:n)
-    merge!(initialValue, Dict(p[i] => sqrt(pins^2 * (1 - (i-1) / n) + pouts^2 * (i-1) / n) for i = 1:n+1))
+    @named inlet = FlowPort()
+    @named outlet = FlowPort()
 
     @parameters begin
-        A = A0*λ2
-        c1 = c10*λ1
-        c2 = c20*λ3
+        A = A0
+        c1 = c10
+        c2 = c20
         dx = L / n
         f = f
     end
 
+    @variables (qm(t))[1:n] (p(t))[1:n+1]
+
+    initialValue = Dict(qm[i] => qm0[i] for i = 1:n)
+    merge!(initialValue, Dict(p[i] => p0[i] for i = 1:n))
+
     eqs_continous = [
-        ∂(p[i]) ~ c1 * (qm[i-1] - qm[i]) / dx for i = 2:n
+        ∂(p[i]) ~ c1 * (qm[i-1] - qm[i]) / dx
+        for i = 2:n
     ]
 
     eqs_momentum = [
-        ∂(qm[i]) ~ (c1 * qm[i]^2 / (0.5 * (p[i+1] + p[i]))^2 - A) * (p[i+1] - p[i]) / dx + c1 * qm[i] / (0.5 * (p[i+1] + p[i])) * (qm[i-1] - qm[i+1]) / dx - c2 * qm[i] * abs(qm[i]) / (0.5 * (p[i+1] + p[i])) for i = 2:n-1
+        ∂(qm[i]) ~ (c1 * qm[i]^2 / (0.5 * (p[i+1] + p[i]))^2 - A) * (p[i+1] - p[i]) / dx + c1 * qm[i] / (0.5 * (p[i+1] + p[i])) * (qm[i-1] - qm[i+1]) / dx - c2 * qm[i] * abs(qm[i]) / (0.5 * (p[i+1] + p[i]))
+        for i = 2:n-1
     ]
 
     bd = [
