@@ -1,16 +1,25 @@
 module CompressedAirSystem
 
-using ModelingToolkit, Unitful
+using ModelingToolkit, IfElse
 using DocStringExtensions
 
+@variables t
+∂ = Differential(t)
+
 include("utils.jl")
-include("components/Pipes.jl")
-include("components/Source.jl")
-include("components/AirStorageTank.jl")
+include("Components/pipes.jl")
+include("Components/compressors.jl")
+include("Components/air_storage_tank.jl")
+include("Components/filter_and_cooler.jl")
+include("Components/sources.jl")
+include("Components/valves.jl")
 
-export SimplePipe, TransitionPipe
-export PressureSource, FlowSource
-export AirStorageTank
-export FlowPort, t, ∂
-
-end
+export  FlowPort,
+        StraightPipe, SimplifiedPipe, TransitionPipe,
+        VarySpeedCompressor,
+        AirStroageTank,
+        Purifier,
+        Source,
+        ConstantValve
+export t, ∂
+end # module
