@@ -1,8 +1,8 @@
 # AirPipeSim
 
-This page shows 2 examples of `CompressedAirSystem`.
+This page shows 2 examples of `AirPipeSim`.
 
-3 steps to use CompressedAirSystem System:
+3 steps to use AirPipeSim System:
 
 1. Define components
 2. Connect components

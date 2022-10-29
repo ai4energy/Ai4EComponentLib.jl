@@ -1,6 +1,21 @@
 # CompressenAirSystem
 
-## Example 1: A basic test for components
+3 steps to use CompressenAirSystem System:
+
+1. Define components
+2. Connect components
+3. Solve
+
+## Example 1: A Integrated System
+
+The system contains 4 types of components.
+
+* Compressor
+* Purifier
+* Pipe
+* Airtank
+
+![figure1](../assets/cas310.png)
 
 ```@example cas
 using Ai4EComponentLib.CompressedAirSystem
@@ -233,6 +248,8 @@ prob1 = ODEProblem(sys1, [], (0, 3))
 sol1 = solve(prob1, Rodas4())
 sol1[airTank.p]
 ```
+
+Then we can generate the pressure diagram of `airTank`.
 
 ```@example cas
 using Plots
