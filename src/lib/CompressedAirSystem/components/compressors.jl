@@ -6,8 +6,17 @@ Variable speed compressor.
 
 ```math
 h_polCoff = a1 * inlet.qv^2 + a2 * inlet.qv * n / n0 + a3 * (n / n0)^3) * g
+```
+
+```math
 etaCoff = b1 * inlet.qv^2 * (n0 / n)^2 + b2 * inlet.qv * n0 / n + b3
+```
+
+```math
 surgeCoff = (c1 * n * n + c2 * n + c3) / 3600
+```
+
+```math
 chokeCoff = (d1 * n * n + d2 * n + d3) / 3600
 ```
 
