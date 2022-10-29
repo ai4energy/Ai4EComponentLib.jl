@@ -7,12 +7,12 @@ using DocStringExtensions
 ∂ = Differential(t)
 
 include("utils.jl")
-include("Components/pipes.jl")
-include("Components/compressors.jl")
-include("Components/air_storage_tank.jl")
-include("Components/filter_and_cooler.jl")
-include("Components/sources.jl")
-include("Components/valves.jl")
+include("components/pipes.jl")
+include("components/compressors.jl")
+include("components/air_storage_tank.jl")
+include("components/filter_and_cooler.jl")
+include("components/sources.jl")
+include("components/valves.jl")
 
 export  FlowPort,
         StraightPipe, SimplifiedPipe, TransitionPipe,
