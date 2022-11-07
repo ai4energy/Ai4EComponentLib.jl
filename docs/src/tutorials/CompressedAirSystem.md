@@ -18,6 +18,7 @@ The system contains 4 types of components.
 ![figure1](../assets/cas310.png)
 
 ```@example cas
+using Ai4EComponentLib
 using Ai4EComponentLib.CompressedAirSystem
 using ModelingToolkit, DifferentialEquations
 

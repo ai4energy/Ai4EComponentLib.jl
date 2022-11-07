@@ -1,5 +1,7 @@
 module ThermodynamicCycle
 
+using ..Ai4EComponentLib
+
 using CoolProp
 using ModelingToolkit
 using DocStringExtensions
@@ -10,5 +12,4 @@ include("components/states.jl")
 
 export IsentropicProcess, IsobaricProcess, IsochoricProcess, IsoenthalpyProcess, IsothermalProcess
 export ThermalStates, DThermalStates, ArbitraryProcess, StreamNode, StreamPort
-export t, ∂
 end

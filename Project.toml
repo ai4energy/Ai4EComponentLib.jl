@@ -1,7 +1,7 @@
 name = "Ai4EComponentLib"
 uuid = "9901752a-13b3-47c7-8fb4-ce17182539d9"
 authors = ["jake484 <522432938@qq.com> and contributors"]
-version = "0.5.0"
+version = "0.6.0"
 
 [deps]
 CoolProp = "e084ae63-2819-5025-826e-f8e611a84251"

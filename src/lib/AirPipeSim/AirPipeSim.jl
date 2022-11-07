@@ -1,5 +1,6 @@
 module AirPipeSim
 
+using ..Ai4EComponentLib
 using ModelingToolkit, Unitful
 using DocStringExtensions
 
@@ -11,6 +12,6 @@ include("components/AirStorageTank.jl")
 export SimplePipe, TransitionPipe
 export PressureSource, FlowSource
 export AirStorageTank
-export FlowPort, t, ∂
+export FlowPort
 
 end

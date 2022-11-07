@@ -2,9 +2,7 @@ module CompressedAirSystem
 
 using ModelingToolkit, IfElse
 using DocStringExtensions
-
-@variables t
-∂ = Differential(t)
+using ..Ai4EComponentLib
 
 include("utils.jl")
 include("components/pipes.jl")
@@ -21,5 +19,4 @@ export  FlowPort,
         Purifier,
         Source,
         ConstantValve
-export t, ∂
 end # module
