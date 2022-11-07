@@ -25,6 +25,7 @@ Parameter of Rankine Cycle:
     If States are Saturated(`"Q_0" or "Q_1"`), then `ThermalStates` has no need to be defined.
 
 ```@example 1
+using Ai4EComponentLib
 using Ai4EComponentLib.ThermodynamicCycle
 using DifferentialEquations, ModelingToolkit
 using CoolProp
@@ -97,6 +98,7 @@ Parameter of Rankine Cycle:
 * State of Water at pump inlet: Saturated water
 
 ```@example 2
+using Ai4EComponentLib
 using Ai4EComponentLib.ThermodynamicCycle
 using DifferentialEquations, ModelingToolkit
 using CoolProp
@@ -149,6 +151,7 @@ Parameter of Reheat Rankine Cycle:
 ![图 3](../assets/ThermodynamicCycle-13-56-56.png)  
 
 ```@example 3
+using Ai4EComponentLib
 using Ai4EComponentLib.ThermodynamicCycle
 using DifferentialEquations, ModelingToolkit
 using CoolProp
@@ -244,6 +247,7 @@ Parameter of Brayton cycle:
 * Pressure at gas turbine outlet: 101 kPa
 
 ```@example 5
+using Ai4EComponentLib
 using Ai4EComponentLib.ThermodynamicCycle
 using DifferentialEquations, ModelingToolkit
 using CoolProp

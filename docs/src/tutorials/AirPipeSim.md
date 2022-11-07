@@ -22,6 +22,7 @@ This test has 6 components:
 
 ```julia
 # Define components
+using Ai4EComponentLib
 using Ai4EComponentLib.AirPipeSim
 using ModelingToolkit, DifferentialEquations
 
