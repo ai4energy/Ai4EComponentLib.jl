@@ -367,3 +367,77 @@ q1 = sol[combustion_chamber.Δh][1]
 w = -sol[gas_turbine.Δh][1] - sol[compressor.Δh][1]
 η = w / q1
 ```
+
+## Example 7:  Ideal refrigeration cycle 
+
+In this example, the modeling method is the same as the examples above.It should be mentioned that the working medium used in this ideal refrigeration cycle is R134a.
+
+![图9](../assets/ThermodynamicCycle15-01.png)
+
+Parameters of Ideal Refrigeration Cycle:
+
+* Pressure of compressor outlet : 1016.3kPa
+* State of R134a at condenser outlet: Saturated liquid
+* Pressure of throttle outlet : 83.896kPa
+* State of R134a at evaporator outlet: Saturated vapor
+
+```@example 7
+using ModelingToolkit, DifferentialEquations
+using Ai4EComponentLib
+using Ai4EComponentLib.ThermodynamicCycle
+using CoolProp
+
+system = []
+@named compressor = IsentropicProcess(inter_state="P", fluid="R134a")
+@named compressor_P = ThermalStates(state="P", value=1.0163e6)
+push!(system, compressor, compressor_P)
+
+@named condenser = IsobaricProcess(inter_state="Q_0", fluid="R134a")
+push!(system, condenser)
+
+@named throttle = IsoenthalpyProcess(inter_state="P", fluid="R134a")
+@named throttle_P = ThermalStates(state="P", value=8.3896e4)
+push!(system, throttle, throttle_P)
+
+@named evaporator = IsobaricProcess(inter_state="Q_1", fluid="R134a")
+push!(system, evaporator)
+
+eqs = [
+    connect(compressor.out, condenser.in, compressor_P.node)
+    connect(condenser.out, throttle.in)
+    connect(throttle.out, evaporator.in, throttle_P.node)
+    connect(evaporator.out, compressor.in)
+]
+
+@named model = ODESystem(eqs, t, systems=system)
+
+sys = structural_simplify(model)
+
+prob = ODAEProblem(sys, [], (0, 0))
+sol = solve(prob)
+
+w = sol[compressor.Δh][1]
+ql = sol[evaporator.Δh][1]
+ε = ql / w
+```
+
+Ideal refrigeration cycle T-S diagram:
+
+```julia
+plot_sys = [compressor, condenser, throttle, evaporator];
+propx = :s
+propy = :T
+
+ss = [sol[getproperty(i.out, propx)][1] for i in plot_sys]
+tt = [sol[getproperty(i.out, propy)][1] for i in plot_sys]
+
+using Plots
+res = collect(range(ss[1], ss[2], 100))
+plot(res, CoolProp.PropsSI.("T", "P", 1.0163e6, "S", res, "R134a"), label="condenser", xlim=(1000,2200), ylabel="T", xlabel="S")
+plot!(collect(range(ss[2], ss[3], 100)), collect(range(tt[2], tt[3], 100)), label="throttle")
+res = collect(range(ss[3], ss[4], 100))
+plot!(res, CoolProp.PropsSI.("T", "P",8.3896e4, "S", res, "R134a"), label="evaporator")
+plot!(collect(range(ss[4], ss[1], 100)), collect(range(tt[4], tt[1], 100)), label="compressor")
+```
+
+![图10](../assets/ThermodynamicCycle15-02.png)
