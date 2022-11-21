@@ -1,22 +1,24 @@
 name = "Ai4EComponentLib"
 uuid = "9901752a-13b3-47c7-8fb4-ce17182539d9"
 authors = ["jake484 <522432938@qq.com> and contributors"]
-version = "0.4.0"
+version = "0.6.0"
 
 [deps]
 CoolProp = "e084ae63-2819-5025-826e-f8e611a84251"
 DocStringExtensions = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
+IfElse = "615f187c-cbe4-4ef1-ba3b-2fcf58d6d173"
 ModelingToolkit = "961ee093-0014-501f-94e3-6117800e7a78"
 SafeTestsets = "1bc83da4-3b8d-516f-aca4-4fe02f6d838f"
 Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 
 [compat]
+CoolProp = "0.1.0"
 DocStringExtensions = "0.8.6,0.9"
-ModelingToolkit = "8.10.0"
+ModelingToolkit = "8.30.0"
 SafeTestsets = "0.0.1"
 Unitful = "1.11.0"
-julia = "1.6"
-CoolProp = "0.1.0"
+IfElse = "0.1.1"
+julia = "1.7"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

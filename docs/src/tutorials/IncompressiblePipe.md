@@ -15,6 +15,7 @@ The height of Pipe1's inlet port is 25m. Actually, this is a **trick** that make
 ![图 1](../assets/model-1.png)
 
 ```@example 1
+using Ai4EComponentLib
 using Ai4EComponentLib.IncompressiblePipe
 using DifferentialEquations, ModelingToolkit, Test
 
@@ -51,6 +52,7 @@ sol[pipe1.in.q]
 ![图 1](../assets/model-2.png)
 
 ```@example 2
+using Ai4EComponentLib
 using Ai4EComponentLib.IncompressiblePipe
 using DifferentialEquations, ModelingToolkit, Test
 
@@ -123,6 +125,7 @@ Components in `Example 3` ~ `Example 5` are puted on the same horizontal level.
 ![图 1](../assets/model-08_47_18.png)
 
 ```@example 3
+using Ai4EComponentLib
 using Ai4EComponentLib.IncompressiblePipe
 using DifferentialEquations, ModelingToolkit, Test
 
@@ -204,6 +207,7 @@ In this example, value of inlet flow is a negative number which means the flow d
 ![图 4](../assets/model-15_04_53.png)
 
 ```@example 4
+using Ai4EComponentLib
 using Ai4EComponentLib.IncompressiblePipe
 using DifferentialEquations, ModelingToolkit, Test
 
@@ -274,6 +278,7 @@ res
 ![图 5](../assets/model-15_07_09.png)  
 
 ```@example 5
+using Ai4EComponentLib
 using Ai4EComponentLib.IncompressiblePipe
 using DifferentialEquations, ModelingToolkit, Test
 

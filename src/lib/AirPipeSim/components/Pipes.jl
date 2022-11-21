@@ -86,7 +86,7 @@ function TransitionPipe(; name,λ1=1.0,λ2=1.0,λ3=1.0, n=10, f=0.016, D=0.2, L=
     @named inlet = FlowPort(T=T)
     @named outlet = FlowPort(T=T)
 
-    @variables qm[1:n](t) p[1:n+1](t)
+    @variables (qm(t))[1:n] (p(t))[1:n+1]
 
     qms = sqrt(abs(pins^2 - pouts^2) / (f * L * RT / D / A0 / A0))
     initialValue = Dict(qm[i] => qms for i = 1:n)

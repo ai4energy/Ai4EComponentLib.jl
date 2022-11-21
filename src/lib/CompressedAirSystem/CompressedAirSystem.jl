@@ -1,16 +1,22 @@
 module CompressedAirSystem
 
-using ModelingToolkit, Unitful
+using ModelingToolkit, IfElse
 using DocStringExtensions
+using ..Ai4EComponentLib
 
 include("utils.jl")
-include("components/Pipes.jl")
-include("components/Source.jl")
-include("components/AirStorageTank.jl")
+include("components/pipes.jl")
+include("components/compressors.jl")
+include("components/air_storage_tank.jl")
+include("components/filter_and_cooler.jl")
+include("components/sources.jl")
+include("components/valves.jl")
 
-export SimplePipe, TransitionPipe
-export PressureSource, FlowSource
-export AirStorageTank
-export FlowPort, t, ∂
-
-end
+export  FlowPort,
+        StraightPipe, SimplifiedPipe, TransitionPipe,
+        VarySpeedCompressor,
+        AirStroageTank,
+        Purifier,
+        Source,
+        ConstantValve
+end # module

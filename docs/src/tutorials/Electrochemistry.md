@@ -9,6 +9,7 @@ Equivalent circuit diagram of `PhotovoltaicCell()`:
 ![图 1](../assets/Electrochemistry-18-10-20.png)  
 
 ```@example 1
+using Ai4EComponentLib
 using ModelingToolkit, DifferentialEquations
 using Ai4EComponentLib.Electrochemistry
 using Plots
@@ -56,6 +57,7 @@ Equivalent circuit diagram of `PEMElectrolyzer()`:
 
 ```@example 2
 using ModelingToolkit, DifferentialEquations
+using Ai4EComponentLib
 using Ai4EComponentLib.Electrochemistry
 
 @named Pv = PhotovoltaicCell()
@@ -104,6 +106,7 @@ Equivalent circuit diagram of `Lithium_ion_batteries()`:
 
 ```@example 3
 using ModelingToolkit, DifferentialEquations
+using Ai4EComponentLib
 using Ai4EComponentLib.Electrochemistry
 using Plots
 
