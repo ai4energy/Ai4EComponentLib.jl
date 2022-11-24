@@ -151,3 +151,49 @@ savefig("example_3_3.svg"); nothing # hide
 ```
 
 ![图3_3](example_3_3.svg)
+
+## Super capacity
+
+Equivalent circuit diagram of `Super_capacity()`:
+
+![图 4](../assets/Super_capacity_fig.png)  
+
+```@example 4
+using ModelingToolkit, DifferentialEquations
+using Ai4EComponentLib.Electrochemistry
+using Plots
+
+function charge_controller(; name)
+    @named oneport = OnePort()
+    @unpack v, i = oneport
+    eqs = [∂(i) ~ 0]
+    events = [
+        [t ~ 5.0] => [i ~ -10],
+        [t ~ 36.7] => [i ~ 0],
+    ]
+    return extend(ODESystem(eqs, t, [], []; name=name, continuous_events=events), oneport)
+end
+
+@named ground = Ground()
+@named sc = Super_capacity()
+@named cg = charge_controller()
+eqs = [
+    connect(sc.p, cg.p)
+    connect(sc.n, cg.n, ground.g)
+]
+
+@named OdeFun = ODESystem(eqs, t)
+@named model = compose(OdeFun, [sc, cg, ground])
+sys = structural_simplify(model)
+u0 = [
+    sc.v_0 => 0.0
+    sc.v_2 => 0.0
+    cg.i   => 0.0
+]
+
+prob = ODEProblem(sys, u0, (0.0, 600))
+sol = solve(prob)
+```
+
+![图4_1](../assets/Super_capacity_fig1.png)  
+
