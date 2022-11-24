@@ -196,5 +196,5 @@ prob = ODEProblem(sys, u0, (0.0, 600))
 sol = solve(prob)
 ```
 
-![图4_1](../assets/Super_capacity_fig1.png)  
+![图4_1](../assets/Super_capacity_fig1.jpg)  
 
