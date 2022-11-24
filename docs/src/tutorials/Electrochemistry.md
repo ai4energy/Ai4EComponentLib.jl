@@ -159,6 +159,7 @@ Equivalent circuit diagram of `Super_capacity()`:
 ![图 4](../assets/Super_capacity_fig.png)  
 
 ```@example 4
+using Ai4EComponentLib
 using ModelingToolkit, DifferentialEquations
 using Ai4EComponentLib.Electrochemistry
 using Plots
@@ -195,5 +196,5 @@ prob = ODEProblem(sys, u0, (0.0, 600))
 sol = solve(prob)
 ```
 
-![图4_1](../assets/Super_capacity_fig1.png)  
+![图4_1](../assets/Super_capacity_fig1.jpg)  
 

@@ -1,7 +1,3 @@
-
-@variables t
-∂ = Differential(t)
-
 """
 $(TYPEDSIGNATURES)
 
