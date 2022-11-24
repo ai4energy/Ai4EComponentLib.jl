@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Electrochemistry System · Ai4EComponentLib.jl</title><script data-outdated-warner src="../../assets/warner.js"></script><link rel="canonical" href="https://ai4energy.github.io/Ai4EComponentLib.jl/tutorials/Electrochemistry/"/><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.045/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.24/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../../"><img src="../../assets/logo.svg" alt="Ai4EComponentLib.jl logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href="../../">Ai4EComponentLib.jl</a></span></div><form class="docs-search" action="../../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><span class="tocitem">Tutorials</span><ul><li><a class="tocitem" href="../AirPipeSim/">AirPipeSim</a></li><li><a class="tocitem" href="../CompressedAirSystem/">CompressenAirSystem</a></li><li class="is-active"><a class="tocitem" href>Electrochemistry System</a><ul class="internal"><li><a class="tocitem" href="#PhotovoltaicCell"><span>PhotovoltaicCell</span></a></li><li><a class="tocitem" href="#PEMElectrolyzer"><span>PEMElectrolyzer</span></a></li><li><a class="tocitem" href="#Lithium-battery"><span>Lithium battery</span></a></li><li><a class="tocitem" href="#Super-capacity"><span>Super capacity</span></a></li></ul></li><li><a class="tocitem" href="../IncompressiblePipe/">IncompressiblePipe System</a></li><li><a class="tocitem" href="../ThermodynamicCycle/">ThermodynamicCycle System</a></li></ul></li><li><span class="tocitem">API</span><ul><li><a class="tocitem" href="../../API/AirPipeSim/">AirPipeSimAPI</a></li><li><a class="tocitem" href="../../API/CompressedAirSystem/">CompressedAirSystemAPI</a></li><li><a class="tocitem" href="../../API/Electrochemistry/">ElectrochemistryAPI</a></li><li><a class="tocitem" href="../../API/IncompressiblePipe/">IncompressiblePipeAPI</a></li><li><a class="tocitem" href="../../API/ThermodynamicCycle/">ThermodynamicCycleAPI</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Tutorials</a></li><li class="is-active"><a href>Electrochemistry System</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Electrochemistry System</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/ai4energy/Ai4EComponentLib.jl/blob/main/docs/src/tutorials/Electrochemistry.md#" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Electrochemistry-System"><a class="docs-heading-anchor" href="#Electrochemistry-System">Electrochemistry System</a><a id="Electrochemistry-System-1"></a><a class="docs-heading-anchor-permalink" href="#Electrochemistry-System" title="Permalink"></a></h1><h2 id="PhotovoltaicCell"><a class="docs-heading-anchor" href="#PhotovoltaicCell">PhotovoltaicCell</a><a id="PhotovoltaicCell-1"></a><a class="docs-heading-anchor-permalink" href="#PhotovoltaicCell" title="Permalink"></a></h2><p>To use <code>PhotovoltaicCell()</code>, we design a resistor called <code>vari_Resistor</code> whose resistance value changes with time. Then we can see the I-U curve of <code>PhotovoltaicCell</code> with different loads.</p><p>Equivalent circuit diagram of <code>PhotovoltaicCell()</code>:</p><p><img src="../../assets/Electrochemistry-18-10-20.png" alt="图 1"/>  </p><pre><code class="language- hljs">using Ai4EComponentLib
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Electrochemistry System · Ai4EComponentLib.jl</title><script data-outdated-warner src="../../assets/warner.js"></script><link rel="canonical" href="https://ai4energy.github.io/Ai4EComponentLib.jl/tutorials/Electrochemistry/"/><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.045/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.24/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../../"><img src="../../assets/logo.svg" alt="Ai4EComponentLib.jl logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href="../../">Ai4EComponentLib.jl</a></span></div><form class="docs-search" action="../../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><span class="tocitem">Tutorials</span><ul><li><a class="tocitem" href="../AirPipeSim/">AirPipeSim</a></li><li><a class="tocitem" href="../CompressedAirSystem/">CompressenAirSystem</a></li><li class="is-active"><a class="tocitem" href>Electrochemistry System</a><ul class="internal"><li><a class="tocitem" href="#PhotovoltaicCell"><span>PhotovoltaicCell</span></a></li><li><a class="tocitem" href="#PEMElectrolyzer"><span>PEMElectrolyzer</span></a></li><li><a class="tocitem" href="#Lithium-battery"><span>Lithium battery</span></a></li><li><a class="tocitem" href="#Super-capacity"><span>Super capacity</span></a></li></ul></li><li><a class="tocitem" href="../IncompressiblePipe/">IncompressiblePipe System</a></li><li><a class="tocitem" href="../ThermodynamicCycle/">ThermodynamicCycle System</a></li></ul></li><li><span class="tocitem">API</span><ul><li><a class="tocitem" href="../../API/AirPipeSim/">AirPipeSimAPI</a></li><li><a class="tocitem" href="../../API/CompressedAirSystem/">CompressedAirSystemAPI</a></li><li><a class="tocitem" href="../../API/Electrochemistry/">ElectrochemistryAPI</a></li><li><a class="tocitem" href="../../API/IncompressiblePipe/">IncompressiblePipeAPI</a></li><li><a class="tocitem" href="../../API/ThermodynamicCycle/">ThermodynamicCycleAPI</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Tutorials</a></li><li class="is-active"><a href>Electrochemistry System</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Electrochemistry System</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/ai4energy/Ai4EComponentLib.jl/blob/main/docs/src/tutorials/Electrochemistry.md#" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Electrochemistry-System"><a class="docs-heading-anchor" href="#Electrochemistry-System">Electrochemistry System</a><a id="Electrochemistry-System-1"></a><a class="docs-heading-anchor-permalink" href="#Electrochemistry-System" title="Permalink"></a></h1><h2 id="PhotovoltaicCell"><a class="docs-heading-anchor" href="#PhotovoltaicCell">PhotovoltaicCell</a><a id="PhotovoltaicCell-1"></a><a class="docs-heading-anchor-permalink" href="#PhotovoltaicCell" title="Permalink"></a></h2><p>To use <code>PhotovoltaicCell()</code>, we design a resistor called <code>vari_Resistor</code> whose resistance value changes with time. Then we can see the I-U curve of <code>PhotovoltaicCell</code> with different loads.</p><p>Equivalent circuit diagram of <code>PhotovoltaicCell()</code>:</p><p><img src="../../assets/Electrochemistry-18-10-20.png" alt="图 1"/>  </p><pre><code class="language-julia hljs">using Ai4EComponentLib
 using ModelingToolkit, DifferentialEquations
 using Ai4EComponentLib.Electrochemistry
 using Plots
@@ -26,8 +26,50 @@ eqs = [
 @named model = compose(OdeFun, [Pv, R, ground])
 sys = structural_simplify(model)
 prob = ODEProblem(sys, [], (0.0, 300.0))
-sol = solve(prob)</code></pre><pre><code class="language- hljs">plot(sol[R.p.v], sol[R.p.i], color = &quot;red&quot;)
-savefig(&quot;example_1.svg&quot;); nothing # hide</code></pre><p><img src="example_1.svg" alt="图一"/></p><h2 id="PEMElectrolyzer"><a class="docs-heading-anchor" href="#PEMElectrolyzer">PEMElectrolyzer</a><a id="PEMElectrolyzer-1"></a><a class="docs-heading-anchor-permalink" href="#PEMElectrolyzer" title="Permalink"></a></h2><p>Using above PhotovoltaicCell to drive Electrolyzer, then we build a <em>PVEL system</em>. In default paraments, we can know how the system works.</p><p>Equivalent circuit diagram of <code>PEMElectrolyzer()</code>:</p><p><img src="../../assets/Electrochemistry-18-11-06.png" alt="图 2"/>  </p><pre><code class="language- hljs">using ModelingToolkit, DifferentialEquations
+sol = solve(prob)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">retcode: Success
+Interpolation: specialized 3rd order &quot;free&quot; stiffness-aware interpolation
+t: 55-element Vector{Float64}:
+   0.0
+   1.0e-6
+   1.1e-5
+   0.00011099999999999999
+   0.0011109999999999998
+   0.011110999999999996
+   0.11111099999999996
+   1.1111109999999995
+   6.79035935117457
+   8.978148213920168
+   ⋮
+ 159.10880840336685
+ 173.4801253245643
+ 189.1756997486783
+ 206.31752801865935
+ 225.03881424518733
+ 245.48515123044803
+ 267.81547719830417
+ 292.2035686705326
+ 300.0
+u: 55-element Vector{Vector{Float64}}:
+ [6.070161232299978]
+ [6.070161218944301]
+ [6.070161086382273]
+ [6.070159760762311]
+ [6.070146504594543]
+ [6.070013946101201]
+ [6.068688679524139]
+ [6.055467772362445]
+ [5.981307175281362]
+ [5.921765490958639]
+ ⋮
+ [0.4349347898787152]
+ [0.3991446222812544]
+ [0.3662305704476482]
+ [0.3359725683697224]
+ [0.30816564410432495]
+ [0.2826189866654537]
+ [0.25915547745658996]
+ [0.23761065441016743]
+ [0.2314575832133179]</code></pre><pre><code class="language-julia hljs">plot(sol[R.p.v], sol[R.p.i], color = &quot;red&quot;)</code></pre><p><img src="../example_1.svg" alt="图一"/></p><h2 id="PEMElectrolyzer"><a class="docs-heading-anchor" href="#PEMElectrolyzer">PEMElectrolyzer</a><a id="PEMElectrolyzer-1"></a><a class="docs-heading-anchor-permalink" href="#PEMElectrolyzer" title="Permalink"></a></h2><p>Using above PhotovoltaicCell to drive Electrolyzer, then we build a <em>PVEL system</em>. In default paraments, we can know how the system works.</p><p>Equivalent circuit diagram of <code>PEMElectrolyzer()</code>:</p><p><img src="../../assets/Electrochemistry-18-11-06.png" alt="图 2"/>  </p><pre><code class="language-julia hljs">using ModelingToolkit, DifferentialEquations
 using Ai4EComponentLib
 using Ai4EComponentLib.Electrochemistry
 
@@ -46,7 +88,113 @@ u0 = [
     El.∂_m_H_2 =&gt; 0.0
 ]
 prob = ODEProblem(sys, u0, (0.0, 30.0))
-sol = solve(prob)</code></pre><p>Get states of system by <code>states()</code></p><pre><code class="language- hljs">states(sys)</code></pre><p>Check voltage, current and mass yield of electrolyzer. The working point <code>(El.v,El.i)</code> can be found in I-U curve above.</p><pre><code class="language- hljs">sol[El.v]</code></pre><pre><code class="language- hljs">sol[El.i]</code></pre><pre><code class="language- hljs">sol[El.m_H_2]</code></pre><h2 id="Lithium-battery"><a class="docs-heading-anchor" href="#Lithium-battery">Lithium battery</a><a id="Lithium-battery-1"></a><a class="docs-heading-anchor-permalink" href="#Lithium-battery" title="Permalink"></a></h2><p>Equivalent circuit diagram of <code>Lithium_ion_batteries()</code>:</p><p><img src="../../assets/ElectrochemistrySystem-3-1.png" alt="图 3"/>  </p><pre><code class="language- hljs">using ModelingToolkit, DifferentialEquations
+sol = solve(prob)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">retcode: Success
+Interpolation: specialized 3rd order &quot;free&quot; stiffness-aware interpolation
+t: 29-element Vector{Float64}:
+  0.0
+  1.0e-6
+  1.1e-5
+  0.00011099999999999999
+  0.0011109999999999998
+  0.008439887065773926
+  0.020796255796253802
+  0.03442494139216535
+  0.052116653461119405
+  0.07210657583204284
+  ⋮
+  0.6700908105173512
+  0.7799452514963259
+  1.1065977951333883
+  1.433250338770451
+  2.0130301426881534
+  3.83094485507726
+  9.416466362176456
+ 28.63960936303355
+ 30.0
+u: 29-element Vector{Vector{Float64}}:
+ [0.0, 0.0, 6.0637275952767675]
+ [1.8307680149829602e-14, 3.6615215058424316e-8, 6.063727595681835]
+ [2.2150535613568343e-12, 4.0271943799070087e-7, 6.063727595681835]
+ [2.2537214333319225e-10, 4.058970969463909e-6, 6.063727595681835]
+ [2.239920344148744e-8, 4.014448437387311e-5, 6.063727595681835]
+ [1.2189296098963561e-6, 0.00027901338737525, 6.063727595681835]
+ [6.69070409685778e-6, 0.0005882354978314793, 6.063727595681835]
+ [1.6362842524229996e-5, 0.0008126644963035811, 6.063727595681835]
+ [3.224746590988234e-5, 0.0009592361733792534, 6.063727595681835]
+ [5.185457979379007e-5, 0.0009818115051539894, 6.063727595681835]
+ ⋮
+ [0.00012667436955623627, 9.372195131969263e-7, 6.063727595681835]
+ [0.00012671057762334218, -3.961253864583832e-8, 6.063727595681835]
+ [0.00012669665417256172, 3.353379177334356e-8, 6.063727595681835]
+ [0.00012669753307424983, 1.060292541914433e-9, 6.063727595681835]
+ [0.00012669772793681163, -2.6321612955817163e-10, 6.063727595681835]
+ [0.0001266977465289514, 6.3591890732822245e-12, 6.063727595681835]
+ [0.00012669775281945505, 8.101659530524139e-12, 6.063727595681835]
+ [0.00012669775355874052, 3.3013910387812284e-13, 6.063727595681835]
+ [0.00012669775357165324, 6.770560764356629e-14, 6.063727595681835]</code></pre><p>Get states of system by <code>states()</code></p><pre><code class="language-julia hljs">states(sys)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">3-element Vector{Any}:
+ El₊m_H_2(t)
+ El₊∂_m_H_2(t)
+ El₊i(t)</code></pre><p>Check voltage, current and mass yield of electrolyzer. The working point <code>(El.v,El.i)</code> can be found in I-U curve above.</p><pre><code class="language-julia hljs">sol[El.v]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">29-element Vector{Float64}:
+ 2.9460329264044813
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ ⋮
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316
+ 2.9460329264949316</code></pre><pre><code class="language-julia hljs">sol[El.i]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">29-element Vector{Float64}:
+ 6.0637275952767675
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ ⋮
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835
+ 6.063727595681835</code></pre><pre><code class="language-julia hljs">sol[El.m_H_2]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">29-element Vector{Float64}:
+ 0.0
+ 1.8307680149829602e-14
+ 2.2150535613568343e-12
+ 2.2537214333319225e-10
+ 2.239920344148744e-8
+ 1.2189296098963561e-6
+ 6.69070409685778e-6
+ 1.6362842524229996e-5
+ 3.224746590988234e-5
+ 5.185457979379007e-5
+ ⋮
+ 0.00012667436955623627
+ 0.00012671057762334218
+ 0.00012669665417256172
+ 0.00012669753307424983
+ 0.00012669772793681163
+ 0.0001266977465289514
+ 0.00012669775281945505
+ 0.00012669775355874052
+ 0.00012669775357165324</code></pre><h2 id="Lithium-battery"><a class="docs-heading-anchor" href="#Lithium-battery">Lithium battery</a><a id="Lithium-battery-1"></a><a class="docs-heading-anchor-permalink" href="#Lithium-battery" title="Permalink"></a></h2><p>Equivalent circuit diagram of <code>Lithium_ion_batteries()</code>:</p><p><img src="../../assets/ElectrochemistrySystem-3-1.png" alt="图 3"/>  </p><pre><code class="language-julia hljs">using ModelingToolkit, DifferentialEquations
 using Ai4EComponentLib
 using Ai4EComponentLib.Electrochemistry
 using Plots
@@ -69,10 +217,51 @@ u0 = [
     batter.v_soc =&gt; 0.5
 ]
 prob = ODEProblem(sys, u0, (0.0, 3600.0))
-sol = solve(prob)</code></pre><pre><code class="language- hljs">plot(sol.t, sol[batter.v_soc], color = &quot;red&quot;)
-savefig(&quot;example_3_1.svg&quot;); nothing # hide</code></pre><p><img src="example_3_1.svg" alt="图3_1"/></p><pre><code class="language- hljs">plot(sol.t, sol[batter.v_s], color = &quot;red&quot;)
-savefig(&quot;example_3_2.svg&quot;); nothing # hide</code></pre><p><img src="example_3_2.svg" alt="图3_2"/></p><pre><code class="language- hljs">plot(sol.t, sol[batter.i_b], color = &quot;red&quot;)
-savefig(&quot;example_3_3.svg&quot;); nothing # hide</code></pre><p><img src="example_3_3.svg" alt="图3_3"/></p><h2 id="Super-capacity"><a class="docs-heading-anchor" href="#Super-capacity">Super capacity</a><a id="Super-capacity-1"></a><a class="docs-heading-anchor-permalink" href="#Super-capacity" title="Permalink"></a></h2><p>Equivalent circuit diagram of <code>Super_capacity()</code>:</p><p><img src="../../assets/Super_capacity_fig.png" alt="图 4"/>  </p><pre><code class="language-julia hljs">using ModelingToolkit, DifferentialEquations
+sol = solve(prob)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">retcode: Success
+Interpolation: specialized 3rd order &quot;free&quot; stiffness-aware interpolation
+t: 37-element Vector{Float64}:
+    0.0
+    1.0e-6
+    1.1e-5
+    0.00011099999999999999
+    0.0011109999999999998
+    0.011110999999999996
+    0.11111099999999996
+    1.1111109999999995
+    6.770870617087571
+   16.44501650526439
+    ⋮
+  968.4320077524991
+ 1120.9137887962122
+ 1300.0222843512129
+ 1514.545831046079
+ 1775.8154184779673
+ 2103.9186686325866
+ 2533.885772166474
+ 3135.582596677455
+ 3600.0
+u: 37-element Vector{Vector{Float64}}:
+ [0.5, 0.5, 0.5, 2.3261357438559846, 6.065081346139781]
+ [0.4999999977573967, 0.49999999142936485, 0.5000000000468989, 2.3261357547108465, 6.065081346025329]
+ [0.4999999753313647, 0.4999999057230212, 0.500000000515888, 2.3261358628577637, 6.065081345789154]
+ [0.49999975107109407, 0.4999990486603213, 0.5000000052057781, 2.3261369443261506, 6.06508134342741]
+ [0.4999975084733217, 0.49999047810697717, 0.5000000521046789, 2.326147758931427, 6.065081319810146]
+ [0.4999750829890147, 0.49990477993861454, 0.5000005210936259, 2.3262558971260554, 6.065081083654659]
+ [0.4997508774802967, 0.49904853433725055, 0.500005210977118, 2.327336493688467, 6.065078723814942]
+ [0.49751374853205843, 0.49055926276750406, 0.5000521092147455, 2.338064351995991, 6.065055295990901]
+ [0.48501942343032456, 0.4449336279755473, 0.5003175216192808, 2.396192672661811, 6.064928353592023]
+ [0.4643072769626757, 0.375707928943244, 0.5007711082308799, 2.4861452253061733, 6.064731912465073]
+ ⋮
+ [-0.04897672993630808, -0.04850134373544052, 0.5449954411498689, 3.4265827471714707, 6.062678156331461]
+ [-0.054295801803199255, -0.04850134760836687, 0.5520063076987562, 3.4326111080649824, 6.062664991413094]
+ [-0.05753359713445296, -0.04850127070341533, 0.5602161652465998, 3.4367553236786037, 6.062655941148661]
+ [-0.059314723852673265, -0.04850120986003026, 0.5700135673084915, 3.439717270977041, 6.0626494727578315]
+ [-0.06016469502532861, -0.048501163262385655, 0.581893423191311, 3.442126812111138, 6.062644210728405]
+ [-0.06050171230972386, -0.04850111905426291, 0.5967309875067375, 3.444570909874619, 6.062638873233211]
+ [-0.060603714412893736, -0.048501066056428975, 0.6160390579874098, 3.4475895696179313, 6.062632280992028]
+ [-0.06062405223723251, -0.048500993389087095, 0.6428019589062872, 3.4517338784321048, 6.062623230524074]
+ [-0.06062584866681337, -0.04850094034908818, 0.6632558164459027, 3.454737752327836, 6.062616670572666]</code></pre><pre><code class="language-julia hljs">plot(sol.t, sol[batter.v_soc], color = &quot;red&quot;)</code></pre><p><img src="../example_3_1.svg" alt="图3_1"/></p><pre><code class="language-julia hljs">plot(sol.t, sol[batter.v_s], color = &quot;red&quot;)</code></pre><p><img src="../example_3_2.svg" alt="图3_2"/></p><pre><code class="language-julia hljs">plot(sol.t, sol[batter.i_b], color = &quot;red&quot;)</code></pre><p><img src="../example_3_3.svg" alt="图3_3"/></p><h2 id="Super-capacity"><a class="docs-heading-anchor" href="#Super-capacity">Super capacity</a><a id="Super-capacity-1"></a><a class="docs-heading-anchor-permalink" href="#Super-capacity" title="Permalink"></a></h2><p>Equivalent circuit diagram of <code>Super_capacity()</code>:</p><p><img src="../../assets/Super_capacity_fig.png" alt="图 4"/>  </p><pre><code class="language-julia hljs">using Ai4EComponentLib
+using ModelingToolkit, DifferentialEquations
 using Ai4EComponentLib.Electrochemistry
 using Plots
 
@@ -148,4 +337,4 @@ u: 20-element Vector{Vector{Float64}}:
  [2.350611852729195, 1.4621103035605305, 0.0]
  [2.323926709454996, 1.7641755817646896, 0.0]
  [2.3040718943375342, 1.9863247646241289, 0.0]
- [2.2923683520080207, 2.115062170647424, 0.0]</code></pre><p><img src="../assets/Super_capacity_fig1.png" alt="图4_1"/>  </p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../CompressedAirSystem/">« CompressenAirSystem</a><a class="docs-footer-nextpage" href="../IncompressiblePipe/">IncompressiblePipe System »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.23 on <span class="colophon-date" title="Thursday 24 November 2022 04:09">Thursday 24 November 2022</span>. Using Julia version 1.8.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+ [2.2923683520080207, 2.115062170647424, 0.0]</code></pre><p><img src="../../assets/Super_capacity_fig1.jpg" alt="图4_1"/>  </p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../CompressedAirSystem/">« CompressenAirSystem</a><a class="docs-footer-nextpage" href="../IncompressiblePipe/">IncompressiblePipe System »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.23 on <span class="colophon-date" title="Thursday 24 November 2022 06:51">Thursday 24 November 2022</span>. Using Julia version 1.8.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
