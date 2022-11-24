@@ -159,6 +159,7 @@ Equivalent circuit diagram of `Super_capacity()`:
 ![图 4](../assets/Super_capacity_fig.png)  
 
 ```@example 4
+using Ai4EComponentLib
 using ModelingToolkit, DifferentialEquations
 using Ai4EComponentLib.Electrochemistry
 using Plots
