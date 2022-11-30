@@ -249,7 +249,7 @@ sys = structural_simplify(model)
 u0 = [
 batter.v_s => 0.1,
 batter.v_f => 0.1,
-batter.v_soc => 0.3
+batter.v_soc => 0.95
     ]
 prob = ODEProblem(sys, u0, (0.0,5000.0))
 sol = solve(prob,Rosenbrock23())
