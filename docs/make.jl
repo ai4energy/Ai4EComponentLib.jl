@@ -15,6 +15,10 @@ makedocs(;
     modules=[
         Ai4EComponentLib
         Ai4EComponentLib.Electrochemistry
+        Ai4EComponentLib.AirPipeSim
+        Ai4EComponentLib.CompressedAirSystem
+        Ai4EComponentLib.IncompressiblePipe
+        Ai4EComponentLib.ThermodynamicCycle
     ],
     authors="jake484 <522432938@qq.com> and contributors",
     repo="https://github.com/ai4energy/Ai4EComponentLib.jl/blob/{commit}{path}#{line}",
