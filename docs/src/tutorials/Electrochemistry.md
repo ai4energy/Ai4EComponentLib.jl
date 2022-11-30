@@ -207,7 +207,7 @@ The MPPT controller can detect the generating voltage of the solar panel in real
 
 ```@example mppt
 using Ai4EComponentLib.Electrochemistry, Ai4EComponentLib
-using ModelingToolkit, Symbolics
+using ModelingToolkit
 using IfElse: ifelse
 using DifferentialEquations
 using Plots
