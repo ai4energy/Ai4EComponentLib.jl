@@ -12,5 +12,6 @@ include("lib/IncompressiblePipe/IncompressiblePipe.jl")
 include("lib/CompressedAirSystem/CompressedAirSystem.jl")
 include("lib/AirPipeSim/AirPipeSim.jl")
 include("lib/ThermodynamicCycle/ThermodynamicCycle.jl")
+include("lib/HVAC/HVAC.jl")
 
 end
