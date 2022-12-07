@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>HVAC System · Ai4EComponentLib.jl</title><script data-outdated-warner src="../../assets/warner.js"></script><link rel="canonical" href="https://ai4energy.github.io/Ai4EComponentLib.jl/tutorials/HVAC/"/><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.045/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.24/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../../"><img src="../../assets/logo.svg" alt="Ai4EComponentLib.jl logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href="../../">Ai4EComponentLib.jl</a></span></div><form class="docs-search" action="../../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><span class="tocitem">Tutorials</span><ul><li><a class="tocitem" href="../AirPipeSim/">AirPipeSim</a></li><li><a class="tocitem" href="../CompressedAirSystem/">CompressenAirSystem</a></li><li><a class="tocitem" href="../Electrochemistry/">Electrochemistry System</a></li><li class="is-active"><a class="tocitem" href>HVAC System</a><ul class="internal"><li><a class="tocitem" href="#Example-1:-A-basic-test-for-components"><span>Example 1: A basic test for components</span></a></li></ul></li><li><a class="tocitem" href="../IncompressiblePipe/">IncompressiblePipe System</a></li><li><a class="tocitem" href="../ThermodynamicCycle/">ThermodynamicCycle System</a></li></ul></li><li><span class="tocitem">API</span><ul><li><a class="tocitem" href="../../API/AirPipeSim/">AirPipeSimAPI</a></li><li><a class="tocitem" href="../../API/CompressedAirSystem/">CompressedAirSystemAPI</a></li><li><a class="tocitem" href="../../API/Electrochemistry/">ElectrochemistryAPI</a></li><li><a class="tocitem" href="../../API/HVAC/">HVACAPI</a></li><li><a class="tocitem" href="../../API/IncompressiblePipe/">IncompressiblePipeAPI</a></li><li><a class="tocitem" href="../../API/ThermodynamicCycle/">ThermodynamicCycleAPI</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Tutorials</a></li><li class="is-active"><a href>HVAC System</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>HVAC System</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/ai4energy/Ai4EComponentLib.jl/blob/main/docs/src/tutorials/HVAC.md#" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="HVAC-System"><a class="docs-heading-anchor" href="#HVAC-System">HVAC System</a><a id="HVAC-System-1"></a><a class="docs-heading-anchor-permalink" href="#HVAC-System" title="Permalink"></a></h1><h2 id="Example-1:-A-basic-test-for-components"><a class="docs-heading-anchor" href="#Example-1:-A-basic-test-for-components">Example 1: A basic test for components</a><a id="Example-1:-A-basic-test-for-components-1"></a><a class="docs-heading-anchor-permalink" href="#Example-1:-A-basic-test-for-components" title="Permalink"></a></h2><p><img src="../../assets/HVAC-17-19-48.png" alt="图 1"/>  </p><p>This test has 5 kinds of components:</p><ul><li>Water Chiller</li><li>FanCoil</li><li>Pump</li><li>Cooling Tower</li><li>Simple Pipe</li></ul><p>  </p><pre><code class="language-julia hljs">using Ai4EComponentLib
+using Ai4EComponentLib.HVAC
+using DifferentialEquations, ModelingToolkit
+
+# Define components
+
+D_ch = [22.08252111,-0.008374357,0.605004615,-0.544042021,-2.10E-07,7.04E-05,0.000299955,-0.028824777]
+@named ch1 = WaterChiller_SimplifiedPolynomial(D=D_ch)
+D_pump = [120,-1500,-0.5,1,1,1]*4
+@named pump1 = Pump(D=D_pump)
+@named pump2 = Pump(D=D_pump)
+
+@named coolingTower1 = CoolingTower(Tw=26, ΔTct=5)
+
+D_fan = [1, 1.2, 1.2]
+@named fancoil1 = FanCoil(D=D_fan, Qf0=2500)
+@named pipe1 = SimplePipe(R=100)
+@named pipe2 = SimplePipe(R=100)
+@named pipe3 = SimplePipe(R=100)
+@named pipe4 = SimplePipe(R=100)
+
+# Connect components
+eqs = [
+    connect(ch1.coolerIn, pipe1.outlet),
+    connect(ch1.coolerOut, pipe2.inlet),
+    connect(ch1.chilledIn, pipe3.outlet),
+    connect(ch1.chilledOut, pipe4.inlet),
+    connect(pipe2.outlet, pump1.inlet),
+    connect(pump1.outlet, coolingTower1.inlet),
+    connect(pipe1.inlet, coolingTower1.outlet),
+    connect(fancoil1.inlet, pipe4.outlet),
+    connect(fancoil1.outlet, pump2.inlet),
+    connect(pump2.outlet, pipe3.inlet),
+    pump2.inlet.p ~ 0,
+    pump1.inlet.p ~ 0,
+    pump1.n ~ 2000,
+    pump2.n ~ 2000,
+    ch1.Tei ~ 7
+]
+
+@named connects = ODESystem(eqs, t)
+@named model = compose(connects, ch1, pipe1, pipe2, pipe3, pipe4, pump1, pump2, fancoil1, coolingTower1)
+
+sys = structural_simplify(model)
+prob = ODEProblem(sys, [], (0.0, 0.0))
+sol = solve(prob)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">retcode: Success
+Interpolation: specialized 3rd order &quot;free&quot; stiffness-aware interpolation
+t: 1-element Vector{Float64}:
+ 0.0
+u: 1-element Vector{Vector{Float64}}:
+ [567.9595489684749, 42.18203215288252, 0.06563758756466802, 16.111945557302246, 65.63758756466802]</code></pre><pre><code class="language-julia hljs">sol[ch1.P]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">1-element Vector{Float64}:
+ 567.9595489684749</code></pre><pre><code class="language-julia hljs">sol[ch1.Tei]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">1-element Vector{Float64}:
+ 7.0</code></pre><pre><code class="language-julia hljs">sol[ch1.Teo]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">1-element Vector{Float64}:
+ 16.111945557302246</code></pre><pre><code class="language-julia hljs">sol[ch1.Tci]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">1-element Vector{Float64}:
+ 31.0</code></pre><pre><code class="language-julia hljs">sol[ch1.Tco]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">1-element Vector{Float64}:
+ 42.18203215288252</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../Electrochemistry/">« Electrochemistry System</a><a class="docs-footer-nextpage" href="../IncompressiblePipe/">IncompressiblePipe System »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.23 on <span class="colophon-date" title="Wednesday 7 December 2022 09:53">Wednesday 7 December 2022</span>. Using Julia version 1.8.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
