@@ -1,6 +1,6 @@
+using Ai4EComponentLib
 using Ai4EComponentLib.IncompressiblePipe
-using DifferentialEquations, ModelingToolkit, Test
-
+using OrdinaryDiffEq, ModelingToolkit, Test
 
 system = []
 
@@ -62,7 +62,8 @@ eqs = [
 @named model = compose(ODESystem(eqs, t, name=:funs), system)
 sys = structural_simplify(model)
 prob = ODEProblem(sys, [], (0, 0.0))
-sol = solve(prob)
+sol = solve(prob, Rosenbrock23())
+
 ins = sol[pipe1.in.q][1] + sol[pipe3.in.q][1] + sol[pipe10.in.q][1]
 outs = sol[pipe6.in.q][1] + sol[pipe8.in.q][1]
 @test isapprox(ins, outs, atol=1.0e-10)
