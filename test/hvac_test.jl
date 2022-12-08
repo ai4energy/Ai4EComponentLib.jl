@@ -4,7 +4,7 @@ using ModelingToolkit, DifferentialEquations
 
 D_ch = [22.08252111,-0.008374357,0.605004615,-0.544042021,-2.10E-07,7.04E-05,0.000299955,-0.028824777]
 @named ch1 = WaterChiller_SimplifiedPolynomial(D=D_ch)
-D_pump = [120,-1500,-0.5,1,1,1]*4
+D_pump = [120,-1500,-0.5,0.8,0.8,0.8]
 @named pump1 = Pump(D=D_pump)
 @named pump2 = Pump(D=D_pump)
 
@@ -24,9 +24,9 @@ eqs = [
     connect(ch1.coolerOut, pipe2.inlet),
     connect(ch1.chilledIn, pipe3.outlet),
     connect(ch1.chilledOut, pipe4.inlet),
-    connect(pipe2.outlet, pump1.inlet),
-    connect(pump1.outlet, coolingTower1.inlet),
-    connect(pipe1.inlet, coolingTower1.outlet),
+    connect(pipe2.outlet, coolingTower1.inlet),
+    connect(coolingTower1.outlet, pump1.inlet),
+    connect(pipe1.inlet, pump1.outlet),
     connect(fancoil1.inlet, pipe4.outlet),
     connect(fancoil1.outlet, pump2.inlet),
     connect(pump2.outlet, pipe3.inlet),
