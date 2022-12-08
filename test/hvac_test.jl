@@ -1,6 +1,7 @@
 using Ai4EComponentLib
 using Ai4EComponentLib.HVAC
-using ModelingToolkit, DifferentialEquations
+using ModelingToolkit, OrdinaryDiffEq
+using Test
 
 D_ch = [22.08252111,-0.008374357,0.605004615,-0.544042021,-2.10E-07,7.04E-05,0.000299955,-0.028824777]
 @named ch1 = WaterChiller_SimplifiedPolynomial(D=D_ch)
@@ -44,20 +45,6 @@ sys = structural_simplify(model)
 
 prob = ODEProblem(sys, [], (0.0, 0.0))
 
-sol = solve(prob)
+sol = solve(prob, Rosenbrock23())
 
-sol[ch1.Tei]
-sol[ch1.Teo]
-sol[ch1.Tci]
-sol[ch1.Tco]
-sol[ch1.P]
-sol[ch1.COP]
-sol[ch1.PLR]
-sol[fancoil1.Qf]
-sol[fancoil1.Qf0]
-sol[fancoil1.Twi]
-sol[fancoil1.Two]
-sol[fancoil1.inlet.qm]
-
-# sol[pump2.P]
-# sol[pump1.qv]
+@test sol.retcode == :Success
