@@ -44,7 +44,7 @@ function Pump(; name, D::Vector{Float64}, n0=2000, ρ=1.0e3, g=10.0)
         H ~ (outlet.p - inlet.p) / (ρ * g),
         H ~ D[1]*(n/n0)^2+D[2]*qv*(n/n0)^2+D[3]*qv^2,
         η ~ D[4] + D[5] * qv * (n0 / n) + D[6] * qv^2 * (n0 / n)^2,
-        P ~ (qv * ρ * g * H) / η,
+        P ~ (qv * ρ * g * H) / η / 1000,
         inlet.qm + outlet.qm ~ 0,
         inlet.T ~ outlet.T
     ]
