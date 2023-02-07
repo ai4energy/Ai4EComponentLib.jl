@@ -54,3 +54,47 @@ function Vanadium_flow_batteries(; name, R_1=0.0396, R_2=0.0264, R_3=12.64, C_1=
     ]
     extend(ODESystem(eqs, t, sts, ps; name=name), oneport)
 end
+
+function Vanadium_flow_batteries_multieCell(; name, R_1=0.0396, R_2=0.0264, R_3=12.64, C_1=0.051, V_tk=10874.0, V_av=12.6, k_2=3.17e-8, k_3=7.16e-9, k_4=2.0e-8, k_5=1.25e-8, F=96485, z=1, d=2.54e-3, S=15, u_eq=1.259, T=298.15, R=8.314, Q=[0.02,0.015,0.01,0.005,0.003])
+    @named oneport = OnePort()
+    @unpack v, i = oneport
+    N_cell = length(Q)
+    sts1 = @variables v_e(t) = 0 C_tk2(t) = 0.15 C_tk3(t) = 1.35 C_tk4(t) = 1.35 C_tk5(t) = 0.15 v_s(t) = 1 i_s(t) = 1 [irreducible=true] soc(t) = 0.5
+    sts2 = @variables C_av2(t)[1:N_cell] = 0.15 C_av3(t)[1:N_cell] = 1.35 C_av4(t)[1:N_cell] = 1.35 C_av5(t)[1:N_cell] = 0.15 
+    sts = [sts1; sts2...]
+    ps = @parameters(
+        R_1 = R_1,
+        R_2 = R_2,
+        R_3 = R_3,
+        C_1 = C_1,
+        V_tk = V_tk,
+        V_av = V_av,
+        k_2 = k_2,
+        k_3 = k_3,
+        k_4 = k_4,
+        k_5 = k_5,
+        F = F,
+        z = z,
+        d = d,
+        S = S,
+        u_eq = u_eq,
+        T = T,
+        R = R
+    )
+    eqs = [
+        ∂(C_tk2) ~ sum([Q[i] * (C_av2[i] - C_tk2) * 2 / V_tk for i in 1:N_cell])
+        ∂(C_tk3) ~ sum([Q[i] * (C_av3[i] - C_tk3) * 2 / V_tk for i in 1:N_cell])
+        ∂(C_tk4) ~ sum([Q[i] * (C_av4[i] - C_tk4) * 2 / V_tk for i in 1:N_cell])
+        ∂(C_tk5) ~ sum([Q[i] * (C_av5[i] - C_tk5) * 2 / V_tk for i in 1:N_cell])
+        [∂(C_av2[i]) ~ (Q[i] * (C_tk2 - C_av2[i]) - k_2 * C_av2[i] * S / d - 2 * k_5 * C_av5[i] * S / d - k_4 * C_av4[i] * S / d + i_s / z / F) * 2 / V_av for i in 1:N_cell]...
+        [∂(C_av3[i]) ~ (Q[i] * (C_tk3 - C_av3[i]) - k_3 * C_av3[i] * S / d + 3 * k_5 * C_av5[i] * S / d + 2 * k_4 * C_av4[i] * S / d - i_s / z / F) * 2 / V_av for i in 1:N_cell]... 
+        [∂(C_av4[i]) ~ (Q[i] * (C_tk4 - C_av4[i]) - k_4 * C_av4[i] * S / d + 3 * k_2 * C_av2[i] * S / d + 2 * k_3 * C_av3[i] * S / d - i_s / z / F) * 2 / V_av for i in 1:N_cell]...
+        [∂(C_av5[i]) ~ (Q[i] * (C_tk5 - C_av5[i]) - k_5 * C_av5[i] * S / d - 2 * k_2 * C_av2[i] * S / d - k_3 * C_av3[i] * S / d + i_s / z / F) * 2 / V_av for i in 1:N_cell]...
+        soc ~ C_tk2 / (C_tk2 + C_tk3)
+        v_s ~ sum([u_eq + R * T / z / F * log((C_av2[i] * C_av5[i]) / (C_av3[i] * C_av4[i])) for i in 1:N_cell])
+        ∂(v_e) ~ (i - v / R_3 - i_s) / C_1
+        v_e ~ i_s * R_1 + v_s
+        v ~ v_e + (i - v / R_3) * R_2
+        ]
+    extend(ODESystem(eqs, t, sts, ps; name=name), oneport)
+end
