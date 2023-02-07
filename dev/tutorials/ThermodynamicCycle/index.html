@@ -34,7 +34,7 @@ sol = solve(prob)
 
 q1 = sol[boiler.Δh][1]
 w = -sol[turbine.Δh][1] - sol[pump.Δh][1]
-η = w / q1</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">0.37492352067536755</code></pre><p>And we can get the T-S diagram(tephigram) of the Rankine Cylce.</p><pre><code class="language-julia hljs">plot_sys = [pump, boiler, turbine, condenser];
+η = w / q1</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">0.3749235206753891</code></pre><p>And we can get the T-S diagram(tephigram) of the Rankine Cylce.</p><pre><code class="language-julia hljs">plot_sys = [pump, boiler, turbine, condenser];
 propx = :s
 propy = :T
 ss = [sol[getproperty(i.out, propx)][1] for i in plot_sys]
@@ -79,17 +79,17 @@ sol = solve(prob)
 q1 = sol[boiler.Δh]
 w = -sol[turbine.Δh] - sol[pump.Δh]
 η = w ./ q1</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">11-element Vector{Float64}:
- 0.42682827210793306
- 0.42981470836174285
+ 0.426828272107943
+ 0.42981470836174696
  0.4324620028967034
- 0.4348235420117641
+ 0.43482354201175827
  0.4369407479753992
  0.43884639503079975
- 0.4405668517459072
+ 0.4405668517459105
  0.44212364156207024
- 0.4435345561091668
+ 0.44353455610917397
  0.44481446681672876
- 0.44597592795424745</code></pre><h2 id="Example-3:-Reheat-Rankine-cycle"><a class="docs-heading-anchor" href="#Example-3:-Reheat-Rankine-cycle">Example 3: Reheat Rankine cycle</a><a id="Example-3:-Reheat-Rankine-cycle-1"></a><a class="docs-heading-anchor-permalink" href="#Example-3:-Reheat-Rankine-cycle" title="Permalink"></a></h2><p>To be more efficient, consider reheat Rankine Cycle.</p><p>Parameter of Reheat Rankine Cycle:</p><ul><li>Pump supply pressure : [18.0,...,10.0] MPa</li><li>Temperature of Boiler outlet: 550 ℃</li><li>Outlet pressure of turbine first stage: 3.0 MPa</li><li>Temperature of ReBoiler outlet: 450 ℃</li><li>Cooling pressure in condenser: 4 kPa</li><li>State of Water at pump inlet: Saturated water</li></ul><p><img src="../../assets/ThermodynamicCycle-13-56-56.png" alt="图 3"/>  </p><pre><code class="language-julia hljs">using Ai4EComponentLib
+ 0.4459759279542586</code></pre><h2 id="Example-3:-Reheat-Rankine-cycle"><a class="docs-heading-anchor" href="#Example-3:-Reheat-Rankine-cycle">Example 3: Reheat Rankine cycle</a><a id="Example-3:-Reheat-Rankine-cycle-1"></a><a class="docs-heading-anchor-permalink" href="#Example-3:-Reheat-Rankine-cycle" title="Permalink"></a></h2><p>To be more efficient, consider reheat Rankine Cycle.</p><p>Parameter of Reheat Rankine Cycle:</p><ul><li>Pump supply pressure : [18.0,...,10.0] MPa</li><li>Temperature of Boiler outlet: 550 ℃</li><li>Outlet pressure of turbine first stage: 3.0 MPa</li><li>Temperature of ReBoiler outlet: 450 ℃</li><li>Cooling pressure in condenser: 4 kPa</li><li>State of Water at pump inlet: Saturated water</li></ul><p><img src="../../assets/ThermodynamicCycle-13-56-56.png" alt="图 3"/>  </p><pre><code class="language-julia hljs">using Ai4EComponentLib
 using Ai4EComponentLib.ThermodynamicCycle
 using DifferentialEquations, ModelingToolkit
 using CoolProp
@@ -134,13 +134,13 @@ w = -sol[turbine.Δh] - sol[returbine.Δh] - sol[pump.Δh]
 η = w ./ q1</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">11-element Vector{Float64}:
  0.45644849499827017
  0.4563346695893757
- 0.45621920144325706
- 0.45610206971052353
- 0.4559832531419678
- 0.4558627300785587
- 0.45574047844005877
- 0.45561647571571
- 0.45549069895203953
+ 0.456219201443257
+ 0.45610206971052325
+ 0.4559832531419604
+ 0.45586273007855743
+ 0.4557404784400572
+ 0.45561647571570973
+ 0.4554906989520378
  0.45536312474175633
  0.4552337292118001</code></pre><p>And T-S diagram.</p><pre><code class="language-julia hljs">plot_sys = [pump, boiler, turbine, reboiler, returbine, condenser];
 propx = :s
@@ -306,4 +306,4 @@ plot(res, CoolProp.PropsSI.(&quot;T&quot;, &quot;P&quot;, 1.0163e6, &quot;S&quot
 plot!(collect(range(ss[2], ss[3], 100)), collect(range(tt[2], tt[3], 100)), label=&quot;throttle&quot;)
 res = collect(range(ss[3], ss[4], 100))
 plot!(res, CoolProp.PropsSI.(&quot;T&quot;, &quot;P&quot;,8.3896e4, &quot;S&quot;, res, &quot;R134a&quot;), label=&quot;evaporator&quot;)
-plot!(collect(range(ss[4], ss[1], 100)), collect(range(tt[4], tt[1], 100)), label=&quot;compressor&quot;)</code></pre><p><img src="../../assets/ThermodynamicCycle15-02.png" alt="图10"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../IncompressiblePipe/">« IncompressiblePipe System</a><a class="docs-footer-nextpage" href="../../API/AirPipeSim/">AirPipeSimAPI »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.23 on <span class="colophon-date" title="Thursday 8 December 2022 03:17">Thursday 8 December 2022</span>. Using Julia version 1.8.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+plot!(collect(range(ss[4], ss[1], 100)), collect(range(tt[4], tt[1], 100)), label=&quot;compressor&quot;)</code></pre><p><img src="../../assets/ThermodynamicCycle15-02.png" alt="图10"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../IncompressiblePipe/">« IncompressiblePipe System</a><a class="docs-footer-nextpage" href="../../API/AirPipeSim/">AirPipeSimAPI »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.24 on <span class="colophon-date" title="Tuesday 7 February 2023 12:38">Tuesday 7 February 2023</span>. Using Julia version 1.8.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
