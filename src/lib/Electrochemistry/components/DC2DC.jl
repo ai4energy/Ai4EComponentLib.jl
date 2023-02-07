@@ -17,7 +17,7 @@ DC2DC is a device that converts electrical energy of one voltage value into elec
 - `outport.n` Negative pin of the battery
 
 """
-function DC2DC(; name,n = 1.0, type = "voltage", value = 10)
+function DC2DC(; name,n = 1.0, output_type = "voltage", value = 10)
     @named inport = OnePort_key()
     @named outport = OnePort_key()   
     ps = @parameters (
