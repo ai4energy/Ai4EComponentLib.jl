@@ -29,7 +29,7 @@ prob = ODEProblem(sys, [], (0.0, 0.0))
 sol = solve(prob)
 
 sol[pipe1.in.q]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">1-element Vector{Float64}:
- 0.04503438797561991</code></pre><h2 id="Example-2"><a class="docs-heading-anchor" href="#Example-2">Example 2</a><a id="Example-2-1"></a><a class="docs-heading-anchor-permalink" href="#Example-2" title="Permalink"></a></h2><p><img src="../../assets/model-2.png" alt="图 1"/></p><pre><code class="language-julia hljs">using Ai4EComponentLib
+ 0.04503646855912853</code></pre><h2 id="Example-2"><a class="docs-heading-anchor" href="#Example-2">Example 2</a><a id="Example-2-1"></a><a class="docs-heading-anchor-permalink" href="#Example-2" title="Permalink"></a></h2><p><img src="../../assets/model-2.png" alt="图 1"/></p><pre><code class="language-julia hljs">using Ai4EComponentLib
 using Ai4EComponentLib.IncompressiblePipe
 using DifferentialEquations, ModelingToolkit, Test
 
@@ -164,16 +164,16 @@ for i in system[4:end-5]
   global res[string(i.name) * &quot; inlet flow:&quot;] = sol[i.in.q][1]
 end
 res</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Dict{Any, Any} with 10 entries:
-  &quot;pipe5 inlet flow:&quot;  =&gt; 0.00553371
-  &quot;pipe2 inlet flow:&quot;  =&gt; 0.000543589
-  &quot;pipe7 inlet flow:&quot;  =&gt; -0.00403274
+  &quot;pipe5 inlet flow:&quot;  =&gt; 0.00553373
+  &quot;pipe2 inlet flow:&quot;  =&gt; 0.000543611
+  &quot;pipe7 inlet flow:&quot;  =&gt; -0.00403265
   &quot;pipe1 inlet flow:&quot;  =&gt; 0.00488173
   &quot;pipe3 inlet flow:&quot;  =&gt; 0.00499012
-  &quot;pipe8 inlet flow:&quot;  =&gt; 0.00770629
-  &quot;pipe9 inlet flow:&quot;  =&gt; 0.00336816
-  &quot;pipe4 inlet flow:&quot;  =&gt; 0.00433814
-  &quot;pipe6 inlet flow:&quot;  =&gt; 0.00956644
-  &quot;pipe10 inlet flow:&quot; =&gt; 0.0074009</code></pre><h2 id="Example-4"><a class="docs-heading-anchor" href="#Example-4">Example 4</a><a id="Example-4-1"></a><a class="docs-heading-anchor-permalink" href="#Example-4" title="Permalink"></a></h2><p>In this example, value of inlet flow is a negative number which means the flow direction and arrow are in opposite direction.</p><p><img src="../../assets/model-15_04_53.png" alt="图 4"/></p><pre><code class="language-julia hljs">using Ai4EComponentLib
+  &quot;pipe8 inlet flow:&quot;  =&gt; 0.0077066
+  &quot;pipe9 inlet flow:&quot;  =&gt; 0.00336849
+  &quot;pipe4 inlet flow:&quot;  =&gt; 0.00433811
+  &quot;pipe6 inlet flow:&quot;  =&gt; 0.00956638
+  &quot;pipe10 inlet flow:&quot; =&gt; 0.00740114</code></pre><h2 id="Example-4"><a class="docs-heading-anchor" href="#Example-4">Example 4</a><a id="Example-4-1"></a><a class="docs-heading-anchor-permalink" href="#Example-4" title="Permalink"></a></h2><p>In this example, value of inlet flow is a negative number which means the flow direction and arrow are in opposite direction.</p><p><img src="../../assets/model-15_04_53.png" alt="图 4"/></p><pre><code class="language-julia hljs">using Ai4EComponentLib
 using Ai4EComponentLib.IncompressiblePipe
 using DifferentialEquations, ModelingToolkit, Test
 
@@ -237,17 +237,17 @@ for i in system[3:end-3]
   global res[string(i.name) * &quot; inlet flow:&quot;] = sol[i.in.q][1]
 end
 res</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Dict{Any, Any} with 11 entries:
-  &quot;pipe5 inlet flow:&quot;  =&gt; 0.00199272
-  &quot;pipe3 inlet flow:&quot;  =&gt; 0.0027656
-  &quot;pipe8 inlet flow:&quot;  =&gt; 0.00576107
-  &quot;pipe10 inlet flow:&quot; =&gt; 0.00211789
-  &quot;pipe2 inlet flow:&quot;  =&gt; 0.00588625
-  &quot;pipe7 inlet flow:&quot;  =&gt; 0.00280339
-  &quot;pipe1 inlet flow:&quot;  =&gt; 0.0106824
-  &quot;pipe9 inlet flow:&quot;  =&gt; 0.00588625
-  &quot;pipe4 inlet flow:&quot;  =&gt; 0.00203051
-  &quot;pipe6 inlet flow:&quot;  =&gt; 0.000772887
-  &quot;pipe11 inlet flow:&quot; =&gt; 0.00492128</code></pre><h2 id="Example-5"><a class="docs-heading-anchor" href="#Example-5">Example 5</a><a id="Example-5-1"></a><a class="docs-heading-anchor-permalink" href="#Example-5" title="Permalink"></a></h2><p><img src="../../assets/model-15_07_09.png" alt="图 5"/>  </p><pre><code class="language-julia hljs">using Ai4EComponentLib
+  &quot;pipe5 inlet flow:&quot;  =&gt; -0.00457098
+  &quot;pipe3 inlet flow:&quot;  =&gt; -0.00786821
+  &quot;pipe8 inlet flow:&quot;  =&gt; -0.00042379
+  &quot;pipe10 inlet flow:&quot; =&gt; -0.00328209
+  &quot;pipe2 inlet flow:&quot;  =&gt; 0.0008651
+  &quot;pipe7 inlet flow:&quot;  =&gt; 0.00110071
+  &quot;pipe1 inlet flow:&quot;  =&gt; -0.00260517
+  &quot;pipe9 inlet flow:&quot;  =&gt; 0.0008651
+  &quot;pipe4 inlet flow:&quot;  =&gt; 0.00439794
+  &quot;pipe6 inlet flow:&quot;  =&gt; -0.00329724
+  &quot;pipe11 inlet flow:&quot; =&gt; -0.00218138</code></pre><h2 id="Example-5"><a class="docs-heading-anchor" href="#Example-5">Example 5</a><a id="Example-5-1"></a><a class="docs-heading-anchor-permalink" href="#Example-5" title="Permalink"></a></h2><p><img src="../../assets/model-15_07_09.png" alt="图 5"/>  </p><pre><code class="language-julia hljs">using Ai4EComponentLib
 using Ai4EComponentLib.IncompressiblePipe
 using DifferentialEquations, ModelingToolkit, Test
 
@@ -341,23 +341,23 @@ for i in system[4:end]
   global res[string(i.name) * &quot; inlet flow:&quot;] = sol[i.in.q][1]
 end
 res</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Dict{Any, Any} with 25 entries:
-  &quot;Pipe18 inlet flow:&quot; =&gt; -0.00267224
-  &quot;Pipe4 inlet flow:&quot;  =&gt; 0.0014586
-  &quot;Pipe20 inlet flow:&quot; =&gt; 0.00314728
-  &quot;Pipe6 inlet flow:&quot;  =&gt; 0.00348257
-  &quot;Pipe1 inlet flow:&quot;  =&gt; 0.0120748
-  &quot;Pipe8 inlet flow:&quot;  =&gt; 0.00240043
-  &quot;Pipe11 inlet flow:&quot; =&gt; 0.00664179
-  &quot;Pipe13 inlet flow:&quot; =&gt; 0.00162144
-  &quot;Pipe14 inlet flow:&quot; =&gt; 0.00381156
-  &quot;Pipe23 inlet flow:&quot; =&gt; 0.00607254
-  &quot;Pipe2 inlet flow:&quot;  =&gt; 0.006212
-  &quot;Pipe10 inlet flow:&quot; =&gt; 0.00235296
-  &quot;Pipe12 inlet flow:&quot; =&gt; -0.00077899
-  &quot;Pipe15 inlet flow:&quot; =&gt; 0.00543301
-  &quot;Pipe16 inlet flow:&quot; =&gt; 0.00371653
-  &quot;Pipe25 inlet flow:&quot; =&gt; 0.0120748
-  &quot;Pipe5 inlet flow:&quot;  =&gt; 0.0058628
-  &quot;Pipe7 inlet flow:&quot;  =&gt; 0.00127082
-  &quot;Pipe21 inlet flow:&quot; =&gt; 0.00324149
-  ⋮                    =&gt; ⋮</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../HVAC/">« HVAC System</a><a class="docs-footer-nextpage" href="../ThermodynamicCycle/">ThermodynamicCycle System »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.24 on <span class="colophon-date" title="Wednesday 15 February 2023 09:48">Wednesday 15 February 2023</span>. Using Julia version 1.8.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+  &quot;Pipe18 inlet flow:&quot; =&gt; -0.0026858
+  &quot;Pipe4 inlet flow:&quot;  =&gt; 0.00144676
+  &quot;Pipe20 inlet flow:&quot; =&gt; 0.00315256
+  &quot;Pipe6 inlet flow:&quot;  =&gt; 0.00351051
+  &quot;Pipe1 inlet flow:&quot;  =&gt; 0.0120804
+  &quot;Pipe8 inlet flow:&quot;  =&gt; 0.00236835
+  &quot;Pipe11 inlet flow:&quot; =&gt; 0.00662373
+  &quot;Pipe13 inlet flow:&quot; =&gt; 0.00161072
+  &quot;Pipe14 inlet flow:&quot; =&gt; 0.00384598
+  &quot;Pipe23 inlet flow:&quot; =&gt; 0.00607306
+  &quot;Pipe2 inlet flow:&quot;  =&gt; 0.00621433
+  &quot;Pipe10 inlet flow:&quot; =&gt; 0.00239922
+  &quot;Pipe12 inlet flow:&quot; =&gt; -0.000757632
+  &quot;Pipe15 inlet flow:&quot; =&gt; 0.0054567
+  &quot;Pipe16 inlet flow:&quot; =&gt; 0.00370323
+  &quot;Pipe25 inlet flow:&quot; =&gt; 0.0120804
+  &quot;Pipe5 inlet flow:&quot;  =&gt; 0.0058661
+  &quot;Pipe7 inlet flow:&quot;  =&gt; 0.00125706
+  &quot;Pipe21 inlet flow:&quot; =&gt; 0.00323647
+  ⋮                    =&gt; ⋮</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../HVAC/">« HVAC System</a><a class="docs-footer-nextpage" href="../ThermodynamicCycle/">ThermodynamicCycle System »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.24 on <span class="colophon-date" title="Thursday 16 February 2023 02:08">Thursday 16 February 2023</span>. Using Julia version 1.8.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
