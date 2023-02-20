@@ -25,7 +25,7 @@ p_{in}-p_{out}=Rq_m|q_m|
 - `out`: Outlet of tank
 
 """
-function SimplePipe(; name, R=100, T=300)
+function AirSimplePipe(; name, R=100, T=300)
     @named inlet = FlowPort(T=T)
     @named outlet = FlowPort(T=T)
     ps = @parameters begin
