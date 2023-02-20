@@ -15,7 +15,7 @@ This page shows 2 examples of `AirPipeSim`.
 This test has 6 components:
 
 - Pressure Source, inlet of system
-- Simple Pipe, it's actually a stable component not only stand for pipes but also valves and elbows and their ccombinations.
+- AirSimplePipe, it's actually a stable component not only stand for pipes but also valves and elbows and their ccombinations.
 - Transition Pipe. There are two transition pipes, one in front of air storage tank and another behind it.
 - Air Storage Tank.
 - Flow Sink, outlet of system.
@@ -27,7 +27,7 @@ using Ai4EComponentLib.AirPipeSim
 using ModelingToolkit, DifferentialEquations
 
 @named inlet = PressureSource(p=6e5, T=300)
-@named pipe1 = SimplePipe(R=100, T=300)
+@named pipe1 = AirSimplePipe(R=100, T=300)
 @named pipe2 = TransitionPipe(n=20, f=0.016, D=0.2, L=100, T=300, pins=5.6e5, pouts=4e5)
 @named airTank = AirStorageTank(V=20, T=300, p0=4e5)
 @named pipe3 = TransitionPipe(n=20, f=0.016, D=0.2, L=100, T=300, pins=4e5, pouts=2e5)

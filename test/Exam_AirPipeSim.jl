@@ -6,7 +6,7 @@ using Test
 
 @info "Constructing components..."
 @named inlet = PressureSource(p=6e5, T=300)
-@named pipe1 = SimplePipe(R=100, T=300)
+@named pipe1 = AirSimplePipe(R=100, T=300)
 @named pipe2 = TransitionPipe(n=20, f=0.016, D=0.2, L=100, T=300, pins=5.6e5, pouts=4e5)
 @named airTank = AirStorageTank(V=20, T=300, p0=4e5)
 @named pipe3 = TransitionPipe(n=20, f=0.016, D=0.2, L=100, T=300, pins=4e5, pouts=2e5)
