@@ -41,7 +41,7 @@ end
 function PhotovoltaicCell_secrete(; name, I_ph=6.08, I_0=6.88e-13, a=2.3402, R_s=0.741, R_sh=457.17)
     @named oneport = OnePort()
     @unpack v, i = oneport
-    @named input = RealInput()
+    @named u = RealInput()
     ps = @parameters(
         I_ph = I_ph,
         I_0 = I_0,
@@ -50,7 +50,7 @@ function PhotovoltaicCell_secrete(; name, I_ph=6.08, I_0=6.88e-13, a=2.3402, R_s
         R_sh = R_sh
     )
     eqs = [
-        -i ~ I_ph * input.u /1000 - I_0 * (exp((v - i * R_s) / a) - 1) - (v - i * R_s) / R_sh
+        -i ~ I_ph * u.u /1000 - I_0 * (exp((v - i * R_s) / a) - 1) - (v - i * R_s) / R_sh
     ]
-    return extend(compose(ODESystem(eqs, t, [], ps; name=name),[input]), oneport)
+    return extend(compose(ODESystem(eqs, t, [], ps; name=name),[u]), oneport)
 end

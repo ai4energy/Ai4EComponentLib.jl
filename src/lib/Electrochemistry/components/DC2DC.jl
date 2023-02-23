@@ -7,24 +7,24 @@ DC2DC is a device that converts electrical energy of one voltage value into elec
 
 # Parameters:
 * `n`: efficiency of conversion
-* `type`: type of "boost" includes `voltage` or `current` or `none`
+* `output_type`: type of "boost" includes `voltage` or `current` or `none`
 * `value`: the value of outport
 
 # Connectors:
-- `inport.p` Positive pin of the solar panel
-- `inport.n` Negative pin of the solar panel
-- `outport.p` Positive pin of the battery
-- `outport.n` Negative pin of the battery
+- `in.p` Positive pin of the solar panel
+- `in.n` Negative pin of the solar panel
+- `out.p` Positive pin of the battery
+- `out.n` Negative pin of the battery
 
 """
 function DC2DC(; name,n = 1.0, output_type = "voltage", value = 10)
-    @named inport = OnePort_key()
-    @named outport = OnePort_key()   
+    @named in = OnePort_key()
+    @named out = OnePort_key()   
     ps = @parameters (
         n = n,
         value = value
         )
-    type == "none" ? eqs = [outport.i * outport.v ~ - n * inport.v * inport.i] : type == "voltage" ? eqs = [outport.v ~ value, outport.i ~ - n * inport.v * inport.i / outport.v] : eqs = [outport.i ~ -value, outport.v ~ - n * inport.v * inport.i / outport.i]
+        output_type == "none" ? eqs = [out.i * out.v ~ - n * in.v * in.i] : output_type == "voltage" ? eqs = [out.v ~ value, out.i ~ - n * in.v * in.i / out.v] : eqs = [out.i ~ -value, out.v ~ - n * in.v * in.i / out.i]
 
-    return compose(ODESystem(eqs, t, [], ps; name=name), inport, outport)
+    return compose(ODESystem(eqs, t, [], ps; name=name), in, out)
 end

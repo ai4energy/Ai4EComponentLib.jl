@@ -14,27 +14,27 @@ The MPPT controller can detect the generating voltage of the solar panel in real
 * `Sampling_time`: Voltage sampling time
 
 # Connectors:
-- `inport.p` Positive pin of the solar panel
-- `inport.n` Negative pin of the solar panel
-- `outport.p` Positive pin of the battery
-- `outport.n` Negative pin of the battery
+- `in.p` Positive pin of the solar panel
+- `in.n` Negative pin of the solar panel
+- `out.p` Positive pin of the battery
+- `out.n` Negative pin of the battery
 
 """
 function MPPT_Controller(; name,Sampling_time = 0.1)
-    @named inport = OnePort_key()
-    @named outport = OnePort() 
+    @named in = OnePort_key()
+    @named out = OnePort() 
     sts = @variables v_last(t) = 1 p_new(t) = 1 [irreducible=true] p_last(t) = 1 tmp(t) = 0
-    discrete_events = [Sampling_time => [tmp ~ inport.v, inport.v ~ inport.v + step_v(p_new - p_last, inport.v - v_last), p_last ~ tmp * inport.i, v_last ~ tmp]]
+    discrete_events = [Sampling_time => [tmp ~ in.v, in.v ~ in.v + step_v(p_new - p_last, in.v - v_last), p_last ~ tmp * in.i, v_last ~ tmp]]
     eqs = [
-        p_new ~ inport.v * inport.i
+        p_new ~ in.v * in.i
         ∂(v_last) ~ 0
-        ∂(inport.v) ~ 0
+        ∂(in.v) ~ 0
         ∂(p_last) ~ 0
         ∂(tmp) ~ 0
-        outport.v ~ inport.v
-        outport.i ~ -inport.i
+        out.v ~ in.v
+        out.i ~ -in.i
         ]
-    return compose(ODESystem(eqs, t, sts, []; name=name,discrete_events=discrete_events), [inport,outport])
+    return compose(ODESystem(eqs, t, sts, []; name=name,discrete_events=discrete_events), [in,out])
 end
 
 function MPPT_Controller_2Pin(; name,Sampling_time = 0.1)
