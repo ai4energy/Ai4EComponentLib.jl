@@ -9,7 +9,7 @@ include("components/Pipes.jl")
 include("components/Source.jl")
 include("components/AirStorageTank.jl")
 
-export SimplePipe, TransitionPipe
+export AirSimplePipe, TransitionPipe
 export PressureSource, FlowSource
 export AirStorageTank
 export FlowPort

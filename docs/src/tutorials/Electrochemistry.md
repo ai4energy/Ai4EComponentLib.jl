@@ -221,8 +221,8 @@ solar = solar .* 1000
 @named mppt = MPPT_Controller(Sampling_time = 0.5)
 @named batter = Lithium_ion_batteries()
 @named load = electronic_load()
-@named dc_pv = DC2DC(value = 36, type = "voltage")
-@named dc_batter = DC2DC(value = 36, type = "none")
+@named dc_pv = DC2DC(value = 36, output_type = "voltage")
+@named dc_batter = DC2DC(value = 36, output_type = "none")
 @named ground = Ground()
 
 eqs = [
