@@ -47,4 +47,4 @@ prob = ODEProblem(sys, [], (0.0, 0.0))
 
 sol = solve(prob, Rosenbrock23())
 
-@test sol.retcode == :Success
+@test sol.retcode == ReturnCode.Success
