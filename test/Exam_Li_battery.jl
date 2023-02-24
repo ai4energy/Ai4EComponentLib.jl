@@ -30,4 +30,4 @@ u0 = [
 prob = ODEProblem(sys, u0, (0.0, 3600.0))
 sol = solve(prob, Rosenbrock23())
 
-@test sol.retcode == :Success
+@test sol.retcode == ReturnCode.Success
