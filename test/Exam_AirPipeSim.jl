@@ -31,4 +31,4 @@ sys = structural_simplify(model)
 prob = ODAEProblem(sys, [], (0.0, 15.0))
 sol = solve(prob, Tsit5(), reltol=1e-6)
 
-@test sol.retcode == :Success
+@test sol.retcode == ReturnCode.Success

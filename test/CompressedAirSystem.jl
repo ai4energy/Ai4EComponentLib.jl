@@ -220,6 +220,6 @@ sys1 = structural_simplify(cp_model)
 prob1 = ODEProblem(sys1, [], (0, 3))
 sol1 = solve(prob1, Rodas4())
 
-@test sol1.retcode == :Success
+@test sol1.retcode == ReturnCode.Success
 
 # sol1[airTank.p]
