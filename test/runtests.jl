@@ -39,3 +39,7 @@ end
     include("Exam_PEMElectrolyzer.jl")
 end
 
+@safetestset "Exam_PhotovoltaicCell" begin
+    include("Exam_PhotovoltaicCell.jl")
+end
+

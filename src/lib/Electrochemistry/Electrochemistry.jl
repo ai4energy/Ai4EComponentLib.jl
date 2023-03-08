@@ -31,6 +31,7 @@ export Pin,
     OnePort_key,
     TwoPort,
     Resistor,
+    vari_Resistor,
     Conductor,
     Capacitor,
     Inductor,
@@ -42,5 +43,4 @@ export Pin,
     Secrete,
     electronic_load,
     get_datas
-
 end
