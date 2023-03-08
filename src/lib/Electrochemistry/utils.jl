@@ -281,7 +281,7 @@ function Voltage_source(; name)
         v ~ u.u,
     ]
 
-    extend(ODESystem(eqs, t, [], []; name=name, systems=[V]), oneport)
+    extend(ODESystem(eqs, t, [], []; name=name, systems=[u]), oneport)
 end
 
 """
@@ -305,7 +305,7 @@ function Current_source(; name)
         i ~ u.u,
     ]
 
-    extend(ODESystem(eqs, t, [], []; name=name, systems=[I]), oneport)
+    extend(ODESystem(eqs, t, [], []; name=name, systems=[u]), oneport)
 end
 
 """
@@ -363,15 +363,14 @@ Generate constant signal.
 # Connectors:
 - `u`
 """
-function Constant(; name, k=1)
-    @named output = RealOutput()
-    pars = @parameters k = k
+function Constant(; name, U=1)
+    @named u = RealOutput()
+    pars = @parameters U = U
     eqs = [
         u.u ~ U,
     ]
-    compose(ODESystem(eqs, t, [], pars; name=name), [output])
+    compose(ODESystem(eqs, t, [], pars; name=name), [u])
 end
-
 """
 $(TYPEDSIGNATURES) 
 
@@ -384,16 +383,17 @@ Generate secrete signal.
 # Connectors:
 - `u`
 """
-function Secrete(data; name, type="s")
-    @named output = RealOutput()
-    n = ifelse(type == "s", 1,
-        ifelse(type == "min", 60,
-            ifelse(type == "hour", 3600, 86400)))
+function Secrete(data; name, output_type="s")
+    @named u = RealOutput()
+    n = ifelse(output_type == "s", 1,
+        ifelse(output_type == "min", 60,
+            ifelse(output_type == "hour", 3600, 86400)))
     eqs = [
-        output.u ~ get_datas(t / n, data)
+        u.u ~ get_datas(t / n, data)
     ]
-    compose(ODESystem(eqs, t, [], []; name=name), [output])
+    compose(ODESystem(eqs, t, [], []; name=name), [u])
 end
+
 function get_datas(t, data)
     getindex(data, Int(floor(t) + 1))
 end
@@ -415,5 +415,5 @@ function electronic_load(; name)
     eqs = [
         v * i ~ u.u
     ]
-    return extend(compose(ODESystem(eqs, t, [], ps; name=name), [input]), oneport)
+    return extend(compose(ODESystem(eqs, t, [], ps; name=name), [u]), oneport)
 end
