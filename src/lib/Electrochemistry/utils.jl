@@ -54,7 +54,7 @@ From [ModelingToolkitStandardLibrary.jl](http://mtkstdlib.sciml.ai/dev/)
 - `p` Positive pin
 - `n` Negative pin
 """
-function OnePort(; name, v_start = 1.0, i_start = 0.0)
+function OnePort(; name, v_start=1.0, i_start=0.0)
     @named p = Pin()
     @named n = Pin()
     sts = @variables begin
@@ -62,9 +62,9 @@ function OnePort(; name, v_start = 1.0, i_start = 0.0)
         i(t) = i_start
     end
     eqs = [v ~ p.v - n.v
-           0 ~ p.i + n.i
-           i ~ p.i]
-    return compose(ODESystem(eqs, t, sts, []; name = name), p, n)
+        0 ~ p.i + n.i
+        i ~ p.i]
+    return compose(ODESystem(eqs, t, sts, []; name=name), p, n)
 end
 
 """
@@ -76,10 +76,10 @@ The component does exactly the same thing as the "OnePort"
 but its variables can not be simplified in the function "structural_simplify"
 
 """
-function OnePort_key(; name, v_start = 1.0, i_start = 0.0)
+function OnePort_key(; name, v_start=1.0, i_start=0.0)
     @named p = Pin()
     @named n = Pin()
-    sts = @variables v(t) = v_start [irreducible=true] i(t) = i_start [irreducible=true]
+    sts = @variables v(t) = v_start [irreducible = true] i(t) = i_start [irreducible = true]
     eqs = [
         v ~ p.v - n.v
         0 ~ p.i + n.i
@@ -112,7 +112,7 @@ Current `i1` flows from `p1` to `n1` and `i2` from `p2` to `n2`.
 - `n1` First negative pin
 - `n2` Second Negative pin
 """
-function TwoPort(; name, v1_start = 0.0, v2_start = 0.0, i1_start = 0.0, i2_start = 0.0)
+function TwoPort(; name, v1_start=0.0, v2_start=0.0, i1_start=0.0, i2_start=0.0)
     @named p1 = Pin()
     @named n1 = Pin()
     @named p2 = Pin()
@@ -124,12 +124,12 @@ function TwoPort(; name, v1_start = 0.0, v2_start = 0.0, i1_start = 0.0, i2_star
         i2(t) = i2_start
     end
     eqs = [v1 ~ p1.v - n1.v
-           0 ~ p1.i + n1.i
-           i1 ~ p1.i
-           v2 ~ p2.v - n2.v
-           0 ~ p2.i + n2.i
-           i2 ~ p2.i]
-    return compose(ODESystem(eqs, t, sts, []; name = name), p1, p2, n1, n2)
+        0 ~ p1.i + n1.i
+        i1 ~ p1.i
+        v2 ~ p2.v - n2.v
+        0 ~ p2.i + n2.i
+        i2 ~ p2.i]
+    return compose(ODESystem(eqs, t, sts, []; name=name), p1, p2, n1, n2)
 end
 
 """
@@ -145,17 +145,43 @@ See [OnePort](@ref)
 - `n` Negative pin
 
 # Parameters:
-- `R`: [`Ohm`] Resistance
+- `R`: [`Ω`] Resistance
 """
-function Resistor(; name, R)
+function Resistor(; name, R=1.0)
     @named oneport = OnePort()
     @unpack v, i = oneport
     pars = @parameters R = R
     eqs = [
         v ~ i * R,
     ]
-    extend(ODESystem(eqs, t, [], pars; name = name), oneport)
+    extend(ODESystem(eqs, t, [], pars; name=name), oneport)
 end
+
+"""
+$(TYPEDSIGNATURES)
+
+Creates an Resistor whose value increases with time.
+
+# States:
+See [OnePort](@ref)
+
+# Connectors:
+- `p` Positive pin
+- `n` Negative pin
+
+# Parameters:
+- `R`: [`Ω`] Resistance
+"""
+function vari_Resistor(; name, R=1.0)
+    @named oneport = OnePort()
+    @unpack v, i = oneport
+    pars = @parameters R = R
+    eqs = [
+        v ~ i * R * t,
+    ]
+    extend(ODESystem(eqs, t, [], pars; name=name), oneport)
+end
+
 
 """
 $(TYPEDSIGNATURES)
@@ -179,7 +205,7 @@ function Conductor(; name, G)
     eqs = [
         i ~ v * G,
     ]
-    extend(ODESystem(eqs, t, [], pars; name = name), oneport)
+    extend(ODESystem(eqs, t, [], pars; name=name), oneport)
 end
 
 """
@@ -198,14 +224,14 @@ Creates an ideal capacitor.
 - `C`: [`F`] Capacitance
 - `v_start`: [`V`] Initial voltage of capacitor
 """
-function Capacitor(; name, C, v_start = 0.0)
-    @named oneport = OnePort(; v_start = v_start)
+function Capacitor(; name, C, v_start=0.0)
+    @named oneport = OnePort(; v_start=v_start)
     @unpack v, i = oneport
     pars = @parameters C = C
     eqs = [
         ∂(v) ~ i / C,
     ]
-    extend(ODESystem(eqs, t, [], pars; name = name), oneport)
+    extend(ODESystem(eqs, t, [], pars; name=name), oneport)
 end
 
 """
@@ -224,14 +250,14 @@ See [OnePort](@ref)
 - `L`: [`H`] Inductance
 - `i_start`: [`A`] Initial current through inductor
 """
-function Inductor(; name, L, i_start = 0.0)
-    @named oneport = OnePort(; i_start = i_start)
+function Inductor(; name, L, i_start=0.0)
+    @named oneport = OnePort(; i_start=i_start)
     @unpack v, i = oneport
     pars = @parameters L = L
     eqs = [
         ∂(i) ~ 1 / L * v,
     ]
-    extend(ODESystem(eqs, t, [], pars; name = name), oneport)
+    extend(ODESystem(eqs, t, [], pars; name=name), oneport)
 end
 
 """
@@ -255,7 +281,7 @@ function Voltage_source(; name)
         v ~ u.u,
     ]
 
-    extend(ODESystem(eqs, t, [], []; name = name, systems = [u]), oneport)
+    extend(ODESystem(eqs, t, [], []; name=name, systems=[u]), oneport)
 end
 
 """
@@ -279,7 +305,7 @@ function Current_source(; name)
         i ~ u.u,
     ]
 
-    extend(ODESystem(eqs, t, [], []; name = name, systems = [u]), oneport)
+    extend(ODESystem(eqs, t, [], []; name=name, systems=[u]), oneport)
 end
 
 """
@@ -294,14 +320,14 @@ Connector with one input signal of type Real.
 # States:
 - `u`: Value of of the connector; if nin=1 this is a scalar
 """
-@connector function RealInput(; name, nin = 1, u_start = nin > 1 ? zeros(nin) : 0.0)
+@connector function RealInput(; name, nin=1, u_start=nin > 1 ? zeros(nin) : 0.0)
     if nin == 1
-        @variables u(t)=u_start [input = true]
+        @variables u(t) = u_start [input = true]
     else
-        @variables u(t)[1:nin]=u_start [input = true]
+        @variables u(t)[1:nin] = u_start [input = true]
         u = collect(u)
     end
-    ODESystem(Equation[], t, [u...], []; name = name)
+    ODESystem(Equation[], t, [u...], []; name=name)
 end
 
 """
@@ -316,14 +342,14 @@ Connector with one output signal of type Real.
 # States:
 - `u`: Value of of the connector; if nout=1 this is a scalar
 """
-@connector function RealOutput(; name, nout = 1, u_start = nout > 1 ? zeros(nout) : 0.0)
+@connector function RealOutput(; name, nout=1, u_start=nout > 1 ? zeros(nout) : 0.0)
     if nout == 1
-        @variables u(t)=u_start [output = true]
+        @variables u(t) = u_start [output = true]
     else
-        @variables u(t)[1:nout]=u_start [output = true]
+        @variables u(t)[1:nout] = u_start [output = true]
         u = collect(u)
     end
-    ODESystem(Equation[], t, [u...], []; name = name)
+    ODESystem(Equation[], t, [u...], []; name=name)
 end
 
 """
@@ -337,15 +363,14 @@ Generate constant signal.
 # Connectors:
 - `u`
 """
-function Constant(; name, U = 1)
+function Constant(; name, U=1)
     @named u = RealOutput()
     pars = @parameters U = U
     eqs = [
         u.u ~ U,
     ]
-    compose(ODESystem(eqs, t, [], pars; name = name), [u])
+    compose(ODESystem(eqs, t, [], pars; name=name), [u])
 end
-
 """
 $(TYPEDSIGNATURES) 
 
@@ -358,20 +383,21 @@ Generate secrete signal.
 # Connectors:
 - `u`
 """
-function Secrete(data; name,output_type = "s")
+function Secrete(data; name, output_type="s")
     @named u = RealOutput()
-    n = ifelse(output_type == "s",1,
-    ifelse(output_type == "min",60,
-    ifelse(output_type == "hour",3600,86400)))
+    n = ifelse(output_type == "s", 1,
+        ifelse(output_type == "min", 60,
+            ifelse(output_type == "hour", 3600, 86400)))
     eqs = [
-        u.u ~ get_datas(t/n,data)
+        u.u ~ get_datas(t / n, data)
     ]
-    compose(ODESystem(eqs, t, [], []; name = name), [u])
+    compose(ODESystem(eqs, t, [], []; name=name), [u])
 end
-function get_datas(t,data)
-    getindex(data,Int(floor(t) + 1))
+
+function get_datas(t, data)
+    getindex(data, Int(floor(t) + 1))
 end
-@register_symbolic get_datas(t,data::Array)
+@register_symbolic get_datas(t, data::Array)
 
 """
 $(TYPEDSIGNATURES) 
@@ -381,7 +407,7 @@ Simulated load.
 # Connectors:
 - `u`
 """
-function electronic_load(;name)
+function electronic_load(; name)
     @named oneport = OnePort()
     @unpack v, i = oneport
     @named u = RealInput()
@@ -389,5 +415,5 @@ function electronic_load(;name)
     eqs = [
         v * i ~ u.u
     ]
-    return extend(compose(ODESystem(eqs, t, [], ps; name=name),[u]), oneport)
+    return extend(compose(ODESystem(eqs, t, [], ps; name=name), [u]), oneport)
 end
