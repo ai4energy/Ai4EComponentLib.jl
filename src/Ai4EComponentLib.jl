@@ -13,5 +13,6 @@ include("lib/CompressedAirSystem/CompressedAirSystem.jl")
 include("lib/AirPipeSim/AirPipeSim.jl")
 include("lib/ThermodynamicCycle/ThermodynamicCycle.jl")
 include("lib/HVAC/HVAC.jl")
+include("lib/EconomyGCDModel_A1/EconomyGCDModel_A1.jl")
 
 end

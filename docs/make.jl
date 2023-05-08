@@ -19,6 +19,7 @@ makedocs(;
         Ai4EComponentLib.CompressedAirSystem
         Ai4EComponentLib.IncompressiblePipe
         Ai4EComponentLib.ThermodynamicCycle
+        Ai4EComponentLib.EconomyGCDModel_A1
     ],
     authors="jake484 <522432938@qq.com> and contributors",
     repo="https://github.com/ai4energy/Ai4EComponentLib.jl/blob/{commit}{path}#{line}",
