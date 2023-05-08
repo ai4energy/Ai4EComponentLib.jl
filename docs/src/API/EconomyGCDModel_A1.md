@@ -1,4 +1,4 @@
-# AirPipeSimAPI
+# EconomyGCDModel_A1API
 
 ```@meta
 CurrentModule = Ai4EComponentLib.EconomyGCDModel_A1
@@ -14,7 +14,7 @@ Pages = ["EconomyGCDModel_A1.md"]
 Pages = ["EconomyGCDModel_A1.md"]
 ```
 
-## AirPipeSim Components
+## EconomyGCDModel_A1 Components
 
 ```@autodocs
 Modules = [EconomyGCDModel_A1]
