@@ -1,7 +1,7 @@
 using Ai4EComponentLib
 using SafeTestsets
 
-Base.show_backtrace(false)
+Base.show_backtrace(stdout, false)
 
 #  @safetestset "IncompressiblePipe System" begin
 #      include("incompressiblepipe.jl")
