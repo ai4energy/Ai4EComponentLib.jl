@@ -46,9 +46,10 @@ u0 = [
 prob = ODEProblem(sys, u0, (0.0, 5000.0))
 sol = solve(prob, Rosenbrock23())
 
-using Plots
-plot(sol.t, sol[batter.v_soc])
-plot!(sol.t, sol[mppt.in.i].*sol[mppt.in.v])
-plot!(sol.t, sol[dc_pv.out.i])
-plot!(sol.t, sol[dc_batter.out.i])
-plot!(sol.t, sol[load.n.i])
+@test sol.retcode == ReturnCode.Success
+# using Plots
+# plot(sol.t, sol[batter.v_soc])
+# plot!(sol.t, sol[mppt.in.i].*sol[mppt.in.v])
+# plot!(sol.t, sol[dc_pv.out.i])
+# plot!(sol.t, sol[dc_batter.out.i])
+# plot!(sol.t, sol[load.n.i])

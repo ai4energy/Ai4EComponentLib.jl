@@ -4,7 +4,7 @@ $(TYPEDSIGNATURES)
 State Equation of Dry Air
 """
 stateEquation(p, ρ, T) = p - ρ * T * 287.11
-@register stateEquation(p, ρ, T) #状态方程
+@register_symbolic stateEquation(p, ρ, T) #状态方程
 
 
 """

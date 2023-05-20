@@ -38,13 +38,13 @@ eqs = [
 sys = structural_simplify(model)
 
 prob = ODEProblem(sys, [], (0, 40), saveat=1)
-sol = solve(prob, Tsit5())
+
 @info "Solving system..."
-q1 = sol[boiler.Δh] .+ sol[reboiler.Δh] |> println
-w = -sol[turbine.Δh] - sol[returbine.Δh] - sol[pump.Δh] |> println
-η = w ./ q1
+sol = solve(prob, Tsit5())
+# q1 = sol[boiler.Δh] .+ sol[reboiler.Δh] |> println
+# w = -sol[turbine.Δh] - sol[returbine.Δh] - sol[pump.Δh] |> println
+# η = w ./ q1
 
-
-@test true
+@test sol.retcode == ReturnCode.Success
 
 

@@ -19,9 +19,9 @@ Reynolds number
 """
 pipeRe(ρ, u, D, μ) = (u >= 0) ? (ρ * u * D / μ) : (-ρ * u * D / μ)
 
-@register pipeFriction_turbulent(f, Re, ϵ, D)
-@register pipeVelocity(Δp, ρ, L, D, f)
-@register pipeRe(ρ, u, D, μ)
+@register_symbolic pipeFriction_turbulent(f, Re, ϵ, D)
+@register_symbolic pipeVelocity(Δp, ρ, L, D, f)
+@register_symbolic pipeRe(ρ, u, D, μ)
 
 """
 $(TYPEDSIGNATURES)

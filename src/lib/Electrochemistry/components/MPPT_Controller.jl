@@ -1,7 +1,7 @@
 function step_v(dp, du)
     dp * sign(du) >= 0 ? 0.1 : -0.1
 end
-@register step_v(dp, du)
+@register_symbolic step_v(dp, du)
 
 """
 $(TYPEDSIGNATURES)
@@ -119,7 +119,7 @@ end
 #             return 0
 #         end
 #     end
-#     @register charge_current(t)
+#     @register_symbolic charge_current(t)
 #     end)
 #     eqs = [i~charge_current(t)]
 #     return extend(ODESystem(eqs, t, [], []; name=name), oneport)

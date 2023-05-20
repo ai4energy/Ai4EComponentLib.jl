@@ -93,7 +93,7 @@ end
 #             return 0
 #         end
 #     end
-#     @register charge_current(t)
+#     @register_symbolic charge_current(t)
 #     end)
 #     eqs = [i~charge_current(t)]
 #     return extend(ODESystem(eqs, t, [], []; name=name), oneport)
