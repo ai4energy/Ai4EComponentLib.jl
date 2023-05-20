@@ -1,23 +1,21 @@
 using Ai4EComponentLib
 using SafeTestsets
 
-Base.show_backtrace(stdout, false)
+@safetestset "IncompressiblePipe System" begin
+    include("incompressiblepipe.jl")
+end
 
-#  @safetestset "IncompressiblePipe System" begin
-#      include("incompressiblepipe.jl")
-#  end
+@safetestset "reheat test" begin
+    include("ReHeat_test.jl")
+end
 
-#  @safetestset "hvac_test" begin
-#      include("hvac_test.jl")
-#  end
+@safetestset "hvac_test" begin
+    include("hvac_test.jl")
+end
 
-#  @safetestset "Li_battery_test" begin
-#      include("Li_battery_test.jl")
-#  end
-
-#  @safetestset "Photovoltaic_energy_storage_system" begin
-#      include("Photovoltaic_energy_storage_system.jl")
-#  end
+@safetestset "Photovoltaic_energy_storage_system" begin
+    include("Photovoltaic_energy_storage_system.jl")
+end
 
 @safetestset "Exam_ThermodynamicCycle.jl" begin
     include("Exam_ThermodynamicCycle.jl")
