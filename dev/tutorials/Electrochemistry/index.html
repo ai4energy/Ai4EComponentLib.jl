@@ -37,17 +37,17 @@ t: 55-element Vector{Float64}:
    0.011110999999999996
    0.11111099999999996
    1.1111109999999995
-   6.79035935117457
-   8.978148213920168
+   6.7961135535315815
+   8.980368891201081
    ⋮
- 159.10880840336685
- 173.4801253245643
- 189.1756997486783
- 206.31752801865935
- 225.03881424518733
- 245.48515123044803
- 267.81547719830417
- 292.2035686705326
+ 159.0854133997087
+ 173.45457006936152
+ 189.14781129077835
+ 206.28704054052065
+ 225.00552888861432
+ 245.448759913962
+ 267.77576317012455
+ 292.1601692994974
  300.0
 u: 55-element Vector{Vector{Float64}}:
  [6.070161232179358]
@@ -56,20 +56,20 @@ u: 55-element Vector{Vector{Float64}}:
  [6.070159760762311]
  [6.070146504594543]
  [6.070013946101201]
- [6.068688679524139]
+ [6.068688679524138]
  [6.055467772362445]
- [5.981307175281362]
- [5.921765490958639]
+ [5.981230854593792]
+ [5.921588397489081]
  ⋮
- [0.4349347898787152]
- [0.3991446222812544]
- [0.3662305704476482]
- [0.3359725683697224]
- [0.30816564410432495]
- [0.2826189866654537]
- [0.25915547745658996]
- [0.23761065441016743]
- [0.2314575832133179]</code></pre><pre><code class="language-julia hljs">plot(sol[R.p.v], sol[R.p.i], color = &quot;red&quot;)</code></pre><p><img src="../example_1.svg" alt="fig_一"/></p><h2 id="PEMElectrolyzer"><a class="docs-heading-anchor" href="#PEMElectrolyzer">PEMElectrolyzer</a><a id="PEMElectrolyzer-1"></a><a class="docs-heading-anchor-permalink" href="#PEMElectrolyzer" title="Permalink"></a></h2><p>Using above PhotovoltaicCell to drive Electrolyzer, then we build a <em>PVEL system</em>. In default paraments, we can know how the system works.</p><p>Equivalent circuit diagram of <code>PEMElectrolyzer()</code>:</p><p><img src="../../assets/Electrochemistry-18-11-06.png" alt="fig_ 2"/>  </p><pre><code class="language-julia hljs">using ModelingToolkit, DifferentialEquations
+ [0.4349982854936449]
+ [0.39920303672454266]
+ [0.3662842389753828]
+ [0.3360219448203593]
+ [0.3082109982522425]
+ [0.2826606927009388]
+ [0.25919374817045526]
+ [0.23764581203395482]
+ [0.23145758331541108]</code></pre><pre><code class="language-julia hljs">plot(sol[R.p.v], sol[R.p.i], color = &quot;red&quot;)</code></pre><p><img src="../example_1.svg" alt="fig_一"/></p><h2 id="PEMElectrolyzer"><a class="docs-heading-anchor" href="#PEMElectrolyzer">PEMElectrolyzer</a><a id="PEMElectrolyzer-1"></a><a class="docs-heading-anchor-permalink" href="#PEMElectrolyzer" title="Permalink"></a></h2><p>Using above PhotovoltaicCell to drive Electrolyzer, then we build a <em>PVEL system</em>. In default paraments, we can know how the system works.</p><p>Equivalent circuit diagram of <code>PEMElectrolyzer()</code>:</p><p><img src="../../assets/Electrochemistry-18-11-06.png" alt="fig_ 2"/>  </p><pre><code class="language-julia hljs">using ModelingToolkit, DifferentialEquations
 using Ai4EComponentLib
 using Ai4EComponentLib.Electrochemistry
 
@@ -113,25 +113,25 @@ t: 29-element Vector{Float64}:
  30.0
 u: 29-element Vector{Vector{Float64}}:
  [0.0, 0.0, 6.063727595681834]
- [1.8307680149829605e-14, 3.6615215058424316e-8, 6.063727595681835]
- [2.2150535613568343e-12, 4.0271943799070087e-7, 6.063727595681835]
- [2.2537214333319225e-10, 4.058970969463909e-6, 6.063727595681835]
- [2.239920344148744e-8, 4.014448437387311e-5, 6.063727595681835]
+ [1.8307680149829605e-14, 3.661521505842432e-8, 6.063727595681835]
+ [2.2150535613568343e-12, 4.027194379907009e-7, 6.063727595681835]
+ [2.2537214333319222e-10, 4.058970969463909e-6, 6.063727595681835]
+ [2.2399203441487435e-8, 4.014448437387311e-5, 6.063727595681835]
  [1.2189296098963561e-6, 0.00027901338737525, 6.063727595681835]
- [6.69070409685778e-6, 0.0005882354978314793, 6.063727595681835]
- [1.6362842524229996e-5, 0.0008126644963035811, 6.063727595681835]
- [3.224746590988234e-5, 0.0009592361733792534, 6.063727595681835]
- [5.185457979379007e-5, 0.0009818115051539894, 6.063727595681835]
+ [6.69070409685778e-6, 0.0005882354978314794, 6.063727595681835]
+ [1.6362842524230887e-5, 0.0008126644963036136, 6.063727595681835]
+ [3.224746590988312e-5, 0.0009592361733792569, 6.063727595681835]
+ [5.185457979379086e-5, 0.000981811505153988, 6.063727595681835]
  ⋮
- [0.00012667436955623627, 9.372195131969263e-7, 6.063727595681835]
- [0.00012671057762334218, -3.961253864583832e-8, 6.063727595681835]
- [0.00012669665417256172, 3.353379177334356e-8, 6.063727595681835]
- [0.00012669753307424983, 1.060292541914433e-9, 6.063727595681835]
- [0.00012669772793681163, -2.6321612955817163e-10, 6.063727595681835]
- [0.0001266977465289514, 6.3591890732822245e-12, 6.063727595681835]
- [0.00012669775281945505, 8.101659530524139e-12, 6.063727595681835]
- [0.00012669775355874052, 3.3013910387812284e-13, 6.063727595681835]
- [0.00012669775357165324, 6.770560764356629e-14, 6.063727595681835]</code></pre><p>Get states of system by <code>states()</code></p><pre><code class="language-julia hljs">states(sys)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">3-element Vector{Any}:
+ [0.00012667436955623632, 9.372195131970123e-7, 6.063727595681835]
+ [0.00012671057762334215, -3.9612538646446066e-8, 6.063727595681835]
+ [0.00012669665417256175, 3.353379177307835e-8, 6.063727595681835]
+ [0.00012669753307424986, 1.0602925416497021e-9, 6.063727595681835]
+ [0.00012669772793681166, -2.632161296863355e-10, 6.063727595681835]
+ [0.0001266977465289514, 6.35918892264015e-12, 6.063727595681835]
+ [0.00012669775281945505, 8.101659531698335e-12, 6.063727595681835]
+ [0.00012669775355874052, 3.301391099264718e-13, 6.063727595681835]
+ [0.00012669775357165324, 6.770557358602392e-14, 6.063727595681835]</code></pre><p>Get states of system by <code>states()</code></p><pre><code class="language-julia hljs">states(sys)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">3-element Vector{Any}:
  El₊m_H_2(t)
  El₊∂_m_H_2(t)
  El₊i(t)</code></pre><p>Check voltage, current and mass yield of electrolyzer. The working point <code>(El.v,El.i)</code> can be found in I-U curve above.</p><pre><code class="language-julia hljs">sol[El.v]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">29-element Vector{Float64}:
@@ -178,19 +178,19 @@ u: 29-element Vector{Vector{Float64}}:
  0.0
  1.8307680149829605e-14
  2.2150535613568343e-12
- 2.2537214333319225e-10
- 2.239920344148744e-8
+ 2.2537214333319222e-10
+ 2.2399203441487435e-8
  1.2189296098963561e-6
  6.69070409685778e-6
- 1.6362842524229996e-5
- 3.224746590988234e-5
- 5.185457979379007e-5
+ 1.6362842524230887e-5
+ 3.224746590988312e-5
+ 5.185457979379086e-5
  ⋮
- 0.00012667436955623627
- 0.00012671057762334218
- 0.00012669665417256172
- 0.00012669753307424983
- 0.00012669772793681163
+ 0.00012667436955623632
+ 0.00012671057762334215
+ 0.00012669665417256175
+ 0.00012669753307424986
+ 0.00012669772793681166
  0.0001266977465289514
  0.00012669775281945505
  0.00012669775355874052
@@ -231,14 +231,14 @@ t: 37-element Vector{Float64}:
     6.770870617087571
    16.44501650526439
     ⋮
-  968.4320293753967
- 1120.9138098557373
- 1300.022304748988
- 1514.5458506512566
- 1775.8154371178352
- 2103.9186860602154
- 2533.885825321721
- 3135.5825883010157
+  968.4319590718419
+ 1120.9137342162744
+ 1300.0222228418488
+ 1514.5457612371358
+ 1775.8153385609141
+ 2103.9186033096157
+ 2533.8857259685046
+ 3135.5824099495935
  3600.0
 u: 37-element Vector{Vector{Float64}}:
  [0.5, 0.5, 0.5, 2.32613574386297, 6.065081346069112]
@@ -249,18 +249,18 @@ u: 37-element Vector{Vector{Float64}}:
  [0.4999750829890147, 0.49990477993861454, 0.5000005210936259, 2.326255897126056, 6.065081083654659]
  [0.4997508774802967, 0.49904853433725055, 0.500005210977118, 2.3273364936884677, 6.065078723814942]
  [0.49751374853205843, 0.49055926276750406, 0.5000521092147455, 2.3380643519959916, 6.065055295990901]
- [0.48501942343032456, 0.4449336279755473, 0.5003175216192808, 2.396192672661811, 6.064928353592023]
- [0.4643072769626758, 0.375707928943244, 0.5007711082308799, 2.486145225306173, 6.064731912465073]
+ [0.48501942343032445, 0.4449336279755472, 0.5003175216192808, 2.396192672661811, 6.064928353592024]
+ [0.46430727696285484, 0.3757079289432439, 0.5007711082308799, 2.4861452253059944, 6.064731912465073]
  ⋮
- [-0.048976730943765874, -0.04850134373543614, 0.5449954421454896, 3.426582748275242, 6.062678156328987]
- [-0.054295802336414935, -0.04850134760832312, 0.5520063086657062, 3.4326111087001894, 6.0626649914116415]
- [-0.05753359738678067, -0.04850127070340544, 0.5602161661800636, 3.436755324038443, 6.062655941147875]
- [-0.05931472395553959, -0.048501209860026345, 0.5700135682020963, 3.439717271192193, 6.062649472757362]
- [-0.060164695059764, -0.048501163262382053, 0.5818934240368155, 3.4421268122610127, 6.062644210728078]
- [-0.06050171231842802, -0.048501119054297104, 0.5967309882924604, 3.4445709099987347, 6.062638873232967]
- [-0.060603714417562994, -0.04850106605641416, 0.6160390603649041, 3.447589569988876, 6.062632280991217]
- [-0.060624052237255574, -0.04850099338911016, 0.6428019585357793, 3.4517338783759377, 6.0626232305241965]
- [-0.06062584866684115, -0.04850094034914864, 0.6632558164458884, 3.454737752327928, 6.062616670572666]</code></pre><pre><code class="language-julia hljs">plot(sol.t, sol[batter.v_soc], color = &quot;red&quot;)</code></pre><p><img src="../example_3_1.svg" alt="fig_3_1"/></p><pre><code class="language-julia hljs">plot(sol.t, sol[batter.v_s], color = &quot;red&quot;)</code></pre><p><img src="../example_3_2.svg" alt="fig_3_2"/></p><pre><code class="language-julia hljs">plot(sol.t, sol[batter.i_b], color = &quot;red&quot;)</code></pre><p><img src="../example_3_3.svg" alt="fig_3_3"/></p><h2 id="Super-capacity"><a class="docs-heading-anchor" href="#Super-capacity">Super capacity</a><a id="Super-capacity-1"></a><a class="docs-heading-anchor-permalink" href="#Super-capacity" title="Permalink"></a></h2><p>Equivalent circuit diagram of <code>Super_capacity()</code>:</p><p><img src="../../assets/Super_capacity_fig.png" alt="fig_ 4"/>  </p><pre><code class="language-julia hljs">using Ai4EComponentLib
+ [-0.04897672766809025, -0.048501343735352594, 0.544995438908467, 3.42658274468633, 6.062678156336824]
+ [-0.05429580042130126, -0.048501347608386536, 0.5520063051928245, 3.4326111064186735, 6.062664991416689]
+ [-0.05753359637368845, -0.048501270703408726, 0.5602161624318754, 3.4367553225936147, 6.062655941150969]
+ [-0.05931472348657042, -0.048501209860045656, 0.5700135641266066, 3.439717270211102, 6.062649472759505]
+ [-0.06016469487788445, -0.048501163262420176, 0.5818934195662824, 3.4421268114687673, 6.062644210729848]
+ [-0.060501712277094326, -0.048501119054280055, 0.5967309845616443, 3.4445709094095474, 6.062638873234227]
+ [-0.06060371440863251, -0.048501066056435366, 0.616039055921088, 3.4475895692953276, 6.062632280992732]
+ [-0.0606240522358262, -0.04850099338910926, 0.6428019506469951, 3.4517338771776473, 6.062623230526814]
+ [-0.060625848666840454, -0.048500940349121606, 0.663255816445888, 3.454737752327892, 6.062616670572667]</code></pre><pre><code class="language-julia hljs">plot(sol.t, sol[batter.v_soc], color = &quot;red&quot;)</code></pre><p><img src="../example_3_1.svg" alt="fig_3_1"/></p><pre><code class="language-julia hljs">plot(sol.t, sol[batter.v_s], color = &quot;red&quot;)</code></pre><p><img src="../example_3_2.svg" alt="fig_3_2"/></p><pre><code class="language-julia hljs">plot(sol.t, sol[batter.i_b], color = &quot;red&quot;)</code></pre><p><img src="../example_3_3.svg" alt="fig_3_3"/></p><h2 id="Super-capacity"><a class="docs-heading-anchor" href="#Super-capacity">Super capacity</a><a id="Super-capacity-1"></a><a class="docs-heading-anchor-permalink" href="#Super-capacity" title="Permalink"></a></h2><p>Equivalent circuit diagram of <code>Super_capacity()</code>:</p><p><img src="../../assets/Super_capacity_fig.png" alt="fig_ 4"/>  </p><pre><code class="language-julia hljs">using Ai4EComponentLib
 using ModelingToolkit, DifferentialEquations
 using Ai4EComponentLib.Electrochemistry
 using Plots
@@ -426,4 +426,4 @@ u: 20072-element Vector{Vector{Float64}}:
  [-0.11515169601014638, -0.009330494283401295, 0.272749348598594, 53.30000000000049, 53.200000000000486, 10.79128169722852, 53.30000000000049, 3.2426286638640014, -12.091773167341044, 10.79128169722852  …  0.2024630712425595, 36.0, 0.2024630712425595, 53.30000000000049, -0.29974622736741735, -1.0891426615214712, 36.0, 12.091773167341044, 3.2426286638640014, 1.3888888888888888]
  [-0.11468000523455532, -0.008505016535355759, 0.272690837499094, 53.30000000000049, 53.200000000000486, 10.79128169722852, 53.30000000000049, 3.2412602199950142, -12.095634552833024, 10.795304166610743  …  0.20291925125207977, 36.0, 0.20291925125207977, 53.20000000000049, -0.29985821934607626, -1.0890306695428131, 36.0, 12.095634552833024, 3.2412602199950142, 1.3888888888888888]
  [-0.11468000523455532, -0.008505016535355759, 0.272690837499094, 53.200000000000486, 53.100000000000485, 10.795304166610743, 53.200000000000486, 3.2412602199950142, -12.095634552833024, 10.795304166610743  …  0.20291925125207977, 36.0, 0.20291925125207977, 53.20000000000049, -0.29985821934607626, -1.0890306695428131, 36.0, 12.095634552833024, 3.2412602199950142, 1.3888888888888888]
- [-0.11420917599684985, -0.0076857106390098955, 0.2726323081956083, 53.200000000000486, 53.100000000000485, 10.795304166610743, 53.200000000000486, 3.239897031727938, -12.099670068207585, 10.798709815047218  …  0.20336553324005865, 36.0, 0.20336553324005865, 53.10000000000048, -0.2999530667616992, -1.08893582212719, 36.0, 12.099670068207585, 3.239897031727938, 1.3888888888888888]</code></pre><pre><code class="language-julia hljs">plot(sol.t, sol[batter.v_soc])</code></pre><p><img src="../example_mppt_v_soc.svg" alt="fig_mppt1"/></p><pre><code class="language-julia hljs">plot(sol.t, sol[mppt.p_new])</code></pre><p><img src="../example_mppt_pnew.svg" alt="fig_mppt2"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../EconomyGCDModel_A1/">« GCDModel_A1</a><a class="docs-footer-nextpage" href="../HVAC/">HVAC System »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.24 on <span class="colophon-date" title="Tuesday 9 May 2023 07:26">Tuesday 9 May 2023</span>. Using Julia version 1.9.0.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+ [-0.11420917599684985, -0.0076857106390098955, 0.2726323081956083, 53.200000000000486, 53.100000000000485, 10.795304166610743, 53.200000000000486, 3.239897031727938, -12.099670068207585, 10.798709815047218  …  0.20336553324005865, 36.0, 0.20336553324005865, 53.10000000000048, -0.2999530667616992, -1.08893582212719, 36.0, 12.099670068207585, 3.239897031727938, 1.3888888888888888]</code></pre><pre><code class="language-julia hljs">plot(sol.t, sol[batter.v_soc])</code></pre><p><img src="../example_mppt_v_soc.svg" alt="fig_mppt1"/></p><pre><code class="language-julia hljs">plot(sol.t, sol[mppt.p_new])</code></pre><p><img src="../example_mppt_pnew.svg" alt="fig_mppt2"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../EconomyGCDModel_A1/">« GCDModel_A1</a><a class="docs-footer-nextpage" href="../HVAC/">HVAC System »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.24 on <span class="colophon-date" title="Saturday 20 May 2023 01:24">Saturday 20 May 2023</span>. Using Julia version 1.9.0.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
