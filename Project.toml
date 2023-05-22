@@ -1,6 +1,6 @@
 name = "Ai4EComponentLib"
 uuid = "9901752a-13b3-47c7-8fb4-ce17182539d9"
-authors = ["jake484 <522432938@qq.com> and contributors"]
+authors = ["ai4energy and contributors"]
 version = "0.10.1"
 
 [deps]
