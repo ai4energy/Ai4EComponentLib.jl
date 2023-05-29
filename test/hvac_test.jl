@@ -4,7 +4,8 @@ using ModelingToolkit, OrdinaryDiffEq
 using Test
 
 D_ch = [22.08252111,-0.008374357,0.605004615,-0.544042021,-2.10E-07,7.04E-05,0.000299955,-0.028824777]
-@named ch1 = WaterChiller_SimplifiedPolynomial(D=D_ch)
+#@named ch1 = WaterChiller_SimplifiedPolynomial(D=D_ch)
+@named ch1 = WaterChiller_SimplifiedPolynomial(D1=D_ch[1],D2=D_ch[2],D3=D_ch[3],D4=D_ch[4],D5=D_ch[5],D6=D_ch[6],D7=D_ch[7],D8=D_ch[8])
 D_pump = [120,-1500,-0.5,0.8,0.8,0.8]
 @named pump1 = Pump(D=D_pump)
 @named pump2 = Pump(D=D_pump)
