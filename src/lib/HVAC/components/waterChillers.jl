@@ -31,6 +31,48 @@ $(TYPEDSIGNATURES)
 - `chilledIn`: Inlet of chilled water
 - `chilledOut`: Outlet of chilled water
 """
+
+
+function WaterChiller_SimplifiedPolynomial(; name, D1,D2,D3,D4,D5,D6,D7,D8, Qe0=3000)
+    @named coolerIn = FlowPort()
+    @named coolerOut = FlowPort()
+    @named chilledIn = FlowPort()
+    @named chilledOut = FlowPort()
+    sts = @variables begin
+        COP(t) = 2      
+        Qe(t) = 10      
+        P(t) = 1000      
+        PLR(t) = 0.8     
+        qe(t) = 100      
+        qc(t) = 100     
+        Tei(t) = 7      
+        Teo(t) = 15     
+        Tci(t) = 26    
+        Tco(t) = 40  
+    end
+    cp = 4.18
+    ps = @parameters D1=D1 D2=D2 D3=D3 D4=D4 D5=D5 D6=D6 D7=D7 D8=D8 Qe0 = Qe0
+    eqs = [
+        COP ~ D1 + D2 * Qe + D3 * Teo + D4 * Tci + D5 * Qe^2 + D6 * Qe * Teo + D7 * Qe * Tci + D8 * Teo * Tci,
+        Qe ~ COP * P,
+        PLR ~ Qe / Qe0,
+        Qe ~ (Teo - Tei) * qe * cp,
+        (Tco - Tci) * qc * cp ~ (Teo - Tei) * qe * cp + P,
+        Tco ~ coolerOut.T,
+        Tci ~ coolerIn.T,
+        Teo ~ chilledIn.T,
+        Tei ~ chilledOut.T,
+        qe ~ chilledIn.qm,
+        qc ~ coolerIn.qm,
+        chilledIn.qm + chilledOut.qm ~ 0,
+        coolerIn.qm + coolerOut.qm ~ 0,
+        chilledIn.p ~ chilledOut.p,
+        coolerIn.p ~ coolerOut.p
+    ]
+    compose(ODESystem(eqs, t; name), coolerIn, coolerOut, chilledIn, chilledOut)
+end
+
+#=
 function WaterChiller_SimplifiedPolynomial(; name, D::Vector{Float64}, Qe0=3000)
     @named coolerIn = FlowPort()
     @named coolerOut = FlowPort()
@@ -69,3 +111,4 @@ function WaterChiller_SimplifiedPolynomial(; name, D::Vector{Float64}, Qe0=3000)
     ]
     compose(ODESystem(eqs, t; name), coolerIn, coolerOut, chilledIn, chilledOut)
 end
+=#
