@@ -28,6 +28,6 @@ u0 = [
     batter.v_soc => 0.5
 ]
 prob = ODEProblem(sys, u0, (0.0, 3600.0))
-sol = solve(prob, Rosenbrock23())
+sol = solve(prob, Rodas4())
 
 @test sol.retcode == ReturnCode.Success

@@ -33,7 +33,7 @@ M. Chen, G.A. Rincon-Mora, Accurate electrical battery model capable of predicti
 function Lithium_ion_batteries(; name, R_0=0.01, R_s=0.01, R_f=0.008, R_sd=0.5, C_s=2.5e4, C_f=8.0e3, C_b=108000., SOC2OC=[2.80595458402267,1.55152642441438,9.74740200393579,-63.9029654523517,136.818961490389,-128.826085360179,45.4027129038144])
     @named oneport = OnePort_key()
     @unpack v, i = oneport
-    sts = @variables v_b(t)=1 i_b(t)=1 v_s(t) v_f(t) v_soc(t) v_oc(v_soc)=2.8
+    sts = @variables v_b(t)=1 i_b(t)=1 v_s(t) v_f(t) v_soc(t) v_oc(t)=2.8
     ps = @parameters(
         R_0 = R_0,
         R_s = R_s,
