@@ -22,6 +22,6 @@ sys = structural_simplify(model)
 
 @info "Solving system..."
 prob = ODEProblem(sys, [], (0, 300))
-sol = solve(prob, Rosenbrock23())
+sol = solve(prob, Rodas4())
 
 @test sol.retcode == ReturnCode.Success

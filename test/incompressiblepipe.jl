@@ -62,6 +62,6 @@ eqs = [
 @named model = compose(ODESystem(eqs, t, name=:funs), system)
 sys = structural_simplify(model)
 prob = ODEProblem(sys, [], (0, 0.0))
-sol = solve(prob, Rosenbrock23())
+sol = solve(prob, Rodas4())
 
 @test sol.retcode == ReturnCode.Success
