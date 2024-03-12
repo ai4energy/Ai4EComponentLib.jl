@@ -14,8 +14,9 @@ jobs:
         group:
           - Core
         version:
-          - '1.8'
+          - '1.7'
           - '1.9'
+          - '1.10'
     steps:
       - uses: actions/checkout@v3
       - uses: julia-actions/setup-julia@v1

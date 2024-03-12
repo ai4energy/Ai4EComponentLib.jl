@@ -1,7 +1,7 @@
 name = "Ai4EComponentLib"
 uuid = "9901752a-13b3-47c7-8fb4-ce17182539d9"
 authors = ["ai4energy and contributors"]
-version = "0.10.2"
+version = "0.10.3"
 
 [deps]
 CoolProp = "e084ae63-2819-5025-826e-f8e611a84251"
@@ -17,7 +17,7 @@ DocStringExtensions = "^0.9"
 IfElse = "^0.1.1"
 ModelingToolkit = "^8"
 SafeTestsets = "^0.0.1, 0.1"
-Unitful = "^1.11.0"
+Unitful = "^1"
 julia = "^1.7"
 
 [extras]
