@@ -15,7 +15,6 @@ jobs:
           - Core
         version:
           - '1.7'
-          - '1.9'
           - '1.10'
     steps:
       - uses: actions/checkout@v3
