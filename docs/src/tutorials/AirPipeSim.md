@@ -48,7 +48,7 @@ eqs=[
 # Simplify the system and solve
 sys=structural_simplify(model)
 
-prob=ODAEProblem(sys,[],(0.0,5.0))
+prob=ODEProblem(sys,[],(0.0,5.0))
 
 sol=solve(prob,Rosenbrock23())
 ```
