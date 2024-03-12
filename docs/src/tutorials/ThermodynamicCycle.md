@@ -413,7 +413,7 @@ eqs = [
 
 sys = structural_simplify(model)
 
-prob = ODAEProblem(sys, [], (0, 0))
+prob = ODEProblem(sys, [], (0, 0))
 sol = solve(prob)
 
 w = sol[compressor.Δh][1]
