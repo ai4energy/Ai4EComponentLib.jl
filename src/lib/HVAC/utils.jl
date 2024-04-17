@@ -12,7 +12,7 @@ A pipe port(inlet or outlet) in an pipe network.
     sts = @variables begin
         p(t) = 1.013e5
         (qm(t)=1, [connect = Flow])
-        T(t)=T0
+        (T(t)=T0, [output = true])
     end
     ODESystem(Equation[], t, sts, []; name=name)
 end

@@ -15,17 +15,23 @@ There are five states in a node: pressure, enthalpy, temperature, density, entro
 - `s(t)`: [`J/(kg·K)`] The entropy at this node
 
 """
-@connector function StreamNode(; name)
-    sts = @variables begin
-        p(t) = 1.0e5
-        h(t) = 1.0e5
-        T(t) = 300.0
-        ρ(t) = 1.0e5
-        s(t) = 1.0e5
-    end
-    ODESystem(Equation[], t, sts, []; name=name)
+@connector StreamNode begin
+    p(t) = 1.0e5, [output = true]
+    h(t) = 1.0e5, [output = true]
+    T(t) = 300.0, [output = true]
+    ρ(t) = 1.0e5, [output = true]
+    s(t) = 1.0e5, [output = true]
 end
-
+# @connector function StreamNode(; name)
+#     sts = @variables begin
+#         p(t) = 1.0e5
+#         h(t) = 1.0e5, [output = true]
+#         T(t) = 300.0, [output = true]
+#         ρ(t) = 1.0e5, [output = true]
+#         s(t) = 1.0e5, [output = true]
+#     end
+#     ODESystem(Equation[], t, sts, []; name=name)
+# end
 
 """
 $(TYPEDSIGNATURES)
