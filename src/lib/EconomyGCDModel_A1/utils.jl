@@ -21,13 +21,13 @@ The port through which money flows.
         α = α
     end
     sts = @variables begin
-        p(t) = 0.8
-        w(t) = 1.2
-        l(t) = 0.8
-        c(t) = 1.22
-        𝛌₁(t) = -0.1
-        𝛌₂(t) = -0.3
-        𝛌₃(t) = 0.4
+        (p(t)=0.8, [output = true])
+        (w(t)=1.2, [output = true])
+        (l(t)=0.8, [output = true])
+        (c(t)=1.22, [output = true])
+        (𝛌₁(t)=-0.1, [output = true])
+        (𝛌₂(t)=-0.3, [output = true])
+        (𝛌₃(t)=0.4, [output = true])
     end
     ODESystem(Equation[], t, sts, ps; name=name)
 end
